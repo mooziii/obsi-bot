@@ -17,7 +17,7 @@ object Localization {
 
     suspend fun extractLanguageFiles() {
         downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/en_us.json", getOrCreateFile(File(langFolder, "en_us.json")))
-        downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/en_us.json", getOrCreateFile(File(langFolder, "en_us.json")))
+        downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/de_de.json", getOrCreateFile(File(langFolder, "de_de.json")))
     }
 
     fun loadAllLanguageFiles() {

@@ -10,6 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
+import me.obsilabor.obsibot.listeners.PingListener
 import me.obsilabor.obsibot.localization.Localization
 
 object ObsiBot {
@@ -38,13 +39,19 @@ object ObsiBot {
 
     suspend fun main(optionSet: OptionSet) {
         Localization.extractLanguageFiles()
-        /*
-        val bot = ExtensibleBot(TOKEN) {
+        Localization.loadAllLanguageFiles()
+        if(optionSet.hasArgument("language")) {
+            Localization.globalLanguage = optionSet.valueOf("language").toString()
+        }
 
+        val bot = ExtensibleBot(TOKEN) {
+            extensions {
+                add(::PingListener)
+            }
         }
 
         bot.start()
-         */
+
     }
 
 }
