@@ -9,6 +9,7 @@ import joptsimple.OptionSet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import me.obsilabor.obsibot.listeners.PingListener
 import me.obsilabor.obsibot.localization.Localization
@@ -23,6 +24,7 @@ object ObsiBot {
         CoroutineScope(SupervisorJob() + Dispatchers.Default)
     }
 
+    @OptIn(ExperimentalSerializationApi::class)
     val json by lazy {
         Json {
             prettyPrint = true
