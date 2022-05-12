@@ -10,10 +10,15 @@ version = "1.0.0"
 
 repositories {
     mavenCentral()
+    maven("https://maven.kotlindiscord.com/repository/maven-public/")
 }
 
 dependencies {
+    // kotlin libraries
     implementation(kotlin("stdlib"))
+    // kord and kordex libraries
+    implementation("dev.kord:kord-core:0.8.0-M13")
+    implementation("com.kotlindiscord.kord.extensions:kord-extensions:1.5.2-RC1")
 }
 
 tasks {
@@ -23,5 +28,12 @@ tasks {
     }
     compileKotlin {
         kotlinOptions.jvmTarget = javaVersion.toString()
+    }
+    shadowJar {
+        manifest {
+            attributes(
+                "Main-Class" to "me.obsilabor.obsibot.ManagerKt"
+            )
+        }
     }
 }
