@@ -16,8 +16,8 @@ object Localization {
     private val langFolder = getOrCreateDirectory(File("lang"))
 
     suspend fun extractLanguageFiles() {
-        downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/en_us.json", getOrCreateFile(File(langFolder, "en_us.json")))
-        downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/de_de.json", getOrCreateFile(File(langFolder, "de_de.json")))
+        downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/english.json", getOrCreateFile(File(langFolder, "english.json")))
+        downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/german.json", getOrCreateFile(File(langFolder, "german.json")))
     }
 
     fun loadAllLanguageFiles() {
@@ -33,7 +33,6 @@ object Localization {
             }
         }
     }
-
 }
 
 fun localText(key: String, map: HashMap<String, Any>, guild: ObsiGuild): String {
@@ -42,15 +41,24 @@ fun localText(key: String, map: HashMap<String, Any>, guild: ObsiGuild): String 
     map.keys.forEach {
         string = string?.replace(it, map[it].toString())
     }
-    return string ?: "Error in localization file."
+    return string ?: globalText(key, map)
 }
 
 fun localText(key: String, guild: ObsiGuild): String {
     return localText(key, hashMapOf(), guild)
 }
 
-fun globalText(key: String, map: HashMap<String, String>): String {
+fun globalText(key: String, map: HashMap<String, Any>): String {
     val language = Localization.languages[Localization.globalLanguage] ?: return "Error in localization loading"
+    var string = language[key]
+    map.keys.forEach {
+        string = string?.replace(it, map[it].toString())
+    }
+    return string ?: defaultLanguage(key, map)
+}
+
+private fun defaultLanguage(key: String, map: HashMap<String, Any>): String {
+    val language = Localization.languages[Localization.DEFAULT_LANGUAGE] ?: return "Error in localization loading"
     var string = language[key]
     map.keys.forEach {
         string = string?.replace(it, map[it].toString())

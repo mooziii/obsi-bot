@@ -43,15 +43,11 @@ object ObsiBot {
         if(optionSet.hasArgument("language")) {
             Localization.globalLanguage = optionSet.valueOf("language").toString()
         }
-
         val bot = ExtensibleBot(TOKEN) {
             extensions {
                 add(::PingListener)
             }
         }
-
         bot.start()
-
     }
-
 }
