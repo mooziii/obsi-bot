@@ -5,4 +5,5 @@ It is developed in [Kotlin](https://kotlinlang.org) using [kordex](https://githu
 
 ### Help me translating
 
-Feel free to help me translating this bot. Just copy the `lang/en_us.json` file and change its name to the language you want to add. And now you can begin translating each entry.
+Feel free to help me translating this bot. Just copy the `lang/english.json` file and change its name to the language you want to add. And now you can begin translating each entry.
+
