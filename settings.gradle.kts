@@ -1,3 +1,2 @@
-
-rootProject.name = "obsi-bot-remastered"
+rootProject.name = "obsi-bot"
 
