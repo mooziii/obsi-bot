@@ -4,3 +4,4 @@ build
 .gitattributes
 .idea
 .env
+mongodb.json

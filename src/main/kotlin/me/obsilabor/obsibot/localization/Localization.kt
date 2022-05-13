@@ -10,7 +10,7 @@ import java.io.File
 
 object Localization {
 
-    const val DEFAULT_LANGUAGE = "en_us"
+    const val DEFAULT_LANGUAGE = "english"
     var globalLanguage = DEFAULT_LANGUAGE
     val languages = hashMapOf<String, HashMap<String, String>>()
     private val langFolder = getOrCreateDirectory(File("lang"))
@@ -39,7 +39,7 @@ fun localText(key: String, map: HashMap<String, Any>, guild: ObsiGuild): String 
     val language = Localization.languages[guild.language] ?: Localization.languages[Localization.DEFAULT_LANGUAGE] ?: return "Error in localization loading"
     var string = language[key]
     map.keys.forEach {
-        string = string?.replace(it, map[it].toString())
+        string = string?.replace("\${$it}", map[it].toString())
     }
     return string ?: globalText(key, map)
 }
@@ -52,7 +52,7 @@ fun globalText(key: String, map: HashMap<String, Any>): String {
     val language = Localization.languages[Localization.globalLanguage] ?: return "Error in localization loading"
     var string = language[key]
     map.keys.forEach {
-        string = string?.replace(it, map[it].toString())
+        string = string?.replace("\${$it}", map[it].toString())
     }
     return string ?: defaultLanguage(key, map)
 }
@@ -61,9 +61,9 @@ private fun defaultLanguage(key: String, map: HashMap<String, Any>): String {
     val language = Localization.languages[Localization.DEFAULT_LANGUAGE] ?: return "Error in localization loading"
     var string = language[key]
     map.keys.forEach {
-        string = string?.replace(it, map[it].toString())
+        string = string?.replace("\${$it}", map[it].toString())
     }
-    return string ?: "Error in localization file."
+    return string ?: key
 }
 
 fun globalText(key: String): String {

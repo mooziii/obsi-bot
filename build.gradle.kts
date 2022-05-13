@@ -24,6 +24,9 @@ dependencies {
     // ktor libraries
     implementation("io.ktor:ktor-client-core:1.6.7")
     implementation("io.ktor:ktor-client-cio:1.6.7")
+    // kmongo
+    implementation("org.litote.kmongo", "kmongo-core", "4.5.1")
+    implementation("org.litote.kmongo", "kmongo-serialization-mapping", "4.5.1")
     // kord and kordex libraries
     implementation("dev.kord:kord-core:0.8.0-M13")
     implementation("com.kotlindiscord.kord.extensions:kord-extensions:1.5.2-RC1")

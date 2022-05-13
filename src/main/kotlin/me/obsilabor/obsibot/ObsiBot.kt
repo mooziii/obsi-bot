@@ -2,7 +2,9 @@ package me.obsilabor.obsibot
 
 import com.kotlindiscord.kord.extensions.ExtensibleBot
 import com.kotlindiscord.kord.extensions.utils.env
+import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Snowflake
+import dev.kord.core.Kord
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import joptsimple.OptionSet
@@ -11,10 +13,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import me.obsilabor.obsibot.commands.GiveawayCommand
 import me.obsilabor.obsibot.listeners.PingListener
+import me.obsilabor.obsibot.listeners.ReadyListener
 import me.obsilabor.obsibot.localization.Localization
+import me.obsilabor.obsibot.tasks.GiveawayTask
+import java.util.*
 
 object ObsiBot {
+
+    lateinit var bot: ExtensibleBot
+    lateinit var client: Kord
+    var isFullyFunctional = false
+    var initTime: Long = 0
 
     val ktorClient by lazy {
         HttpClient(CIO) { expectSuccess = false }
@@ -39,17 +50,25 @@ object ObsiBot {
 
     private val TOKEN = env("TOKEN")
 
+    @KordPreview
     suspend fun main(optionSet: OptionSet) {
+        initTime = System.currentTimeMillis()
         Localization.extractLanguageFiles()
         Localization.loadAllLanguageFiles()
         if(optionSet.hasArgument("language")) {
             Localization.globalLanguage = optionSet.valueOf("language").toString()
         }
-        val bot = ExtensibleBot(TOKEN) {
+        val timer = Timer()
+        //timer.schedule(GiveawayTask(), 0, 1000)
+        bot = ExtensibleBot(TOKEN) {
             extensions {
                 add(::PingListener)
+                add(::ReadyListener)
+                add(::GiveawayCommand)
             }
         }
         bot.start()
+        println("Bot started in ${System.currentTimeMillis()-initTime}ms")
+        isFullyFunctional = true
     }
 }
