@@ -7,6 +7,9 @@ import com.kotlindiscord.kord.extensions.commands.converters.impl.*
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
+import com.kotlindiscord.kord.extensions.types.respond
+import com.kotlindiscord.kord.extensions.types.respondEphemeral
+import com.kotlindiscord.kord.extensions.types.respondPublic
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.rest.builder.message.create.actionRow
@@ -19,24 +22,25 @@ class GiveawayCommand : Extension() {
 
     override suspend fun setup() {
         publicSlashCommand {
-            name = "giveawayd"
+            name = "giveaway"
             description = globalText("command.giveaway.description")
 
             guild(ObsiBot.TEST_SERVER_ID)
-
-
 
             publicSubCommand(::GiveawayCreateArgs) {
                 name = "create"
                 description = globalText("command.giveaway.description")
 
                 action {
-                    channel.createMessage {
+                    respondEphemeral {
                         content = "hi"
                         actionRow {
                             selectMenu("smiley") {
                                 option("mache ein smiley", "smiley") {
-                                    description = "smiley zu viel gemacht"
+                                    description = "vllt machst du ein smiley zu viel"
+                                }
+                                option("tjaa", "tja") {
+                                    description = "tjaa"
                                 }
                             }
                         }
