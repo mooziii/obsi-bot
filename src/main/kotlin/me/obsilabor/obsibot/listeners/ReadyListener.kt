@@ -24,10 +24,11 @@ class ReadyListener : Extension() {
                 kord.guilds.toList().forEach {
                     val obsiGuild = it.obsify() ?: it.createObsiGuild()
                     if(obsiGuild.giveawayRole == null || it.getRoleOrNull(obsiGuild.giveawayRole ?: Snowflake(0)) == null) {
-                        obsiGuild.giveawayRole = it.createRole {
+                        obsiGuild.adoptGiveawayRoleId(it.createRole {
                             name = "Giveaway Permissions"
                             reason = "Created by obsi-bot (please don't delete)"
-                        }.id
+                        }.id)
+                        obsiGuild.update()
                     }
                 }
             }
