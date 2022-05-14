@@ -5,7 +5,7 @@
   "generic.nopermissions.long": "Vous n'avez pas le droit ${required} d'effectuer cette action.",
   "giveaway.winners": "Les gagnants sont: ${winners}",
   "giveaway.embed.author": "tombola de ${owner}",
-  "giveaway.embed.description": "Vous pouvez gagner **${prizecount}x ${prize}** en répondant avec ${emoji}!\nLe tirage au sort se termine <t :${end} :R>\nOrganisé par: <@${owner}>",
+  "giveaway.embed.description": "Vous pouvez gagner **${prizecount}x ${prize}** en répondant avec ${emoji}!\nLe tirage au sort se termine <t:${end}:R>\nOrganisé par: <@${owner}>",
   "command.giveaway.rolerequired": "Vous avez besoin du rôle \"Giveaway Permissions\" pour gérer les cadeaux (ou vous devez être l'organisateur du cadeau pour le distribuer manuellement).",
   "command.giveaway.description": "Commande pour gérer les tombolas",
   "command.giveaway.create.success": "tombola créée",
