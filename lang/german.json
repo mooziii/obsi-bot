@@ -7,7 +7,7 @@
   "command.giveaway.rolerequired": "Du benötigst die \"Giveaway Permissions\" Rolle um Verlosungen zu verwalten.",
   "command.giveaway.description": "Command um Verlosungen zu verwalten",
   "command.giveaway.create.description": "Command zum erstellen von Verlosungen",
-  "command.giveaway.create.arguments.prize.description": "Preis der Verlosung",
-  "command.giveaway.create.arguments.prizecount.description": "Anzahl der Preise",
-  "command.giveaway.create.arguments.endtimestamp.description": "Exakter Zeitpunkt für das Ende der Verlosung"
+  "command.giveaway.create.argument.prize.description": "Preis der Verlosung",
+  "command.giveaway.create.argument.prizecount.description": "Anzahl der Preise",
+  "command.giveaway.create.argument.endtimestamp.description": "Exakter Zeitpunkt für das Ende der Verlosung"
 }

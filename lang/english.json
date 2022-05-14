@@ -7,7 +7,7 @@
   "command.giveaway.rolerequired": "You need the \"Giveaway Permissions\" role to manage giveaways.",
   "command.giveaway.description": "Command for managing giveaways",
   "command.giveaway.create.description": "Command to create giveaways",
-  "command.giveaway.create.arguments.prize.description": "The prize to win",
-  "command.giveaway.create.arguments.prizecount.description": "The amount of prizes to win",
-  "command.giveaway.create.arguments.endtimestamp.description": "The exact timestamp of when the giveaway should end"
+  "command.giveaway.create.argument.prize.description": "The prize to win",
+  "command.giveaway.create.argument.prizecount.description": "The amount of prizes to win",
+  "command.giveaway.create.argument.endtimestamp.description": "The exact timestamp of when the giveaway should end"
 }
