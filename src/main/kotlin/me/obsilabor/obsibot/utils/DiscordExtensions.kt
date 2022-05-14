@@ -5,6 +5,7 @@ import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.entity.Guild
 import dev.kord.core.entity.Member
+import dev.kord.rest.builder.message.EmbedBuilder
 import me.obsilabor.obsibot.data.ObsiGuild
 import me.obsilabor.obsibot.database.MongoManager
 import org.litote.kmongo.eq
@@ -25,4 +26,12 @@ fun Guild.createObsiGuild(): ObsiGuild {
 @KordPreview
 suspend fun Member.hasRole(role: Snowflake): Boolean {
     return hasRole(guild.getRole(role))
+}
+
+@KordPreview
+fun EmbedBuilder.applyDefaultFooter() {
+    footer {
+        text = "Made with ❤️ by mooz"
+        icon = "https://avatars.githubusercontent.com/u/88035952?s=200&v=4"
+    }
 }
