@@ -6,9 +6,13 @@ import com.kotlindiscord.kord.extensions.commands.converters.impl.*
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
+import com.kotlindiscord.kord.extensions.utils.hasPermission
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
+import dev.kord.common.entity.Permission
+import dev.kord.core.behavior.channel.MessageChannelBehavior
 import dev.kord.core.behavior.channel.createMessage
+import dev.kord.core.behavior.reply
 import dev.kord.core.entity.ReactionEmoji
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
@@ -94,12 +98,47 @@ class GiveawayCommand : Extension() {
                     }
                 }
             }
+            ephemeralSubCommand(::GiveawayRollArgs) {
+                name = "roll"
+                description = globalText("command.giveaway.roll.description")
+
+                action {
+                    val obsiGuild = guild?.asGuildOrNull()?.obsify() ?: guild?.asGuildOrNull()?.createObsiGuild()
+                    if(obsiGuild == null) {
+                        respond {
+                            content = "obsiGuild == null"
+                        }
+                        return@action
+                    }
+                    val giveaway = obsiGuild.giveaways.firstOrNull { it.messageId.value.toLong() == arguments.id } ?: return@action
+                    if((member?.asMember()?.hasRole(obsiGuild.giveawayRole) == true && giveaway.owner == member?.id) || member?.asMember()?.hasPermission(Permission.Administrator) == true) {
+                        (ObsiBot.client.getGuild(obsiGuild.id)?.getChannel(giveaway.channelId) as MessageChannelBehavior).getMessage(giveaway.messageId)
+                            .reply {
+                                content = localText(
+                                    "giveaway.winners",
+                                    hashMapOf("winners" to giveaway.roll().joinToString(", ") { "<@${it.value}>" }),
+                                    obsiGuild
+                                )
+                            }
+                        respond {
+                            content = localText("command.giveaway.roll.success", obsiGuild)
+                        }
+                    } else {
+                        respond {
+                            embed {
+                                title = localText("generic.nopermissions.short", obsiGuild)
+                                description = localText("command.giveaway.rolerequired", obsiGuild)
+                                applyDefaultFooter()
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
 
     inner class GiveawayCreateArgs : Arguments() {
-
         val prize by string {
             name = "prize"
             description = globalText("command.giveaway.create.argument.prize.description")
@@ -114,6 +153,12 @@ class GiveawayCommand : Extension() {
             name = "endtimestamp"
             description = globalText("command.giveaway.create.argument.endtimestamp.description")
         }
+    }
 
+    inner class GiveawayRollArgs : Arguments() {
+        val id by long {
+            name = "id"
+            description = globalText("command.giveaway.roll.argument.id.description")
+        }
     }
 }
