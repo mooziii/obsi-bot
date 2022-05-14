@@ -5,7 +5,7 @@
   "generic.nopermissions.long": "You don't have the ${required} permission to perform this action",
   "giveaway.winners": "The winners are: ${winners}",
   "giveaway.embed.author": "Giveaway by ${owner}",
-  "giveaway.embed.description": "You can win **${prizecount}x ${prize} by reacting with ${emoji}!\nThe givaway ends <t:${end}:R> (<t:${end}>)\nHosted by: <@${owner}>",
+  "giveaway.embed.description": "You can win **${prizecount}x ${prize}** by reacting with ${emoji}!\nThe givaway ends <t:${end}:R> (<t:${end}>)\nHosted by: <@${owner}>",
   "command.giveaway.rolerequired": "You need the \"Giveaway Permissions\" role to manage giveaways.",
   "command.giveaway.description": "Command for managing giveaways",
   "command.giveaway.create.success": "Giveaway created",
