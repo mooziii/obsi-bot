@@ -5,7 +5,7 @@ It is developed in [Kotlin](https://kotlinlang.org) using [kordex](https://githu
 
 ### Help me translating
 
-Feel free to help me translating this bot. Just copy the `lang/english.json` file and change its name to the language you want to add. Now you can begin translating each entry.
+Feel free to help me translating this bot. Just copy the `lang/english.json` file and change its name to the language you want to add. For more specific information, look at the [Wiki Page](https://github.com/Obsilabor/obsi-bot/wiki/Using-translations)
 
 ## ⚠️ Please note: This is far from stable
 
