@@ -137,7 +137,6 @@ class GiveawayCommand : Extension() {
         }
     }
 
-
     inner class GiveawayCreateArgs : Arguments() {
         val prize by string {
             name = "prize"
