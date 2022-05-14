@@ -15,7 +15,10 @@ import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.rest.builder.message.create.actionRow
 import dev.kord.rest.builder.message.create.embed
+import dev.kord.x.emoji.Emojis
 import me.obsilabor.obsibot.ObsiBot
+import me.obsilabor.obsibot.data.Giveaway
+import me.obsilabor.obsibot.database.MongoManager
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.applyDefaultFooter
@@ -47,8 +50,42 @@ class GiveawayCommand : Extension() {
                         return@action
                     }
                     if(member?.asMember()?.hasRole(obsiGuild.giveawayRole) == true) {
+                        val message = channel.createMessage {
+                            content = ":tada: **GIVEAWAY** :tada:"
+                            embed {
+                                author {
+                                    name = member?.asMember()?.displayName
+                                    url = member?.asUserOrNull()?.avatar?.url
+                                }
+                                title = "${arguments.prizeCount}x ${arguments.prize}"
+                                description = localText(
+                                    "giveaway.embed",
+                                    hashMapOf(
+                                        "prize" to arguments.prize,
+                                        "prizecount" to arguments.prizeCount,
+                                        "emoji" to ":tada:",
+                                        "end" to arguments.endTimestamp/1000,
+                                        "owner" to member?.id?.value!!
+                                    ),
+                                    obsiGuild
+                                )
+                                applyDefaultFooter()
+                            }
+                        }
+                        obsiGuild.adoptNewGiveaway(Giveaway(
+                            member?.id ?: return@action,
+                            arrayListOf(),
+                            message.id,
+                            message.channelId,
+                            message.getGuild().id,
+                            arguments.endTimestamp,
+                            arguments.prize,
+                            arguments.prizeCount,
+                            false
+                        ))
+                        obsiGuild.update()
                         respond {
-                            content = "hi"
+                            content = localText("command.giveaway.create.success", obsiGuild)
                         }
                     } else {
                         respond {
