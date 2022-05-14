@@ -54,16 +54,18 @@ object ObsiBot {
 
     @KordPreview
     suspend fun main(optionSet: OptionSet) {
+        if(optionSet.hasArgument("help")) {
+            globalText("bot.help").split("\\n").forEach {
+                println(it)
+            }
+            return
+        }
         initTime = System.currentTimeMillis()
         ConfigManager.mongoConfig
         Localization.extractLanguageFiles()
         Localization.loadAllLanguageFiles()
         if(optionSet.hasArgument("language")) {
             Localization.globalLanguage = optionSet.valueOf("language").toString()
-        }
-        if(optionSet.hasArgument("help")) {
-            println(globalText("bot.help"))
-            return
         }
         val timer = Timer()
         timer.schedule(GiveawayTask(), 0, 1000)
@@ -75,7 +77,5 @@ object ObsiBot {
             }
         }
         bot.start()
-        println("Bot started in ${System.currentTimeMillis()-initTime}ms")
-        isFullyFunctional = true
     }
 }
