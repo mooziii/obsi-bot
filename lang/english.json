@@ -1,6 +1,6 @@
 {
   "bot.ping": "hi, i got pinged i think",
-  "bot.help": "Follow this tutorial for bot setup: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot",
+  "bot.help": "Follow this tutorial for bot setup: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nSupported languages are these: ${languages}",
   "generic.nopermissions.short": "Insufficient permissions",
   "generic.nopermissions.long": "You don't have the ${required} permission to perform this action",
   "giveaway.winners": "The winners are: ${winners}",
