@@ -6,11 +6,14 @@
   "giveaway.winners": "The winners are: ${winners}",
   "giveaway.embed.author": "Giveaway by ${owner}",
   "giveaway.embed.description": "You can win **${prizecount}x ${prize}** by reacting with ${emoji}!\nThe givaway ends <t:${end}:R>\nHosted by: <@${owner}>",
-  "command.giveaway.rolerequired": "You need the \"Giveaway Permissions\" role to manage giveaways.",
+  "command.giveaway.rolerequired": "You need the \"Giveaway Permissions\" role to manage giveaways (or you must be the hoster of a giveaway to roll it manually).",
   "command.giveaway.description": "Command for managing giveaways",
   "command.giveaway.create.success": "Giveaway created",
   "command.giveaway.create.description": "Command to create giveaways",
   "command.giveaway.create.argument.prize.description": "The prize to win",
   "command.giveaway.create.argument.prizecount.description": "The amount of prizes to win",
-  "command.giveaway.create.argument.endtimestamp.description": "The exact timestamp of when the giveaway should end"
+  "command.giveaway.create.argument.endtimestamp.description": "The exact timestamp of when the giveaway should end",
+  "command.giveaway.roll.success": "Giveaway rolled",
+  "command.giveaway.roll.description": "Command to roll giveaways",
+  "command.giveaway.roll.argument.id.description": "Id of the giveaway to roll (id of the message from the giveaway)"
 }
