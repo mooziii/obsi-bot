@@ -14,9 +14,11 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import me.obsilabor.obsibot.commands.GiveawayCommand
+import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.listeners.PingListener
 import me.obsilabor.obsibot.listeners.ReadyListener
 import me.obsilabor.obsibot.localization.Localization
+import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.tasks.GiveawayTask
 import java.util.*
 
@@ -53,6 +55,7 @@ object ObsiBot {
     @KordPreview
     suspend fun main(optionSet: OptionSet) {
         initTime = System.currentTimeMillis()
+        ConfigManager.mongoConfig
         Localization.extractLanguageFiles()
         Localization.loadAllLanguageFiles()
         if(optionSet.hasArgument("language")) {
@@ -63,7 +66,7 @@ object ObsiBot {
             return
         }
         val timer = Timer()
-        //timer.schedule(GiveawayTask(), 0, 1000)
+        timer.schedule(GiveawayTask(), 0, 1000)
         bot = ExtensibleBot(TOKEN) {
             extensions {
                 add(::PingListener)
