@@ -36,7 +36,7 @@ class GiveawayCommand : Extension() {
 
             ephemeralSubCommand(::GiveawayCreateArgs) {
                 name = "create"
-                description = globalText("command.giveaway.description")
+                description = globalText("command.giveaway.create.description")
 
                 action {
                     val obsiGuild = guild?.asGuildOrNull()?.obsify() ?: guild?.asGuildOrNull()?.createObsiGuild()
