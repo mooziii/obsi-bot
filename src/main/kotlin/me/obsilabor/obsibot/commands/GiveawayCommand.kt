@@ -6,10 +6,10 @@ import com.kotlindiscord.kord.extensions.commands.converters.impl.*
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
-import com.kotlindiscord.kord.extensions.utils.addReaction
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.channel.createMessage
+import dev.kord.core.entity.ReactionEmoji
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.data.Giveaway
@@ -67,7 +67,7 @@ class GiveawayCommand : Extension() {
                                 applyDefaultFooter()
                             }
                         }
-                        message.addReaction("U+1F389")
+                        message.addReaction(ReactionEmoji.Unicode("\uD83C\uDF89"))
                         obsiGuild.adoptNewGiveaway(Giveaway(
                             member?.id ?: return@action,
                             arrayListOf(),
