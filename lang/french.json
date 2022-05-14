@@ -1,0 +1,19 @@
+{
+  "bot.ping": "Je pense que j'ai été mentionné",
+  "bot.help": "-------------------------------\nPour installer le bot, suivez ce guide: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nLangues prises en charge: ${languages}",
+  "generic.nopermissions.short": "Droits insuffisants",
+  "generic.nopermissions.long": "Vous n'avez pas le droit ${required} d'effectuer cette action.",
+  "giveaway.winners": "Les gagnants sont: ${winners}",
+  "giveaway.embed.author": "tombola de ${owner}",
+  "giveaway.embed.description": "Vous pouvez gagner **${prizecount}x ${prize}** en répondant avec ${emoji}!\nLe tirage au sort se termine <t :${end} :R>\nOrganisé par: <@${owner}>",
+  "command.giveaway.rolerequired": "Vous avez besoin du rôle \"Giveaway Permissions\" pour gérer les cadeaux (ou vous devez être l'organisateur du cadeau pour le distribuer manuellement).",
+  "command.giveaway.description": "Commande pour gérer les tombolas",
+  "command.giveaway.create.success": "tombola créée",
+  "command.giveaway.create.description": "Commande pour créer des tombolas",
+  "command.giveaway.create.argument.prize.description": "prix de la tombola",
+  "command.giveaway.create.argument.prizecount.description": "nombre de prix",
+  "command.giveaway.create.argument.endtimestamp.description": "Heure exacte de la fin du tirage au sort",
+  "command.giveaway.roll.success": "La tombola a été tirée manuellement.",
+  "command.giveaway.roll.description": "Ordre de tirage au sort d'un tirage au sort",
+  "command.giveaway.roll.argument.id.description": "Id du tirage au sort pour le tirage au sort (Id du message du tirage au sort)."
+}
