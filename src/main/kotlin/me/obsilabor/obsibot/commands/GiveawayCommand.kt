@@ -2,23 +2,15 @@ package me.obsilabor.obsibot.commands
 
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.ephemeralSubCommand
-import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
 import com.kotlindiscord.kord.extensions.commands.converters.impl.*
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
-import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
-import com.kotlindiscord.kord.extensions.types.respondEphemeral
-import com.kotlindiscord.kord.extensions.types.respondPublic
-import com.kotlindiscord.kord.extensions.utils.hasRole
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.channel.createMessage
-import dev.kord.rest.builder.message.create.actionRow
 import dev.kord.rest.builder.message.create.embed
-import dev.kord.x.emoji.Emojis
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.data.Giveaway
-import me.obsilabor.obsibot.database.MongoManager
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.applyDefaultFooter
