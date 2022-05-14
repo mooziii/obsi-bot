@@ -54,7 +54,7 @@ class GiveawayCommand : Extension() {
                                 }
                                 title = "${arguments.prizeCount}x ${arguments.prize}"
                                 description = localText(
-                                    "giveaway.description.embed",
+                                    "giveaway.embed.description",
                                     hashMapOf(
                                         "prize" to arguments.prize,
                                         "prizecount" to arguments.prizeCount,
