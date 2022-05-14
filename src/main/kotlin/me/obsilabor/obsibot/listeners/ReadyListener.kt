@@ -20,6 +20,8 @@ class ReadyListener : Extension() {
     override suspend fun setup() {
         event<ReadyEvent> {
             action {
+                println("Bot started in ${System.currentTimeMillis()- ObsiBot.initTime}ms")
+                ObsiBot.isFullyFunctional = true
                 ObsiBot.client = kord
                 kord.guilds.toList().forEach {
                     val obsiGuild = it.obsify() ?: it.createObsiGuild()
