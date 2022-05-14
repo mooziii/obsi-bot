@@ -4,10 +4,16 @@
   "generic.nopermissions.short": "Ungenügende Rechte",
   "generic.nopermissions.long": "Du verfügst nicht über das Recht ${required} um diese Aktion auszuführen.",
   "giveaway.winners": "Die Gewinner sind: ${winners}",
-  "command.giveaway.rolerequired": "Du benötigst die \"Giveaway Permissions\" Rolle um Verlosungen zu verwalten.",
+  "giveaway.embed.author": "Verlosung von ${owner}",
+  "giveaway.embed.description": "Du kannst **${prizecount}x ${prize}** gewinnen, indem du mit ${emoji} reagierst!\nDie Verlosung endet <t:${end}:R>\nVeranstaltet von: <@${owner}>",
+  "command.giveaway.rolerequired": "Du benötigst die \"Giveaway Permissions\" Rolle um Verlosungen zu verwalten (oder du musst der Veranstalter der Verlosung sein um sie Manuell auszulosen).",
   "command.giveaway.description": "Command um Verlosungen zu verwalten",
+  "command.giveaway.create.success": "Verlosung erstellt",
   "command.giveaway.create.description": "Command zum erstellen von Verlosungen",
   "command.giveaway.create.argument.prize.description": "Preis der Verlosung",
   "command.giveaway.create.argument.prizecount.description": "Anzahl der Preise",
-  "command.giveaway.create.argument.endtimestamp.description": "Exakter Zeitpunkt für das Ende der Verlosung"
+  "command.giveaway.create.argument.endtimestamp.description": "Exakter Zeitpunkt für das Ende der Verlosung",
+  "command.giveaway.roll.success": "Verlosung wurde manuell ausgelost.",
+  "command.giveaway.roll.description": "Command zum auslosen einer Verlosung",
+  "command.giveaway.roll.argument.id.description": "Id der Verlosung zum auslosen (Id der Nachricht der Verlosung)."
 }
