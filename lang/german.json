@@ -1,6 +1,6 @@
 {
   "bot.ping": "ich wurde gepingt glaub ich",
-  "bot.help": "Für das installieren des Bots, folge dieser Anleitung: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nUnterstützte Sprachen: ${languages}",
+  "bot.help": "-------------------------------\nFür das installieren des Bots, folge dieser Anleitung: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nUnterstützte Sprachen: ${languages}",
   "generic.nopermissions.short": "Ungenügende Rechte",
   "generic.nopermissions.long": "Du verfügst nicht über das Recht ${required} um diese Aktion auszuführen.",
   "giveaway.winners": "Die Gewinner sind: ${winners}",
