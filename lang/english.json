@@ -1,3 +1,13 @@
 {
-  "bot.ping": "hi, i got pinged i think"
+  "bot.ping": "hi, i got pinged i think",
+  "bot.help": "Follow this tutorial for bot setup: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot",
+  "generic.nopermissions.short": "Insufficient permissions",
+  "generic.nopermissions.long": "You don't have the ${required} permission to perform this action",
+  "giveaway.winners": "The winners are: ${winners}",
+  "command.giveaway.rolerequired": "You need the \"Giveaway Permissions\" role to manage giveaways.",
+  "command.giveaway.description": "Command for managing giveaways",
+  "command.giveaway.create.description": "Command to create giveaways",
+  "command.giveaway.create.arguments.prize.description": "The prize to win",
+  "command.giveaway.create.arguments.prizecount.description": "The amount of prizes to win",
+  "command.giveaway.create.arguments.endtimestamp.description": "The exact timestamp of when the giveaway should end"
 }
