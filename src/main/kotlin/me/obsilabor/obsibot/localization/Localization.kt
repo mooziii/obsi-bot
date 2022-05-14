@@ -16,6 +16,7 @@ object Localization {
     private val langFolder = getOrCreateDirectory(File("lang"))
 
     suspend fun extractLanguageFiles() {
+        println("Downloading official language json files..")
         downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/english.json", getOrCreateFile(File(langFolder, "english.json")))
         downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/german.json", getOrCreateFile(File(langFolder, "german.json")))
     }
