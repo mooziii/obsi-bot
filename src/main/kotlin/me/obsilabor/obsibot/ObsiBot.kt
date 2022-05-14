@@ -54,16 +54,16 @@ object ObsiBot {
 
     @KordPreview
     suspend fun main(optionSet: OptionSet) {
-        if(optionSet.hasArgument("help")) {
+        initTime = System.currentTimeMillis()
+        ConfigManager.mongoConfig
+        Localization.extractLanguageFiles()
+        Localization.loadAllLanguageFiles()
+        if(optionSet.has("setup")) {
             globalText("bot.help", hashMapOf("languages" to Localization.languages.keys)).split("\\n").forEach {
                 println(it)
             }
             return
         }
-        initTime = System.currentTimeMillis()
-        ConfigManager.mongoConfig
-        Localization.extractLanguageFiles()
-        Localization.loadAllLanguageFiles()
         if(optionSet.hasArgument("language")) {
             Localization.globalLanguage = optionSet.valueOf("language").toString()
         }
