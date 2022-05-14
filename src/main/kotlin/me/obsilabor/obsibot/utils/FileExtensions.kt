@@ -11,7 +11,7 @@ fun getOrCreateFile(file: File): File {
 
 fun getOrCreateDirectory(dir: File): File {
     if(!dir.exists()) {
-        dir.createNewFile()
+        dir.mkdirs()
     }
     return dir
 }
