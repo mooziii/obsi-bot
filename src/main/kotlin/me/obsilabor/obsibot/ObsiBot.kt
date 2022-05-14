@@ -58,6 +58,10 @@ object ObsiBot {
         if(optionSet.hasArgument("language")) {
             Localization.globalLanguage = optionSet.valueOf("language").toString()
         }
+        if(optionSet.hasArgument("help")) {
+            println(globalText("bot.help"))
+            return
+        }
         val timer = Timer()
         //timer.schedule(GiveawayTask(), 0, 1000)
         bot = ExtensibleBot(TOKEN) {

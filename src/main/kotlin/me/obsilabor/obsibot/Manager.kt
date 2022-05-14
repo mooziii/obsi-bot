@@ -11,6 +11,7 @@ suspend fun main(args: Array<String>) {
                 .withRequiredArg()
                 .ofType(String::class.java)
                 .describedAs("The language file name.")
+            acceptsAll(listOf("?", "help"), "Prints help on how to setup the bot")
         }
     }
     ObsiBot.main(parser.parse(*args))
