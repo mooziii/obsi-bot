@@ -7,7 +7,7 @@ import joptsimple.OptionParser
 suspend fun main(args: Array<String>) {
     val parser = object : OptionParser() {
         init {
-            accepts("language", "Sets the global language of this instance")
+            acceptsAll(listOf("language", "lang", "locale"), "Sets the global language of this instance")
                 .withRequiredArg()
                 .ofType(String::class.java)
                 .describedAs("The language file name")
