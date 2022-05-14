@@ -6,6 +6,8 @@ import com.kotlindiscord.kord.extensions.commands.converters.impl.*
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
+import com.kotlindiscord.kord.extensions.utils.addReaction
+import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.rest.builder.message.create.embed
@@ -45,13 +47,14 @@ class GiveawayCommand : Extension() {
                         val message = channel.createMessage {
                             content = ":tada: **GIVEAWAY** :tada:"
                             embed {
+                                color = Color(15676260)
                                 author {
-                                    name = member?.asMember()?.displayName
-                                    url = member?.asUserOrNull()?.avatar?.url
+                                    name = localText("giveaway.embed.author", hashMapOf("owner" to member?.asMember()?.displayName!!), obsiGuild)
+                                    icon = member?.asUserOrNull()?.avatar?.url
                                 }
                                 title = "${arguments.prizeCount}x ${arguments.prize}"
                                 description = localText(
-                                    "giveaway.embed",
+                                    "giveaway.description.embed",
                                     hashMapOf(
                                         "prize" to arguments.prize,
                                         "prizecount" to arguments.prizeCount,
@@ -64,6 +67,7 @@ class GiveawayCommand : Extension() {
                                 applyDefaultFooter()
                             }
                         }
+                        message.addReaction("U+1F389")
                         obsiGuild.adoptNewGiveaway(Giveaway(
                             member?.id ?: return@action,
                             arrayListOf(),
