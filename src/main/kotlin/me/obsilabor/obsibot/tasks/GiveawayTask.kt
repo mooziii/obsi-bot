@@ -34,6 +34,7 @@ class GiveawayTask : TimerTask() {
                             }
                             val newList = arrayListOf(
                                 Giveaway(
+                                    giveaway.owner,
                                     giveaway.participants,
                                     giveaway.messageId,
                                     giveaway.channelId,

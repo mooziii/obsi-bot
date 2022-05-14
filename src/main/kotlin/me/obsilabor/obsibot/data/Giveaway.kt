@@ -4,6 +4,7 @@ import dev.kord.common.entity.Snowflake
 
 @kotlinx.serialization.Serializable
 data class Giveaway(
+    val owner: Snowflake,
     var participants: ArrayList<Snowflake> = arrayListOf(),
     val messageId: Snowflake,
     val channelId: Snowflake,
