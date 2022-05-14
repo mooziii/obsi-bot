@@ -23,4 +23,9 @@ data class Giveaway(
         rolled = true
         return winners
     }
+
+    fun addNewUser(user: Snowflake): Giveaway {
+        participants.add(user)
+        return this
+    }
 }

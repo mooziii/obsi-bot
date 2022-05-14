@@ -15,6 +15,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import me.obsilabor.obsibot.commands.GiveawayCommand
 import me.obsilabor.obsibot.config.ConfigManager
+import me.obsilabor.obsibot.listeners.GiveawayListener
 import me.obsilabor.obsibot.listeners.PingListener
 import me.obsilabor.obsibot.listeners.ReadyListener
 import me.obsilabor.obsibot.localization.Localization
@@ -73,6 +74,7 @@ object ObsiBot {
             extensions {
                 add(::PingListener)
                 add(::ReadyListener)
+                add(::GiveawayListener)
                 add(::GiveawayCommand)
             }
         }
