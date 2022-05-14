@@ -24,7 +24,10 @@ fun Guild.createObsiGuild(): ObsiGuild {
 }
 
 @KordPreview
-suspend fun Member.hasRole(role: Snowflake): Boolean {
+suspend fun Member.hasRole(role: Snowflake?): Boolean {
+    if(role == null) {
+        return false
+    }
     return hasRole(guild.getRole(role))
 }
 
