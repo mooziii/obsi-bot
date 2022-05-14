@@ -1,7 +1,9 @@
 package me.obsilabor.obsibot
 
+import dev.kord.common.annotation.KordPreview
 import joptsimple.OptionParser
 
+@KordPreview
 suspend fun main(args: Array<String>) {
     val parser = object : OptionParser() {
         init {
