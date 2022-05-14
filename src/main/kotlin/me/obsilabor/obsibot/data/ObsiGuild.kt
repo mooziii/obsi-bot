@@ -48,6 +48,11 @@ data class ObsiGuild(
         return this
     }
 
+    fun adoptNewGiveaway(giveaway: Giveaway): ObsiGuild {
+        giveaways.add(giveaway)
+        return this
+    }
+
     fun adoptGiveaways(newGiveaways: ArrayList<Giveaway>): ObsiGuild {
         giveaways = newGiveaways
         return this
