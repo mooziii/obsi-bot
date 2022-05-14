@@ -55,7 +55,7 @@ object ObsiBot {
     @KordPreview
     suspend fun main(optionSet: OptionSet) {
         if(optionSet.hasArgument("help")) {
-            globalText("bot.help").split("\\n").forEach {
+            globalText("bot.help", hashMapOf("languages" to Localization.languages.keys)).split("\\n").forEach {
                 println(it)
             }
             return
