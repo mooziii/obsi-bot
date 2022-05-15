@@ -36,7 +36,7 @@ class GiveawayCommand : Extension() {
             name = "giveaway"
             description = globalText("command.giveaway.description")
 
-            guild(ObsiBot.TEST_SERVER_ID)
+            //guild(ObsiBot.TEST_SERVER_ID)
 
             ephemeralSubCommand(::GiveawayCreateArgs) {
                 name = "create"
