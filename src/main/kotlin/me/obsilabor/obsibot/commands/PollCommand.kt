@@ -54,7 +54,7 @@ class PollCommand : Extension() {
                         totalVotes = 1
                     }
                     val message = channel.createMessage {
-                        content = ":mega: **${localText("poll", obsiGuild)}** :mega:"
+                        content = "**${localText("poll", obsiGuild)}**"
                         embed {
                             color = Color(7462764)
                             author {
@@ -73,7 +73,7 @@ class PollCommand : Extension() {
                                     it.printStackTrace()
                                 }
                             }
-                            builder.append(localText("poll.instructions", obsiGuild))
+                            builder.appendLine(localText("poll.instructions", obsiGuild))
                             description = builder.toString()
                             applyDefaultFooter()
                         }
