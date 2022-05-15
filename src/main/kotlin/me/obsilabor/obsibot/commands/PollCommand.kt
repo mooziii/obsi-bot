@@ -8,6 +8,7 @@ import com.kotlindiscord.kord.extensions.commands.converters.impl.string
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
+import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.rest.builder.message.create.actionRow
@@ -49,9 +50,13 @@ class PollCommand : Extension() {
                     map.values.forEach {
                         totalVotes+=it
                     }
+                    if(totalVotes == 0) {
+                        totalVotes = 1
+                    }
                     val message = channel.createMessage {
                         content = ":mega: **${localText("poll", obsiGuild)}** :mega:"
                         embed {
+                            color = Color(7462764)
                             author {
                                 name = member?.asMember()?.displayName
                                 icon = user.asUser().avatar?.url
@@ -59,10 +64,14 @@ class PollCommand : Extension() {
                             title = localText("poll", obsiGuild)
                             val builder = StringBuilder()
                             options.forEachIndexed { index, it ->
-                                val votes = map.getOrDefault(it, 0)
-                                val percentage = votes / totalVotes
-                                builder.append("${index+1}: $it $percentage% - $votes ${localText("poll.votes", obsiGuild)}")
-                                builder.appendLine()
+                                kotlin.runCatching {
+                                    val votes = map.getOrDefault(it, 0)
+                                    val percentage = votes / totalVotes
+                                    builder.append("${index+1}: $it $percentage% - $votes ${localText("poll.votes", obsiGuild)}")
+                                    builder.appendLine()
+                                }.onFailure {
+                                    it.printStackTrace()
+                                }
                             }
                             builder.append(localText("poll.instructions", obsiGuild))
                             description = builder.toString()
