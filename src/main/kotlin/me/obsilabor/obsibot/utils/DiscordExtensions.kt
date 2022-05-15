@@ -13,7 +13,7 @@ import org.litote.kmongo.findOne
 
 @KordPreview
 fun Guild.obsify(): ObsiGuild? {
-    return MongoManager.guilds.findOne { ObsiGuild::id eq id }
+    return MongoManager.guilds.findOne { ObsiGuild::id eq id }?.migrateIfNeeded()
 }
 
 @KordPreview

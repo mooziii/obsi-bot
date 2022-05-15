@@ -14,10 +14,11 @@ data class ObsiGuild(
     var language: String,
     var giveaways: ArrayList<Giveaway>,
     var giveawayRole: Snowflake?,
+    var polls: ArrayList<Poll>?
 ) {
 
     companion object {
-        const val NEWEST_DOCUMENT_VERSION = 0
+        const val NEWEST_DOCUMENT_VERSION = 1
 
         fun newDocument(snowflake: Snowflake): ObsiGuild {
             return ObsiGuild(
@@ -25,7 +26,8 @@ data class ObsiGuild(
                 snowflake,
                 Localization.DEFAULT_LANGUAGE,
                 arrayListOf(),
-                null
+                null,
+                arrayListOf()
             )
         }
     }
@@ -36,11 +38,15 @@ data class ObsiGuild(
         }
     }
 
-    fun migrate() {
+    fun migrateIfNeeded(): ObsiGuild {
         if(documentVersion < NEWEST_DOCUMENT_VERSION) {
             documentVersion = NEWEST_DOCUMENT_VERSION
+            if(polls == null) {
+                polls = arrayListOf()
+            }
             update()
         }
+        return this
     }
 
     fun adoptLanguage(newLanguage: String): ObsiGuild {
@@ -60,6 +66,22 @@ data class ObsiGuild(
 
     fun adoptGiveawayRoleId(newId: Snowflake?): ObsiGuild {
         giveawayRole = newId
+        return this
+    }
+
+    fun adoptNewPoll(newPoll: Poll): ObsiGuild {
+        polls?.add(newPoll)
+        return this
+    }
+
+    fun refreshPollVotes(newPoll: Poll): ObsiGuild {
+        val newList = arrayListOf(newPoll)
+        polls?.forEach {
+            if(it.messageId != newPoll.messageId) {
+                newList.add(it)
+            }
+        }
+        polls = newList
         return this
     }
 
