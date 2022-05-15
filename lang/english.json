@@ -3,6 +3,9 @@
   "bot.help": "-------------------------------\nFollow this tutorial for bot setup: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nSupported languages are these: ${languages}",
   "generic.nopermissions.short": "Insufficient permissions",
   "generic.nopermissions.long": "You don't have the ${required} permission to perform this action",
+  "poll": "Poll",
+  "poll.instructions": "Use the menu below to vote.",
+  "poll.votes": "votes",
   "giveaway.winners": "The winners are: ${winners}",
   "giveaway.embed.author": "Giveaway by ${owner}",
   "giveaway.embed.description": "You can win **${prizecount}x ${prize}** by reacting with ${emoji}!\nThe givaway ends <t:${end}:R>\nHosted by: <@${owner}>",
@@ -15,5 +18,11 @@
   "command.giveaway.create.argument.endtimestamp.description": "The exact timestamp of when the giveaway should end",
   "command.giveaway.roll.success": "Giveaway rolled.",
   "command.giveaway.roll.description": "Command to roll giveaways",
-  "command.giveaway.roll.argument.id.description": "Id of the giveaway to roll (id of the message from the giveaway)"
+  "command.giveaway.roll.argument.id.description": "Id of the giveaway to roll (id of the message from the giveaway)",
+  "command.poll.create.arguments.endtimestamp.description": "The exact timestamp of when the poll should end",
+  "command.poll.create.options.description": "List of options for the poll (split by a comma)",
+  "command.poll.description": "Command to manage polls",
+  "command.poll.create.description": "Command to create polls",
+  "command.poll.create.success": "Poll created."
+
 }
