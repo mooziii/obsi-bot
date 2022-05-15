@@ -14,6 +14,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import me.obsilabor.obsibot.commands.GiveawayCommand
+import me.obsilabor.obsibot.commands.PollCommand
 import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.listeners.GiveawayListener
 import me.obsilabor.obsibot.listeners.PingListener
@@ -76,6 +77,7 @@ object ObsiBot {
                 add(::ReadyListener)
                 add(::GiveawayListener)
                 add(::GiveawayCommand)
+                add(::PollCommand)
             }
         }
         bot.start()
