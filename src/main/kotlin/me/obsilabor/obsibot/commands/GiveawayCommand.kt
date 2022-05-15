@@ -17,12 +17,15 @@ import dev.kord.core.entity.ReactionEmoji
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.data.Giveaway
+import me.obsilabor.obsibot.data.ObsiGuild
+import me.obsilabor.obsibot.database.MongoManager
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.applyDefaultFooter
 import me.obsilabor.obsibot.utils.createObsiGuild
 import me.obsilabor.obsibot.utils.hasRole
 import me.obsilabor.obsibot.utils.obsify
+import org.litote.kmongo.eq
 
 @KordPreview
 class GiveawayCommand : Extension() {
@@ -110,8 +113,29 @@ class GiveawayCommand : Extension() {
                         }
                         return@action
                     }
-                    val giveaway = obsiGuild.giveaways.firstOrNull { it.messageId.value.toLong() == arguments.id } ?: return@action
+                    val giveaway = obsiGuild.giveaways.firstOrNull { it.messageId.toString() == arguments.id } ?: return@action
                     if((member?.asMember()?.hasRole(obsiGuild.giveawayRole) == true && giveaway.owner == member?.id) || member?.asMember()?.hasPermission(Permission.Administrator) == true) {
+                        val newList = arrayListOf(
+                            Giveaway(
+                                giveaway.owner,
+                                giveaway.participants,
+                                giveaway.messageId,
+                                giveaway.channelId,
+                                giveaway.guildId,
+                                0,
+                                giveaway.prize,
+                                giveaway.prizeCount,
+                                true
+                            )
+                        )
+                        for (gvwy in obsiGuild.giveaways) {
+                            if (gvwy.messageId != giveaway.messageId) {
+                                newList.add(gvwy)
+                            }
+                        }
+                        MongoManager.guilds.replaceOne(
+                            ObsiGuild::id eq obsiGuild.id, obsiGuild.adoptGiveaways(newList)
+                        )
                         (ObsiBot.client.getGuild(obsiGuild.id)?.getChannel(giveaway.channelId) as MessageChannelBehavior).getMessage(giveaway.messageId)
                             .reply {
                                 content = localText(
@@ -155,7 +179,7 @@ class GiveawayCommand : Extension() {
     }
 
     inner class GiveawayRollArgs : Arguments() {
-        val id by long {
+        val id by string {
             name = "id"
             description = globalText("command.giveaway.roll.argument.id.description")
         }
