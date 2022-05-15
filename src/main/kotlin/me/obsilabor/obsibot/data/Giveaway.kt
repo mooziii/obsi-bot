@@ -18,7 +18,10 @@ data class Giveaway(
     fun roll(): List<Snowflake> {
         val winners = arrayListOf<Snowflake>()
         repeat(prizeCount) {
-            winners.add(participants.random())
+            val winner = participants.random()
+            if(!winners.contains(winner)) {
+                winners.add(winner)
+            }
         }
         rolled = true
         return winners
