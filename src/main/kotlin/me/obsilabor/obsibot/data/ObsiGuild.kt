@@ -14,7 +14,8 @@ data class ObsiGuild(
     var language: String,
     var giveaways: ArrayList<Giveaway>,
     var giveawayRole: Snowflake?,
-    var polls: ArrayList<Poll>?
+    var polls: ArrayList<Poll>?,
+    var pollRole: Snowflake?
 ) {
 
     companion object {
@@ -27,7 +28,8 @@ data class ObsiGuild(
                 Localization.DEFAULT_LANGUAGE,
                 arrayListOf(),
                 null,
-                arrayListOf()
+                arrayListOf(),
+                null
             )
         }
     }
@@ -66,6 +68,11 @@ data class ObsiGuild(
 
     fun adoptGiveawayRoleId(newId: Snowflake?): ObsiGuild {
         giveawayRole = newId
+        return this
+    }
+
+    fun adoptPollRoleId(newId: Snowflake?): ObsiGuild {
+        pollRole = newId
         return this
     }
 

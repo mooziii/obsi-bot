@@ -32,6 +32,13 @@ class ReadyListener : Extension() {
                         }.id)
                         obsiGuild.update()
                     }
+                    if(obsiGuild.pollRole == null || it.getRoleOrNull(obsiGuild.pollRole ?: Snowflake(0)) == null) {
+                        obsiGuild.adoptPollRoleId(it.createRole {
+                            name = "Poll Permissions"
+                            reason = "Created by obsi-bot (please don't delete)"
+                        }.id)
+                        obsiGuild.update()
+                    }
                 }
             }
         }
