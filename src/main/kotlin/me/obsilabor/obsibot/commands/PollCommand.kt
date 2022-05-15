@@ -67,7 +67,7 @@ class PollCommand : Extension() {
                                 kotlin.runCatching {
                                     val votes = map.getOrDefault(it, 0)
                                     val percentage = votes / totalVotes
-                                    builder.append("${index+1}: $it $percentage% - $votes ${localText("poll.votes", obsiGuild)}")
+                                    builder.append("${index+1}: $it - $percentage% - $votes ${localText("poll.votes", obsiGuild)}")
                                     builder.appendLine()
                                 }.onFailure {
                                     it.printStackTrace()
