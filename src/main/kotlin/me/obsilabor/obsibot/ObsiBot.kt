@@ -19,10 +19,12 @@ import me.obsilabor.obsibot.commands.PollCommand
 import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.listeners.GiveawayListener
 import me.obsilabor.obsibot.listeners.PingListener
+import me.obsilabor.obsibot.listeners.PollListener
 import me.obsilabor.obsibot.listeners.ReadyListener
 import me.obsilabor.obsibot.localization.Localization
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.tasks.GiveawayTask
+import me.obsilabor.obsibot.tasks.PollTask
 import java.util.*
 
 object ObsiBot {
@@ -72,10 +74,12 @@ object ObsiBot {
         }
         val timer = Timer()
         timer.schedule(GiveawayTask(), 0, 1000)
+        timer.schedule(PollTask(), 0, 1000)
         bot = ExtensibleBot(TOKEN) {
             extensions {
                 add(::PingListener)
                 add(::ReadyListener)
+                add(::PollListener)
                 add(::GiveawayListener)
                 add(::GiveawayCommand)
                 add(::PollCommand)
