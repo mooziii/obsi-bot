@@ -79,6 +79,9 @@ object ObsiBot {
                 add(::GiveawayCommand)
                 add(::PollCommand)
             }
+            presence {
+                playing("Give us a star on Github!")
+            }
         }
         bot.start()
     }
