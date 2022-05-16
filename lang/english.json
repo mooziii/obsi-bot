@@ -4,8 +4,10 @@
   "generic.nopermissions.short": "Insufficient permissions",
   "generic.nopermissions.long": "You don't have the ${required} permission to perform this action",
   "poll": "Poll",
-  "poll.instructions": "Use the menu below to vote.",
+  "poll.instructions": "This poll ends <t:${endtimestamp}:R>\nUse the menu below to vote.",
   "poll.votes": "votes",
+  "poll.voted": "You voted for ${option}.",
+  "poll.ended": "You can't vote for polls that already ended.",
   "poll.option.description": "Click to vote for ${option}",
   "giveaway.winners": "The winners are: ${winners}",
   "giveaway.embed.author": "Giveaway by ${owner}",
@@ -26,5 +28,4 @@
   "command.poll.description": "Command to manage polls",
   "command.poll.create.description": "Command to create polls",
   "command.poll.create.success": "Poll created."
-
 }
