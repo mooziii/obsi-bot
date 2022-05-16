@@ -13,7 +13,6 @@ import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.rest.builder.message.create.actionRow
 import dev.kord.rest.builder.message.create.embed
-import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.data.Poll
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText
@@ -28,8 +27,6 @@ class PollCommand : Extension() {
         ephemeralSlashCommand {
             name = "poll"
             description = globalText("command.poll.description")
-
-            guild(ObsiBot.TEST_SERVER_ID)
 
             ephemeralSubCommand(::PollCreateArgs) {
                 name = "create"
