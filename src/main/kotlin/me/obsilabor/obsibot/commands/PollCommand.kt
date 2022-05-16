@@ -10,6 +10,7 @@ import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
+import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.rest.builder.message.create.actionRow
 import dev.kord.rest.builder.message.create.embed
@@ -17,10 +18,7 @@ import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.data.Poll
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText
-import me.obsilabor.obsibot.utils.StringUtils
-import me.obsilabor.obsibot.utils.applyDefaultFooter
-import me.obsilabor.obsibot.utils.createObsiGuild
-import me.obsilabor.obsibot.utils.obsify
+import me.obsilabor.obsibot.utils.*
 
 @KordPreview
 class PollCommand : Extension() {
@@ -40,6 +38,16 @@ class PollCommand : Extension() {
 
                 action {
                     val obsiGuild = guild?.asGuild()?.obsify() ?: guild?.asGuild()?.createObsiGuild()!!
+                    if(member?.asMember()?.hasRole(obsiGuild.pollRole?: Snowflake(0)) == false) {
+                        respond {
+                            embed {
+                                title = localText("generic.nopermissions.short", obsiGuild)
+                                description = localText("command.poll.rolerequired", obsiGuild)
+                                applyDefaultFooter()
+                            }
+                        }
+                        return@action
+                    }
                     val customId = StringUtils.getRandomID()+user.id.toString()
                     val options = arguments.options.split(",")
                     val map = hashMapOf<String, Int>()
@@ -73,7 +81,8 @@ class PollCommand : Extension() {
                                     it.printStackTrace()
                                 }
                             }
-                            builder.appendLine(localText("poll.instructions", obsiGuild))
+                            builder.appendLine()
+                            builder.appendLine(localText("poll.instructions", hashMapOf("endtimestamp" to arguments.endTimestamp), obsiGuild))
                             description = builder.toString()
                             applyDefaultFooter()
                         }
@@ -88,7 +97,7 @@ class PollCommand : Extension() {
                         }
                     }
 
-                    val poll = Poll(customId, message.id, user.id, map, arguments.endTimestamp)
+                    val poll = Poll(guild?.id?:return@action, channel.id, customId, message.id, user.id, map, arguments.endTimestamp, hashMapOf(), false)
                     obsiGuild.adoptNewPoll(poll)
                     obsiGuild.update()
                     respond {
