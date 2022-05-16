@@ -4,13 +4,11 @@ import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.event
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
-import dev.kord.core.behavior.channel.MessageChannelBehavior
 import dev.kord.core.behavior.edit
 import dev.kord.core.behavior.interaction.followUpEphemeral
 import dev.kord.core.event.interaction.SelectMenuInteractionCreateEvent
 import dev.kord.rest.builder.message.modify.actionRow
 import dev.kord.rest.builder.message.modify.embed
-import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.applyDefaultFooter
 import me.obsilabor.obsibot.utils.createObsiGuild

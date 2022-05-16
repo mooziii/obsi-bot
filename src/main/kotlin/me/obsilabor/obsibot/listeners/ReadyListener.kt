@@ -6,7 +6,6 @@ import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.createRole
 import dev.kord.core.event.gateway.ReadyEvent
-import dev.kord.core.event.guild.GuildCreateEvent
 import kotlinx.coroutines.flow.toList
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.utils.createObsiGuild
