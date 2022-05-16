@@ -1,6 +1,7 @@
 package me.obsilabor.obsibot
 
 import com.kotlindiscord.kord.extensions.ExtensibleBot
+import com.kotlindiscord.kord.extensions.modules.extra.mappings.extMappings
 import com.kotlindiscord.kord.extensions.utils.env
 import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Snowflake
@@ -78,6 +79,8 @@ object ObsiBot {
                 add(::GiveawayListener)
                 add(::GiveawayCommand)
                 add(::PollCommand)
+
+                extMappings {}
             }
             presence {
                 playing("Give us a star on Github!")
