@@ -49,10 +49,8 @@ class PollListener : Extension() {
                     totalVotes = 1
                 }
                 interaction.message?.edit {
-                    println("hi")
                     content = "**${localText("poll", obsiGuild)}**"
                     embed {
-                        println("hi")
                         color = Color(7462764)
                         author {
                             name = guild.getMember(poll.owner).asMember().displayName
@@ -64,7 +62,6 @@ class PollListener : Extension() {
                             kotlin.runCatching {
                                 val votes = poll.options.getOrDefault(it, 0)
                                 val percentage = votes / totalVotes
-                                println("haha hi")
                                 builder.append("${index+1}: $it - $percentage% - $votes ${localText("poll.votes", obsiGuild)}")
                                 builder.appendLine()
                             }.onFailure {
@@ -76,7 +73,6 @@ class PollListener : Extension() {
                         description = builder.toString()
                         applyDefaultFooter()
                     }
-                    println("hi")
                     actionRow {
                         selectMenu(poll.interactionId) {
                             poll.options.forEach {
@@ -86,7 +82,6 @@ class PollListener : Extension() {
                             }
                         }
                     }
-                    println("yo")
                 }
                 interaction.acknowledgeEphemeral().followUpEphemeral {
                     content = localText("poll.voted", hashMapOf("option" to selectedOption), obsiGuild)
