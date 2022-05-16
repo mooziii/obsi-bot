@@ -10,6 +10,7 @@ import dev.kord.core.event.interaction.SelectMenuInteractionCreateEvent
 import dev.kord.rest.builder.message.modify.actionRow
 import dev.kord.rest.builder.message.modify.embed
 import me.obsilabor.obsibot.localization.localText
+import me.obsilabor.obsibot.utils.PercentageUtils
 import me.obsilabor.obsibot.utils.applyDefaultFooter
 import me.obsilabor.obsibot.utils.createObsiGuild
 import me.obsilabor.obsibot.utils.obsify
@@ -61,8 +62,8 @@ class PollListener : Extension() {
                         poll.options.keys.forEachIndexed { index, it ->
                             kotlin.runCatching {
                                 val votes = poll.options.getOrDefault(it, 0)
-                                val percentage = votes / totalVotes
-                                builder.append("${index+1}: $it - $percentage% - $votes ${localText("poll.votes", obsiGuild)}")
+                                val percentage = votes.toDouble() / totalVotes.toDouble()
+                                builder.append("${index+1}: $it - ${PercentageUtils.toString(percentage)}% - $votes ${localText("poll.votes", obsiGuild)}")
                                 builder.appendLine()
                             }.onFailure {
                                 it.printStackTrace()
