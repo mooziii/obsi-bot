@@ -3,7 +3,6 @@ package me.obsilabor.obsibot.utils
 import io.ktor.client.features.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
-import io.ktor.util.*
 import kotlinx.coroutines.*
 import java.io.File
 import kotlin.math.roundToInt

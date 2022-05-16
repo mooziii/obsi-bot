@@ -4,7 +4,6 @@ import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.event
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.core.event.message.MessageCreateEvent
-import dev.kord.rest.builder.message.create.actionRow
 import me.obsilabor.obsibot.localization.globalText
 
 class PingListener : Extension() {
