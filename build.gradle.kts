@@ -5,6 +5,7 @@ plugins {
 }
 
 val javaVersion = 17
+val kordexVersion = "1.5.2-RC1"
 
 group = "me.obsilabor"
 version = "1.0.0"
@@ -12,6 +13,9 @@ version = "1.0.0"
 repositories {
     mavenCentral()
     maven("https://maven.kotlindiscord.com/repository/maven-public/")
+    maven("https://maven.fabricmc.net/")
+    maven("https://maven.quiltmc.org/repository/release/")
+    maven("https://jitpack.io")
 }
 
 kotlin.sourceSets.all {
@@ -27,8 +31,9 @@ dependencies {
     // kmongo
     implementation("org.litote.kmongo", "kmongo-core", "4.5.1")
     implementation("org.litote.kmongo", "kmongo-serialization-mapping", "4.5.1")
-    // kord and kordex libraries
-    implementation("com.kotlindiscord.kord.extensions:kord-extensions:1.5.2-RC1")
+    // kordex libraries
+    implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion")
+    implementation("com.kotlindiscord.kord.extensions:extra-mappings:$kordexVersion")
     // utility libraries
     implementation("net.sf.jopt-simple:jopt-simple:5.0.4")
 }
