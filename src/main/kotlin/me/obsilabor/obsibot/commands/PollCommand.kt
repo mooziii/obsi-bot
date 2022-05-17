@@ -107,12 +107,12 @@ class PollCommand : Extension() {
     inner class PollCreateArgs : Arguments() {
         val endTimestamp by long {
             name = "endtimestamp"
-            description = globalText("command.poll.create.arguments.endtimestamp.description")
+            description = globalText("command.poll.create.argument.endtimestamp.description")
         }
 
         val options by string {
             name = "options"
-            description = globalText("command.poll.create.arguments.options.description")
+            description = globalText("command.poll.create.argument.options.description")
         }
     }
 }

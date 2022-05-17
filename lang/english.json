@@ -23,8 +23,8 @@
   "command.giveaway.roll.description": "Command to roll giveaways",
   "command.giveaway.roll.argument.id.description": "Id of the giveaway to roll (id of the message from the giveaway)",
   "command.poll.rolerequired": "You need the \"Poll Permissions\" role to manage polls (or you must be the host of a poll to end it manually).",
-  "command.poll.create.arguments.endtimestamp.description": "The exact timestamp of when the poll should end",
-  "command.poll.create.arguments.options.description": "List of options for the poll (split by a comma)",
+  "command.poll.create.argument.endtimestamp.description": "The exact timestamp of when the poll should end",
+  "command.poll.create.argument.options.description": "List of options for the poll (split by a comma)",
   "command.poll.description": "Command to manage polls",
   "command.poll.create.description": "Command to create polls",
   "command.poll.create.success": "Poll created."
