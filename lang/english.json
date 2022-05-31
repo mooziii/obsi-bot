@@ -27,5 +27,7 @@
   "command.poll.create.argument.options.description": "List of options for the poll (split by a comma)",
   "command.poll.description": "Command to manage polls",
   "command.poll.create.description": "Command to create polls",
-  "command.poll.create.success": "Poll created."
+  "command.poll.create.success": "Poll created.",
+  "command.radio.failure.alreadyconnected": "I'm already connected to a voice channel.",
+  "command.radio.success": "Now playing ${radio} in <#${voicechannel}>. Enjoy the radiostream!"
 }
