@@ -24,7 +24,7 @@ import kotlin.coroutines.suspendCoroutine
 
 object ObsiAudioBot {
 
-    val connections: MutableMap<Snowflake, VoiceConnection> = mutableMapOf()
+    private val connections: MutableMap<Snowflake, VoiceConnection> = mutableMapOf()
     private lateinit var lavaplayerManager: DefaultAudioPlayerManager
 
     fun setupAudio() {
@@ -35,6 +35,7 @@ object ObsiAudioBot {
 
     suspend fun disconnect(guild: Guild) {
         connections[guild.id]?.shutdown()
+        connections.remove(guild.id)
         ObsiBot.client.editPresence {
             playing("Give us a star on Github!")
         }
@@ -53,15 +54,14 @@ object ObsiAudioBot {
         val connection = channel.connect {
             audioProvider { AudioFrame.fromData(player.provide()?.data) }
         }
-        println(track.info.title)
+        connections[guild.id] = connection
         ObsiBot.client.editPresence {
             listening("$radioName 🎶")
         }
-        connections[guild.id] = connection
         return localText("command.radio.success", hashMapOf("radio" to radioName, "voicechannel" to channel.id.value), guild.obsify() ?: guild.createObsiGuild())
     }
 
-    suspend fun DefaultAudioPlayerManager.playTrack(query: String, player: AudioPlayer): AudioTrack {
+    private suspend fun DefaultAudioPlayerManager.playTrack(query: String, player: AudioPlayer): AudioTrack {
         val track = suspendCoroutine<AudioTrack> {
             this.loadItem(query, object : AudioLoadResultHandler {
                 override fun trackLoaded(track: AudioTrack) {
@@ -73,17 +73,16 @@ object ObsiAudioBot {
                 }
 
                 override fun noMatches() {
-                    TODO()
+                    println("No match?")
                 }
 
                 override fun loadFailed(exception: FriendlyException?) {
-                    TODO()
+                    exception?.printStackTrace()
                 }
             })
         }
 
         player.playTrack(track)
-
         return track
     }
 
