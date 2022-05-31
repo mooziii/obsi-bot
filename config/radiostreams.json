@@ -1,0 +1,17 @@
+[
+  {
+    "name": "hr3",
+    "url": "https://dispatcher.rndfnk.com/hr/hr3/live/mp3/high",
+    "language": "German"
+  },
+  {
+    "name": "Antenne Niedersachsen",
+    "url": "http://stream.antenne.com/antenne-nds/mp3-128/radioplayer/",
+    "language": "German"
+  },
+  {
+    "name": "TruckersFM",
+    "url": "https://radio.truckers.fm/",
+    "language": "English"
+  }
+]
