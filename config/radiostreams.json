@@ -64,5 +64,11 @@
     "url": "http://stream01.iloveradio.de/iloveradio1.mp3",
     "language": "German",
     "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "BR Heimat",
+    "url": "https://dispatcher.rndfnk.com/br/brheimat/live/mp3/low",
+    "language": "German (BR)",
+    "flagEmoji": ":flag_de:"
   }
 ]
