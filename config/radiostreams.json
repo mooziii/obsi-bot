@@ -1,25 +1,25 @@
 [
   {
     "name": "HR1",
-    "url": "https://dispatcher.rndfnk.com/hr/hr1/live/mp3/128/stream.mp3",
+    "url": "https://dispatcher.rndfnk.com/hr/hr1/live/mp3/48/stream.mp3",
     "language": "German",
     "flagEmoji": ":flag_de:"
   },
   {
     "name": "HR2",
-    "url": "https://dispatcher.rndfnk.com/hr/hr2/live/mp3/128/stream.mp3",
+    "url": "https://dispatcher.rndfnk.com/hr/hr2/live/mp3/48/stream.mp3",
     "language": "German",
     "flagEmoji": ":flag_de:"
   },
   {
     "name": "HR3",
-    "url": "https://dispatcher.rndfnk.com/hr/hr3/live/mp3/high",
+    "url": "https://dispatcher.rndfnk.com/hr/hr3/live/mp3/low",
     "language": "German",
     "flagEmoji": ":flag_de:"
   },
   {
     "name": "HR4",
-    "url": "https://dispatcher.rndfnk.com/hr/hr4/live/mp3/128/stream.mp3",
+    "url": "https://dispatcher.rndfnk.com/hr/hr4/live/mp3/48/stream.mp3",
     "language": "German",
     "flagEmoji": ":flag_de:"
   },
@@ -37,7 +37,7 @@
   },
   {
     "name": "Antenne Niedersachsen",
-    "url": "http://stream.antenne.com/antenne-nds/mp3-128/radioplayer/",
+    "url": "http://stream.antenne.com/antenne-nds/mp3-48/radioplayer/",
     "language": "German",
     "flagEmoji": ":flag_de:"
   },
@@ -69,6 +69,12 @@
     "name": "BR Heimat",
     "url": "https://dispatcher.rndfnk.com/br/brheimat/live/mp3/low",
     "language": "German (BR)",
+    "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "Blasmusik",
+    "url": "https://tree.streampanel.net/4-blasmusik",
+    "language": "German",
     "flagEmoji": ":flag_de:"
   }
 ]
