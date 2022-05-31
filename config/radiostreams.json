@@ -1,7 +1,37 @@
 [
   {
-    "name": "hr3",
+    "name": "HR1",
+    "url": "https://dispatcher.rndfnk.com/hr/hr1/live/mp3/128/stream.mp3",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "HR2",
+    "url": "https://dispatcher.rndfnk.com/hr/hr2/live/mp3/128/stream.mp3",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "HR3",
     "url": "https://dispatcher.rndfnk.com/hr/hr3/live/mp3/high",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "HR4",
+    "url": "https://dispatcher.rndfnk.com/hr/hr4/live/mp3/128/stream.mp3",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "HR-Info",
+    "url": "https://dispatcher.rndfnk.com/hr/hrinfo/live/mp3/96/stream.mp3",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "NDR Info",
+    "url": "http://icecast.ndr.de/ndr/ndrinfo/niedersachsen/mp3/128/stream.mp3",
     "language": "German",
     "flagEmoji": ":flag_de:"
   },
@@ -12,14 +42,26 @@
     "flagEmoji": ":flag_de:"
   },
   {
-    "name": "TruckersFM",
-    "url": "https://radio.truckers.fm/",
-    "language": "English",
-    "flagEmoji": ":flag_us:"
+    "name": "Ö1",
+    "url": "https://orf-live.ors-shoutcast.at/oe1-q2a",
+    "language": "German",
+    "flagEmoji": ":flag_at:"
   },
   {
-    "name": "NDR Info",
-    "url": "http://icecast.ndr.de/ndr/ndrinfo/niedersachsen/mp3/128/stream.mp3",
+    "name": "Hit Radio FFH",
+    "url": "https://mp3.ffh.de/radioffh/hqlivestream.mp3",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "Ö1",
+    "url": "https://orf-live.ors-shoutcast.at/oe1-q2a",
+    "language": "German",
+    "flagEmoji": ":flag_at:"
+  },
+  {
+    "name": "I love Radio",
+    "url": "http://stream01.iloveradio.de/iloveradio1.mp3",
     "language": "German",
     "flagEmoji": ":flag_de:"
   }
