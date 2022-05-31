@@ -5,12 +5,19 @@ import com.kotlindiscord.kord.extensions.commands.application.slash.converters.i
 import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
+import com.kotlindiscord.kord.extensions.types.respondEphemeral
+import com.kotlindiscord.kord.extensions.types.respondPublic
+import com.kotlindiscord.kord.extensions.utils.hasPermission
 import dev.kord.common.annotation.KordPreview
-import me.obsilabor.obsibot.ObsiBot
+import dev.kord.common.entity.Permission
+import dev.kord.core.entity.channel.VoiceChannel
+import dev.kord.rest.builder.message.create.embed
+import me.obsilabor.obsibot.ObsiAudioBot
 import me.obsilabor.obsibot.config.ConfigManager
+import me.obsilabor.obsibot.config.RadioStreamConfig
 import me.obsilabor.obsibot.localization.globalText
-import me.obsilabor.obsibot.utils.FileDownloader
-import me.obsilabor.obsibot.utils.getOrCreateFile
+import me.obsilabor.obsibot.localization.localText
+import me.obsilabor.obsibot.utils.*
 import java.io.File
 
 @KordPreview
@@ -25,24 +32,68 @@ class RadioCommand : Extension() {
         publicSlashCommand {
             name = "radio"
             description = globalText("command.radio.description")
-            guild(ObsiBot.TEST_SERVER_ID)
 
-            publicSubCommand {
-
+            publicSubCommand(::RadioArgs) {
+                name = "play"
+                description = globalText("command.radio.play.description")
+                action {
+                    val guild = getGuild()?.asGuildOrNull() ?: return@action
+                    val member = member?.asMember() ?: return@action
+                    val radioStream = findRadioStream(arguments.radioName) ?: return@action
+                    respondPublic {
+                        content = ObsiAudioBot.playRadioStream(
+                            radioStream.url,
+                            guild,
+                            member,
+                            member.getVoiceState()?.getChannelOrNull() as VoiceChannel? ?: return@action,
+                            radioStream.name
+                        )
+                    }
+                }
             }
+            publicSubCommand {
+                name = "disconnect"
+                description = globalText("command.radio.disconnect.description")
 
+                action {
+                    val guild = getGuild()?.asGuildOrNull() ?: return@action
+                    val obsiGuild = guild.obsify() ?: guild.createObsiGuild()
+                    val member = member?.asMember() ?: return@action
+                    if(member.hasPermission(Permission.ManageMessages) || member.hasPermission(Permission.Administrator)) {
+                        ObsiAudioBot.disconnect(guild?.asGuild())
+                        respondPublic {
+                            content = ":ok_hand:"
+                        }
+                    } else {
+                        respondEphemeral {
+                            embed {
+                                title = localText("generic.nopermissions.short", obsiGuild)
+                                description = localText("generic.nopermissions.short", obsiGuild)
+                                applyDefaultFooter()
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
     inner class RadioArgs : Arguments() {
-
         val radioName by stringChoice {
             name = "radiostream"
             description = globalText("command.radio.play.argument.radiostream.description")
             ConfigManager.radioConfig.forEach {
-                choice(it.name, it.language)
+                choice(it.name, it.name)
             }
         }
+    }
 
+    private fun findRadioStream(name: String): RadioStreamConfig? {
+        for (radiostream in ConfigManager.radioConfig) {
+            if(radiostream.name.lowercase() == name.lowercase()) {
+                return radiostream
+            }
+        }
+        return null
     }
 }
