@@ -1,7 +1,10 @@
+import net.axay.openapigenerator.OpenApiGenerateTask
+
 plugins {
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.serialization") version "1.6.21"
     id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("net.axay.openapigenerator") version "0.1.2"
 }
 
 val javaVersion = 17
@@ -52,5 +55,10 @@ tasks {
                 "Main-Class" to "me.obsilabor.obsibot.ManagerKt"
             )
         }
+    }
+    register<OpenApiGenerateTask>("generateTruckersMP") {
+        specUrl.set("https://raw.githubusercontent.com/TruckersMP/API-Documentation/main/OpenAPI-v2.yml")
+        outputDirectory.set(file("src/main/kotlin/"))
+        packageName.set("com.truckersmp.api")
     }
 }
