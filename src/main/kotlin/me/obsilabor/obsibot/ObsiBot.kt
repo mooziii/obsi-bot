@@ -16,6 +16,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import me.obsilabor.obsibot.commands.GiveawayCommand
 import me.obsilabor.obsibot.commands.PollCommand
+import me.obsilabor.obsibot.commands.RadioCommand
 import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.listeners.GiveawayListener
 import me.obsilabor.obsibot.listeners.PingListener
@@ -25,6 +26,9 @@ import me.obsilabor.obsibot.localization.Localization
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.tasks.GiveawayTask
 import me.obsilabor.obsibot.tasks.PollTask
+import me.obsilabor.obsibot.utils.FileDownloader
+import me.obsilabor.obsibot.utils.getOrCreateFile
+import java.io.File
 import java.util.*
 
 object ObsiBot {
@@ -83,6 +87,7 @@ object ObsiBot {
                 add(::GiveawayListener)
                 add(::GiveawayCommand)
                 add(::PollCommand)
+                add(::RadioCommand)
 
                 extMappings {}
             }
@@ -90,6 +95,7 @@ object ObsiBot {
                 playing("Give us a star on Github!")
             }
         }
+        ObsiAudioBot.setupAudio()
         bot.start()
     }
 }

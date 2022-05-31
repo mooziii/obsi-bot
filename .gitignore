@@ -4,4 +4,4 @@ build
 .gitattributes
 .idea
 .env
-mongodb.json
+config/mongodb.json

@@ -5,5 +5,6 @@ package me.obsilabor.obsibot.config
 data class RadioStreamConfig(
     val name: String,
     val url: String,
-    val language: String
+    val language: String,
+    val flagEmoji: String
 )

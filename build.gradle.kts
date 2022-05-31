@@ -19,6 +19,7 @@ repositories {
     maven("https://maven.fabricmc.net/")
     maven("https://maven.quiltmc.org/repository/release/")
     maven("https://jitpack.io")
+    maven("https://m2.dv8tion.net/releases")
 }
 
 kotlin.sourceSets.all {
@@ -28,13 +29,17 @@ kotlin.sourceSets.all {
 dependencies {
     // kotlin libraries
     implementation(kotlin("stdlib"))
+    // kotlinx.coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
     // ktor libraries
     implementation("io.ktor:ktor-client-core:1.6.7")
     implementation("io.ktor:ktor-client-cio:1.6.7")
     // kmongo
     implementation("org.litote.kmongo", "kmongo-core", "4.5.1")
     implementation("org.litote.kmongo", "kmongo-serialization-mapping", "4.5.1")
-    // kordex libraries
+    // kord voice, lavaplayer and kordex libraries
+    implementation("com.sedmelluq:lavaplayer:1.3.77")
+    implementation("dev.kord:kord-voice:v0.8.0-M14")
     implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion")
     implementation("com.kotlindiscord.kord.extensions:extra-mappings:$kordexVersion")
     // utility libraries
