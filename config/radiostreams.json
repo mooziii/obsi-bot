@@ -16,5 +16,11 @@
     "url": "https://radio.truckers.fm/",
     "language": "English",
     "flagEmoji": ":flag_us:"
+  },
+  {
+    "name": "NDR Info",
+    "url": "http://icecast.ndr.de/ndr/ndrinfo/niedersachsen/mp3/128/stream.mp3",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
   }
 ]
