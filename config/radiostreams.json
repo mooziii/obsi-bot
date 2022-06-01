@@ -88,5 +88,11 @@
     "url": "https://dispatcher.rndfnk.com/hr/youfm/live/mp3/48/stream.mp3",
     "language": "German",
     "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "RADIO BOB",
+    "url": "http://streams.radiobob.de/bob-classicrock/mp3-128/mediaplayer",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
   }
 ]
