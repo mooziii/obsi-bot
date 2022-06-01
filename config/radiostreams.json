@@ -82,5 +82,11 @@
     "url": "http://stream.laut.fm/mangoradio",
     "language": "German",
     "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "YOU FM",
+    "url": "https://dispatcher.rndfnk.com/hr/youfm/live/mp3/48/stream.mp3",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
   }
 ]
