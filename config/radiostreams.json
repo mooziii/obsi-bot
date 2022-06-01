@@ -76,5 +76,11 @@
     "url": "https://tree.streampanel.net/4-blasmusik",
     "language": "German",
     "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "MANGORADIO",
+    "url": "http://stream.laut.fm/mangoradio",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
   }
 ]
