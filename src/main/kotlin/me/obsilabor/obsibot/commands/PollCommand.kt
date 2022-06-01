@@ -93,7 +93,7 @@ class PollCommand : Extension() {
                         }
                     }
 
-                    val poll = Poll(guild?.id?:return@action, channel.id, customId, message.id, user.id, map, arguments.endTimestamp, hashMapOf(), false)
+                    val poll = Poll(guild?.id?:return@action, channel.id, customId, message.id, user.id, map, arguments.endTimestamp*1000, hashMapOf(), false)
                     obsiGuild.adoptNewPoll(poll)
                     obsiGuild.update()
                     respond {
