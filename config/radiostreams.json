@@ -106,5 +106,11 @@
     "url": "https://wdr-wdr3-live.icecastssl.wdr.de/wdr/wdr3/live/mp3/128/stream.mp3",
     "language": "German",
     "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "BifSES Türkçe",
+    "url": "http://streams.bigfm.de/bigfm-turkey-128-mp3",
+    "language": "Turkish",
+    "flagEmoji": ":flag_tr:"
   }
 ]

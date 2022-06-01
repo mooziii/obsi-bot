@@ -33,5 +33,5 @@
   "command.radio.play.argument.radiostream.description": "Radiostream to play",
   "command.radio.disconnect.description": "Command to disconnect the bot",
   "command.radio.failure.alreadyconnected": "I'm already connected to a voice channel.",
-  "command.radio.success": "Now playing **${radio}** in <#${voicechannel}>. Enjoy the radiostream!"
+  "command.radio.success": "Now playing **${radio}** ${emoji} in <#${voicechannel}>. Enjoy the radiostream!"
 }

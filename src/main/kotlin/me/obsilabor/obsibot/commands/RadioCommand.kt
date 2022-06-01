@@ -46,7 +46,8 @@ class RadioCommand : Extension() {
                             guild,
                             member,
                             member.getVoiceState()?.getChannelOrNull() as VoiceChannel? ?: return@action,
-                            radioStream.name
+                            radioStream.name,
+                            radioStream
                         )
                     }
                 }

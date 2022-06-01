@@ -16,6 +16,7 @@ import dev.kord.core.entity.Member
 import dev.kord.core.entity.channel.VoiceChannel
 import dev.kord.voice.AudioFrame
 import dev.kord.voice.VoiceConnection
+import me.obsilabor.obsibot.config.RadioStreamConfig
 import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.createObsiGuild
 import me.obsilabor.obsibot.utils.obsify
@@ -41,7 +42,7 @@ object ObsiAudioBot {
         }
     }
 
-    suspend fun playRadioStream(url: String, guild: Guild, member: Member, channel: VoiceChannel, radioName: String): String {
+    suspend fun playRadioStream(url: String, guild: Guild, member: Member, channel: VoiceChannel, radioName: String, radioStreamConfig: RadioStreamConfig): String {
         if(connections[guild.id] != null) {
             if(member.hasPermission(Permission.MoveMembers)) {
                 disconnect(guild)
@@ -58,7 +59,7 @@ object ObsiAudioBot {
         ObsiBot.client.editPresence {
             listening("$radioName 🎶")
         }
-        return localText("command.radio.success", hashMapOf("radio" to radioName, "voicechannel" to channel.id.value), guild.obsify() ?: guild.createObsiGuild())
+        return localText("command.radio.success", hashMapOf("radio" to radioName, "voicechannel" to channel.id.value, "emoji" to radioStreamConfig.flagEmoji), guild.obsify() ?: guild.createObsiGuild())
     }
 
     private suspend fun DefaultAudioPlayerManager.playTrack(query: String, player: AudioPlayer): AudioTrack {
