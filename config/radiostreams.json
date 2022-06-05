@@ -148,5 +148,11 @@
     "url": "https://dispatcher.rndfnk.com/br/br1/obb/mp3/low",
     "language": "German (BR)",
     "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "SWR3",
+    "url": "https://liveradio.swr.de/sw331ch/swr3/",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
   }
 ]
