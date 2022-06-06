@@ -114,18 +114,6 @@
     "flagEmoji": ":flag_tr:"
   },
   {
-    "name": "Energy",
-    "url": "http://nrj.de/muenchen",
-    "language": "German (MUC)",
-    "flagEmoji": ":flag_de:"
-  },
-  {
-    "name": "Radio Gong 96.3",
-    "url": "http://mp3.radiogong963.c.nmdn.net/ps-radiogong963/livestream.mp3",
-    "language": "German (MUC)",
-    "flagEmoji": ":flag_de:"
-  },
-  {
     "name": "Charivari",
     "url": "http://rs5.stream24.net:80/stream?ref=charivari.de",
     "language": "German (MUC)",
@@ -134,18 +122,6 @@
   {
     "name": "Bayern 3",
     "url": "https://dispatcher.rndfnk.com/br/br3/live/mp3/low",
-    "language": "German (BR)",
-    "flagEmoji": ":flag_de:"
-  },
-  {
-    "name": "Arabella",
-    "url": "https://live.radioarabella.de/stream",
-    "language": "German (MUC)",
-    "flagEmoji": ":flag_de:"
-  },
-  {
-    "name": "Bayern 1",
-    "url": "https://dispatcher.rndfnk.com/br/br1/obb/mp3/low",
     "language": "German (BR)",
     "flagEmoji": ":flag_de:"
   },
