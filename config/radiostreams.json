@@ -154,5 +154,11 @@
     "url": "https://liveradio.swr.de/sw331ch/swr3/",
     "language": "German",
     "flagEmoji": ":flag_de:"
+  },
+  {
+    "name": "NDR2",
+    "url": "https://icecast.ndr.de/ndr/ndr2/niedersachsen/aac/low",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
   }
 ]
