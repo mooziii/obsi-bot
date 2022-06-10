@@ -3,7 +3,6 @@ package me.obsilabor.obsibot.commands
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.converters.impl.stringChoice
 import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
-import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.respondEphemeral
 import com.kotlindiscord.kord.extensions.types.respondPublic
@@ -12,7 +11,7 @@ import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Permission
 import dev.kord.core.entity.channel.VoiceChannel
 import dev.kord.rest.builder.message.create.embed
-import me.obsilabor.obsibot.ObsiAudioBot
+import me.obsilabor.obsibot.audio.ObsiAudioBot
 import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.config.RadioStreamConfig
 import me.obsilabor.obsibot.localization.globalText

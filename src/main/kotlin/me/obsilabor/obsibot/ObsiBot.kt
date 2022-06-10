@@ -14,10 +14,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
-import me.obsilabor.obsibot.commands.CommandExtension
-import me.obsilabor.obsibot.commands.GiveawayCommand
-import me.obsilabor.obsibot.commands.PollCommand
-import me.obsilabor.obsibot.commands.RadioCommand
+import me.obsilabor.obsibot.audio.ObsiAudioBot
+import me.obsilabor.obsibot.commands.*
 import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.listeners.GiveawayListener
 import me.obsilabor.obsibot.listeners.PingListener
@@ -27,10 +25,7 @@ import me.obsilabor.obsibot.localization.Localization
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.tasks.GiveawayTask
 import me.obsilabor.obsibot.tasks.PollTask
-import me.obsilabor.obsibot.utils.FileDownloader
 import me.obsilabor.obsibot.utils.addCommand
-import me.obsilabor.obsibot.utils.getOrCreateFile
-import java.io.File
 import java.util.*
 
 object ObsiBot {
@@ -92,6 +87,7 @@ object ObsiBot {
                 addCommand(::GiveawayCommand)
                 addCommand(::PollCommand)
                 addCommand(::RadioCommand)
+                addCommand(::HelpCommand)
 
                 extMappings {}
             }

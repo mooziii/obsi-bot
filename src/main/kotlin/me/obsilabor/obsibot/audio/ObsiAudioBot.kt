@@ -1,4 +1,4 @@
-package me.obsilabor.obsibot
+package me.obsilabor.obsibot.audio
 
 import com.kotlindiscord.kord.extensions.utils.hasPermission
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler
@@ -9,13 +9,13 @@ import com.sedmelluq.discord.lavaplayer.tools.FriendlyException
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
 import dev.kord.common.entity.Permission
-import dev.kord.common.entity.Permissions
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.entity.Guild
 import dev.kord.core.entity.Member
 import dev.kord.core.entity.channel.VoiceChannel
 import dev.kord.voice.AudioFrame
 import dev.kord.voice.VoiceConnection
+import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.config.RadioStreamConfig
 import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.createObsiGuild
