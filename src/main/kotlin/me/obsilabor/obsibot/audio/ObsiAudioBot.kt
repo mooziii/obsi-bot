@@ -56,7 +56,7 @@ object ObsiAudioBot {
             }
         }
         val player = lavaplayerManager.createPlayer()
-        val track = lavaplayerManager.playTrack(url, player)
+        lavaplayerManager.playTrack(url, player)
         val connection = channel.connect {
             audioProvider { AudioFrame.fromData(player.provide()?.data) }
         }
