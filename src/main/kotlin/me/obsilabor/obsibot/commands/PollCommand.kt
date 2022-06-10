@@ -2,11 +2,13 @@ package me.obsilabor.obsibot.commands
 
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.ephemeralSubCommand
+import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
 import com.kotlindiscord.kord.extensions.commands.converters.impl.long
 import com.kotlindiscord.kord.extensions.commands.converters.impl.string
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
+import com.kotlindiscord.kord.extensions.types.respondPublic
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Snowflake
@@ -101,6 +103,33 @@ class PollCommand : Extension() {
                     }
                 }
             }
+            publicSubCommand(::PollEndArgs) {
+                name = "end"
+                description = globalText("command.poll.end.description")
+
+                action {
+                    val guild = this.getGuild()?.asGuild() ?: return@action
+                    val obsiGuild = guild.obsify() ?: return@action
+                    val poll = obsiGuild.polls?.firstOrNull { it.messageId.value.toLong() == arguments.id } ?: return@action
+                    obsiGuild.refreshPollVotes(
+                        Poll(
+                            poll.guildId,
+                            poll.channelId,
+                            poll.interactionId,
+                            poll.messageId,
+                            poll.owner,
+                            poll.options,
+                            System.currentTimeMillis()-1,
+                            poll.voters,
+                            false
+                        )
+                    )
+                    obsiGuild.update()
+                    respondPublic {
+                        content = "ok :ok_hand:"
+                    }
+                }
+            }
         }
     }
 
@@ -113,6 +142,13 @@ class PollCommand : Extension() {
         val options by string {
             name = "options"
             description = globalText("command.poll.create.argument.options.description")
+        }
+    }
+
+    inner class PollEndArgs : Arguments() {
+        val id by long {
+            name = "id"
+            description = globalText("command.poll.end.argument.id.description")
         }
     }
 }

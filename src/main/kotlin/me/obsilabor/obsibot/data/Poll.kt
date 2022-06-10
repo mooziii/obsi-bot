@@ -10,7 +10,7 @@ data class Poll(
     val messageId: Snowflake,
     val owner: Snowflake,
     val options: HashMap<String, Int>,
-    val end: Long,
+    var end: Long,
     val voters: HashMap<Snowflake, String>,
     val ended: Boolean
 ) {

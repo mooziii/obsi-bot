@@ -61,7 +61,7 @@ class RadioCommand : Extension() {
                     val obsiGuild = guild.obsify() ?: guild.createObsiGuild()
                     val member = member?.asMember() ?: return@action
                     if(member.hasPermission(Permission.ManageMessages) || member.hasPermission(Permission.Administrator)) {
-                        ObsiAudioBot.disconnect(guild?.asGuild())
+                        ObsiAudioBot.disconnect(guild?.asGuild()!!)
                         respondPublic {
                             content = ":ok_hand:"
                         }
