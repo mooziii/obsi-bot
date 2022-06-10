@@ -59,7 +59,7 @@ class PollListener : Extension() {
                         }
                         title = localText("poll", obsiGuild)
                         val builder = StringBuilder()
-                        poll.options.keys.forEachIndexed { index, it ->
+                        poll.options.keys.forEachIndexed { _, it ->
                             kotlin.runCatching {
                                 val votes = poll.options.getOrDefault(it, 0)
                                 val percentage = votes.toDouble() / totalVotes.toDouble()
