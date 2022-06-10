@@ -2,6 +2,7 @@ package me.obsilabor.obsibot.commands
 
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.respondPublic
+import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
@@ -23,6 +24,7 @@ class HelpCommand : CommandExtension("help", "command.help.description") {
                 val obsiGuild = guild?.asGuild()?.obsify() ?: guild?.asGuild()?.createObsiGuild()!!
                 respondPublic {
                     embed {
+                        color = Color(11623916)
                         title = localText("help", obsiGuild)
                         description = """
                             ${localText("help.runwithargument", obsiGuild)}
