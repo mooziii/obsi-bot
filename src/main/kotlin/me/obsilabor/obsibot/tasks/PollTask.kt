@@ -1,10 +1,13 @@
 package me.obsilabor.obsibot.tasks
 
 import dev.kord.common.annotation.KordPreview
+import dev.kord.core.behavior.channel.MessageChannelBehavior
+import dev.kord.core.behavior.reply
 import kotlinx.coroutines.launch
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.data.Poll
 import me.obsilabor.obsibot.database.MongoManager
+import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.obsify
 import java.util.*
 
@@ -22,9 +25,10 @@ class PollTask : TimerTask() {
                     polls.addAll(obsiGuild.polls?.toList() ?: return@launch)
                 }
                 for (poll in polls) {
-                    if (!poll.ended && poll.end != 0L) {
+                    if (!poll.ended && poll.end != 0L && poll.options.isNotEmpty()) {
+                        val guild = ObsiBot.client.getGuild(poll.guildId) ?: continue
+                        val obsiGuild = guild.obsify() ?: continue
                         if (System.currentTimeMillis() >= poll.end) {
-                            val obsiGuild = ObsiBot.client.getGuild(poll.guildId)?.obsify() ?: continue
                             obsiGuild.refreshPollVotes(
                                 Poll(
                                     poll.guildId,
@@ -39,6 +43,9 @@ class PollTask : TimerTask() {
                                 )
                             )
                             obsiGuild.update()
+                            (guild.getChannel(poll.channelId) as MessageChannelBehavior).getMessage(poll.messageId).reply {
+                                content = localText("poll.winner", hashMapOf("option" to poll.winner), obsiGuild)
+                            }
                         }
                     }
                 }

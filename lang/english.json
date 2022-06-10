@@ -8,6 +8,7 @@
   "poll.votes": "votes",
   "poll.voted": "You voted for ${option}.",
   "poll.ended": "You can't vote for polls that already ended.",
+  "poll.winner": "The poll ended. The winner is: **${option}**",
   "poll.option.description": "Click to vote for ${option}",
   "giveaway.winners": "The winners are: ${winners}",
   "giveaway.embed.author": "Giveaway by ${owner}",

@@ -13,4 +13,8 @@ data class Poll(
     val end: Long,
     val voters: HashMap<Snowflake, String>,
     val ended: Boolean
-)
+) {
+
+    val winner: String
+    get() = options.toList().maxByOrNull { it.second }!!.first
+}
