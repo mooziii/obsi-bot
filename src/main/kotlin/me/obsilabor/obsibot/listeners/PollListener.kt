@@ -63,7 +63,7 @@ class PollListener : Extension() {
                             kotlin.runCatching {
                                 val votes = poll.options.getOrDefault(it, 0)
                                 val percentage = votes.toDouble() / totalVotes.toDouble()
-                                builder.append("${index+1}: $it - ${PercentageUtils.toString(percentage)}% - $votes ${localText("poll.votes", obsiGuild)}")
+                                builder.append("$it - ${PercentageUtils.toString(percentage)}% - $votes ${localText("poll.votes", obsiGuild)}")
                                 builder.appendLine()
                             }.onFailure {
                                 it.printStackTrace()
@@ -78,7 +78,7 @@ class PollListener : Extension() {
                         selectMenu(poll.interactionId) {
                             poll.options.forEach {
                                 option(it.key, it.key) {
-                                    description = localText("poll.option.description", hashMapOf("option" to it), obsiGuild)
+                                    description = localText("poll.option.description", hashMapOf("option" to it.key), obsiGuild)
                                 }
                             }
                         }
