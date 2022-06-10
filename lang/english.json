@@ -29,6 +29,8 @@
   "command.poll.description": "Command to manage polls",
   "command.poll.create.description": "Command to create polls",
   "command.poll.create.success": "Poll created.",
+  "command.poll.end.description": "Command to end polls",
+  "command.poll.end.argument.id.description": "Id of the poll to end (id of the message from the poll)",
   "command.radio.description": "Command to manage radiostreams",
   "command.radio.play.description": "Command to play radiostreams",
   "command.radio.play.argument.radiostream.description": "Radiostream to play",
