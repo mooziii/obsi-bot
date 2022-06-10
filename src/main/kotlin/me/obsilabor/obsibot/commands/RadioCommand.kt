@@ -43,7 +43,7 @@ class RadioCommand : CommandExtension("radio", "command.radio.description") {
                             radioStream.url,
                             guild,
                             member,
-                            member.getVoiceState()?.getChannelOrNull() as VoiceChannel? ?: return@action,
+                            member.getVoiceState().getChannelOrNull() as VoiceChannel,
                             radioStream.name,
                             radioStream
                         )
@@ -59,7 +59,7 @@ class RadioCommand : CommandExtension("radio", "command.radio.description") {
                     val obsiGuild = guild.obsify() ?: guild.createObsiGuild()
                     val member = member?.asMember() ?: return@action
                     if(member.hasPermission(Permission.ManageMessages) || member.hasPermission(Permission.Administrator)) {
-                        ObsiAudioBot.disconnect(guild?.asGuild()!!)
+                        ObsiAudioBot.disconnect(guild.asGuild())
                         respondPublic {
                             content = ":ok_hand:"
                         }

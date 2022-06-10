@@ -38,7 +38,8 @@ object ObsiAudioBot {
 
     }
 
-    suspend fun disconnect(guild: Guild) {
+    suspend fun disconnect(guild: Guild?) {
+        if(guild == null) return
         connections[guild.id]?.shutdown()
         connections.remove(guild.id)
         ObsiBot.client.editPresence {

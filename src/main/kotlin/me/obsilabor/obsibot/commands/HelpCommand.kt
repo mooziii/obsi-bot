@@ -2,6 +2,7 @@ package me.obsilabor.obsibot.commands
 
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.respondPublic
+import dev.kord.common.annotation.KordPreview
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.localization.localText
@@ -9,6 +10,7 @@ import me.obsilabor.obsibot.utils.applyDefaultFooter
 import me.obsilabor.obsibot.utils.createObsiGuild
 import me.obsilabor.obsibot.utils.obsify
 
+@KordPreview
 class HelpCommand : CommandExtension("help", "command.help.description") {
     override suspend fun setup() {
         publicSlashCommand {
