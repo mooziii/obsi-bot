@@ -70,7 +70,7 @@ class PollListener : Extension() {
                             }
                         }
                         builder.appendLine()
-                        builder.appendLine(localText("poll.instructions", hashMapOf("endtimestamp" to poll.end), obsiGuild))
+                        builder.appendLine(localText("poll.instructions", hashMapOf("endtimestamp" to poll.end/1000), obsiGuild))
                         description = builder.toString()
                         applyDefaultFooter()
                     }

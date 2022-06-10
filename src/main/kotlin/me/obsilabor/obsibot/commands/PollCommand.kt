@@ -78,7 +78,7 @@ class PollCommand : CommandExtension("poll", "command.poll.description") {
                                 }
                             }
                             builder.appendLine()
-                            builder.appendLine(localText("poll.instructions", hashMapOf("endtimestamp" to arguments.endTimestamp), obsiGuild))
+                            builder.appendLine(localText("poll.instructions", hashMapOf("endtimestamp" to arguments.endTimestamp/1000), obsiGuild))
                             description = builder.toString()
                             applyDefaultFooter()
                         }
@@ -93,7 +93,7 @@ class PollCommand : CommandExtension("poll", "command.poll.description") {
                         }
                     }
 
-                    val poll = Poll(guild?.id?:return@action, channel.id, customId, message.id, user.id, map, arguments.endTimestamp*1000, hashMapOf(), false)
+                    val poll = Poll(guild?.id?:return@action, channel.id, customId, message.id, user.id, map, arguments.endTimestamp, hashMapOf(), false)
                     obsiGuild.adoptNewPoll(poll)
                     obsiGuild.update()
                     respond {
