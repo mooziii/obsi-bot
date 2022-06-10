@@ -1,7 +1,7 @@
 {
   "help":  "Help",
   "help.runwithargument":  "For help with bot setup, run the bot with the '--help' argument.",
-  "bot.ping": "hi, i got pinged i think",
+  "bot.ping": "hi, please give me a star on github: <https://github.com/mooziii/obsi-bot>",
   "bot.help": "-------------------------------\nFollow this tutorial for bot setup: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nSupported languages are these: ${languages}",
   "generic.nopermissions.short": "Insufficient permissions",
   "generic.nopermissions.long": "You don't have the ${required} permission to perform this action",
