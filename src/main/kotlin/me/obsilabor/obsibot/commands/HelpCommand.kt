@@ -24,7 +24,10 @@ class HelpCommand : CommandExtension("help", "command.help.description") {
                 respondPublic {
                     embed {
                         title = localText("help", obsiGuild)
-                        description = localText("help.runwithargument", obsiGuild)
+                        description = """
+                            ${localText("help.runwithargument", obsiGuild)}
+                            ${localText("help.wiki", obsiGuild)}
+                        """.trimIndent()
                         ObsiBot.commands.forEach {
                             field {
                                 name = "/${it.name}"
