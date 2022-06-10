@@ -8,6 +8,8 @@ import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack
+import dev.kord.common.annotation.KordPreview
+import dev.kord.common.annotation.KordVoice
 import dev.kord.common.entity.Permission
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.entity.Guild
@@ -23,6 +25,8 @@ import me.obsilabor.obsibot.utils.obsify
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
+@KordPreview
+@KordVoice
 object ObsiAudioBot {
 
     private val connections: MutableMap<Snowflake, VoiceConnection> = mutableMapOf()

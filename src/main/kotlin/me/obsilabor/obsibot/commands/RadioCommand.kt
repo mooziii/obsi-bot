@@ -8,6 +8,7 @@ import com.kotlindiscord.kord.extensions.types.respondEphemeral
 import com.kotlindiscord.kord.extensions.types.respondPublic
 import com.kotlindiscord.kord.extensions.utils.hasPermission
 import dev.kord.common.annotation.KordPreview
+import dev.kord.common.annotation.KordVoice
 import dev.kord.common.entity.Permission
 import dev.kord.core.entity.channel.VoiceChannel
 import dev.kord.rest.builder.message.create.embed
@@ -19,6 +20,7 @@ import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.*
 import java.io.File
 
+@KordVoice
 @KordPreview
 class RadioCommand : CommandExtension("radio", "command.radio.description") {
 

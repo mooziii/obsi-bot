@@ -4,6 +4,7 @@ import com.kotlindiscord.kord.extensions.ExtensibleBot
 import com.kotlindiscord.kord.extensions.modules.extra.mappings.extMappings
 import com.kotlindiscord.kord.extensions.utils.env
 import dev.kord.common.annotation.KordPreview
+import dev.kord.common.annotation.KordVoice
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.Kord
 import io.ktor.client.*
@@ -60,6 +61,7 @@ object ObsiBot {
 
     private val TOKEN = env("TOKEN")
 
+    @OptIn(KordVoice::class)
     @KordPreview
     suspend fun main(optionSet: OptionSet) {
         initTime = System.currentTimeMillis()
