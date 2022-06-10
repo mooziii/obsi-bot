@@ -21,10 +21,7 @@ import me.obsilabor.obsibot.utils.*
 import java.io.File
 
 @KordPreview
-class RadioCommand : Extension() {
-
-    override val name: String
-        get() = "radiocommand"
+class RadioCommand : CommandExtension("radio", "command.radio.description") {
 
     override suspend fun setup() {
         println("Downloading official radiostream json file..")

@@ -14,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
+import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.commands.GiveawayCommand
 import me.obsilabor.obsibot.commands.PollCommand
 import me.obsilabor.obsibot.commands.RadioCommand
@@ -27,6 +28,7 @@ import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.tasks.GiveawayTask
 import me.obsilabor.obsibot.tasks.PollTask
 import me.obsilabor.obsibot.utils.FileDownloader
+import me.obsilabor.obsibot.utils.addCommand
 import me.obsilabor.obsibot.utils.getOrCreateFile
 import java.io.File
 import java.util.*
@@ -37,6 +39,8 @@ object ObsiBot {
     lateinit var client: Kord
     var isFullyFunctional = false
     var initTime: Long = 0
+
+    val commands = mutableSetOf<CommandExtension>()
 
     val ktorClient by lazy {
         HttpClient(CIO) { expectSuccess = false }
@@ -85,9 +89,9 @@ object ObsiBot {
                 add(::ReadyListener)
                 add(::PollListener)
                 add(::GiveawayListener)
-                add(::GiveawayCommand)
-                add(::PollCommand)
-                add(::RadioCommand)
+                addCommand(::GiveawayCommand)
+                addCommand(::PollCommand)
+                addCommand(::RadioCommand)
 
                 extMappings {}
             }

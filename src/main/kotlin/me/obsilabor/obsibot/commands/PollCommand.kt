@@ -21,9 +21,7 @@ import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.*
 
 @KordPreview
-class PollCommand : Extension() {
-
-    override val name: String = "pollcommand"
+class PollCommand : CommandExtension("poll", "command.poll.description") {
 
     override suspend fun setup() {
         ephemeralSlashCommand {

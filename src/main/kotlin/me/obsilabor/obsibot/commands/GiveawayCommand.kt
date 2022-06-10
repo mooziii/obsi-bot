@@ -28,8 +28,7 @@ import me.obsilabor.obsibot.utils.obsify
 import org.litote.kmongo.eq
 
 @KordPreview
-class GiveawayCommand : Extension() {
-    override val name: String = "giveawaycommand"
+class GiveawayCommand : CommandExtension("giveaway", "command.giveaway.description") {
 
     override suspend fun setup() {
         ephemeralSlashCommand {
