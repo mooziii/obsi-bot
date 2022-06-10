@@ -42,6 +42,7 @@ dependencies {
     implementation("dev.kord:kord-voice:v0.8.0-M14")
     implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion")
     implementation("com.kotlindiscord.kord.extensions:extra-mappings:$kordexVersion")
+    implementation("io.github.qbosst:kordex-hybrid-commands:1.0.4-SNAPSHOT")
     // utility libraries
     implementation("net.sf.jopt-simple:jopt-simple:5.0.4")
 }

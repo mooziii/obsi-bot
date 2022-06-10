@@ -2,16 +2,14 @@ package me.obsilabor.obsibot.commands
 
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.converters.impl.stringChoice
-import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
 import com.kotlindiscord.kord.extensions.extensions.Extension
-import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
-import com.kotlindiscord.kord.extensions.types.respondEphemeral
-import com.kotlindiscord.kord.extensions.types.respondPublic
 import com.kotlindiscord.kord.extensions.utils.hasPermission
 import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Permission
 import dev.kord.core.entity.channel.VoiceChannel
-import dev.kord.rest.builder.message.create.embed
+import io.github.qbosst.kordex.builders.embed
+import io.github.qbosst.kordex.commands.hybrid.publicHybridCommand
+import io.github.qbosst.kordex.commands.hybrid.publicSubCommand
 import me.obsilabor.obsibot.ObsiAudioBot
 import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.config.RadioStreamConfig
@@ -29,7 +27,7 @@ class RadioCommand : Extension() {
     override suspend fun setup() {
         println("Downloading official radiostream json file..")
         FileDownloader.downloadFile("https://raw.githubusercontent.com/mooziii/obsi-bot/main/config/radiostreams.json", getOrCreateFile(File("config", "radiostreams.json")))
-        publicSlashCommand {
+        publicHybridCommand {
             name = "radio"
             description = globalText("command.radio.description")
 
@@ -37,10 +35,10 @@ class RadioCommand : Extension() {
                 name = "play"
                 description = globalText("command.radio.play.description")
                 action {
-                    val guild = getGuild()?.asGuildOrNull() ?: return@action
+                    val guild = guild?.asGuildOrNull() ?: return@action
                     val member = member?.asMember() ?: return@action
                     val radioStream = findRadioStream(arguments.radioName) ?: return@action
-                    respondPublic {
+                    respond {
                         content = ObsiAudioBot.playRadioStream(
                             radioStream.url,
                             guild,
@@ -57,16 +55,16 @@ class RadioCommand : Extension() {
                 description = globalText("command.radio.disconnect.description")
 
                 action {
-                    val guild = getGuild()?.asGuildOrNull() ?: return@action
+                    val guild = guild?.asGuildOrNull() ?: return@action
                     val obsiGuild = guild.obsify() ?: guild.createObsiGuild()
                     val member = member?.asMember() ?: return@action
                     if(member.hasPermission(Permission.ManageMessages) || member.hasPermission(Permission.Administrator)) {
                         ObsiAudioBot.disconnect(guild?.asGuild()!!)
-                        respondPublic {
+                        respond {
                             content = ":ok_hand:"
                         }
                     } else {
-                        respondEphemeral {
+                        respond {
                             embed {
                                 title = localText("generic.nopermissions.short", obsiGuild)
                                 description = localText("generic.nopermissions.short", obsiGuild)
