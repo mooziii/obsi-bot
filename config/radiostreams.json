@@ -90,18 +90,6 @@
     "flagEmoji": ":flag_de:"
   },
   {
-    "name": "RADIO BOB",
-    "url": "http://streams.radiobob.de/bob-classicrock/mp3-128/mediaplayer",
-    "language": "German",
-    "flagEmoji": ":flag_de:"
-  },
-  {
-    "name": "Radio Fritz",
-    "url": "http://fritz.de/livemp3",
-    "language": "German",
-    "flagEmoji": ":flag_de:"
-  },
-  {
     "name": "WDR 3",
     "url": "https://wdr-wdr3-live.icecastssl.wdr.de/wdr/wdr3/live/mp3/128/stream.mp3",
     "language": "German",
@@ -112,5 +100,11 @@
     "url": "http://streams.bigfm.de/bigfm-turkey-128-mp3",
     "language": "Turkish",
     "flagEmoji": ":flag_tr:"
+  },
+  {
+    "name": "NDR2",
+    "url": "https://icecast.ndr.de/ndr/ndr2/niedersachsen/aac/low",
+    "language": "German",
+    "flagEmoji": ":flag_de:"
   }
 ]
