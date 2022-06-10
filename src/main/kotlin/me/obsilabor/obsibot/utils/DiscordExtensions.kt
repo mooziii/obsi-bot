@@ -8,6 +8,7 @@ import dev.kord.common.entity.Snowflake
 import dev.kord.core.entity.Guild
 import dev.kord.core.entity.Member
 import dev.kord.rest.builder.message.EmbedBuilder
+import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.data.ObsiGuild
 import me.obsilabor.obsibot.database.MongoManager
@@ -44,4 +45,5 @@ fun EmbedBuilder.applyDefaultFooter() {
 
 fun ExtensibleBotBuilder.ExtensionsBuilder.addCommand(builder: () -> CommandExtension) {
     extensions.add(builder)
+    ObsiBot.commands.add(builder.invoke())
 }
