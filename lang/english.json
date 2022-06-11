@@ -1,6 +1,6 @@
 {
   "help":  "Help",
-  "help.runwithargument":  "For help with bot setup, run the bot with the '--help' argument.",
+  "help.runwithargument":  "For help with bot setup, run the bot with the `--help` argument.",
   "help.wiki": "For more help, visit the [Wiki](https://github.com/mooziii/obsi-bot/wiki).",
   "bot.ping": "hi, please give me a star on github: <https://github.com/mooziii/obsi-bot>",
   "bot.help": "-------------------------------\nFollow this tutorial for bot setup: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nSupported languages are these: ${languages}",
@@ -39,6 +39,6 @@
   "command.radio.play.description": "Command to play radiostreams",
   "command.radio.play.argument.radiostream.description": "Radiostream to play",
   "command.radio.disconnect.description": "Command to disconnect the bot",
-  "command.radio.failure.alreadyconnected": "I'm already connected to a voice channel.",
+  "command.radio.failure.alreadyconnected": "I'm already connected to a voice channel or currently play another radio stream.",
   "command.radio.success": "Now playing **${radio}** ${emoji} in <#${voicechannel}>. Enjoy the radiostream!"
 }

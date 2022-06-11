@@ -1,5 +1,8 @@
 {
-  "bot.ping": "ich wurde gepingt glaub ich",
+  "help": "Hilfe",
+  "help.runwithargument": "Für Hilfe beim aufsetzen des Bots, führe den bot mit dem `--help` Argument aus..",
+  "help.wiki": "Für mehr Hilfe, besuche das [Wiki](https://github.com/mooziii/obsi-bot/wiki).",
+  "bot.ping": "hi, bitte gib mir einen Stern auf github: <https://github.com/mooziii/obsi-bot>",
   "bot.help": "-------------------------------\nFür das installieren des Bots, folge dieser Anleitung: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nUnterstützte Sprachen: ${languages}",
   "generic.nopermissions.short": "Ungenügende Rechte",
   "generic.nopermissions.long": "Du verfügst nicht über das Recht ${required} um diese Aktion auszuführen.",
@@ -8,6 +11,7 @@
   "poll.votes": "stimmen",
   "poll.voted": "Du hast für ${option} gestimmt.",
   "poll.ended": "Du kannst nicht abstimmen da die Abstimmung bereits zuende ist.",
+  "poll.winner": "Die Abstimmung wurde beendet. Der Gewinner ist: **${option}**",
   "poll.option.description": "Klicke um für ${option} zu stimmen",
   "giveaway.winners": "Die Gewinner sind: ${winners}",
   "giveaway.embed.author": "Verlosung von ${owner}",
@@ -27,5 +31,13 @@
   "command.poll.create.argument.options.description": "Liste an Optionen für die Abstimmung (getrennt durch ein Komma)",
   "command.poll.description": "Command um Abstimmungen zu verwalten",
   "command.poll.create.description": "Command zum  erstellen von Abstimmungen",
-  "command.poll.create.success": "Abstimmung erstellt"
+  "command.poll.create.success": "Abstimmung erstellt",
+  "command.poll.end.description": "Command um Abstimmungen zu beenden",
+  "command.poll.end.argument.id.description": "Id der Abstimmung zum beenden (Id der Nachricht der Verlosung)",
+  "command.radio.description": "Command um Radio-Livestreams zu verwalten",
+  "command.radio.play.description": "Command um Radio-Livestreams abzuspielen",
+  "command.radio.play.argument.radiostream.description": "Radio-Livestream welcher gespielt werden soll",
+  "command.radio.disconnect.description": "Command um den aktuellen Radio-Livestream auszuschalten",
+  "command.radio.failure.alreadyconnected": "Ich bin bereits in einem anderem Sprachkanal oder spiele bereits einen Radio-Livestream ab",
+  "command.radio.success": "Jetzt läuft **${radio}** ${emoji} in <#${voicechannel}>. Viel Spaß!"
 }
