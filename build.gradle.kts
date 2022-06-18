@@ -30,12 +30,14 @@ dependencies {
     // kotlin libraries
     implementation(kotlin("stdlib"))
     // kotlinx.datetime
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
     // kotlinx.coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
     // ktor libraries
-    implementation("io.ktor:ktor-client-core:1.6.7")
-    implementation("io.ktor:ktor-client-cio:1.6.7")
+    implementation("io.ktor:ktor-client-core:2.0.2")
+    implementation("io.ktor:ktor-client-cio:2.0.2")
+    implementation("io.ktor:ktor-client-content-negotiation:2.0.2")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.2")
     // kmongo
     implementation("org.litote.kmongo", "kmongo-core", "4.5.1")
     implementation("org.litote.kmongo", "kmongo-serialization-mapping", "4.5.1")

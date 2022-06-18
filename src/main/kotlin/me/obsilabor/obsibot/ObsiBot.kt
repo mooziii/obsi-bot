@@ -39,7 +39,9 @@ object ObsiBot {
     val commands = mutableSetOf<CommandExtension>()
 
     val ktorClient by lazy {
-        HttpClient(CIO) { expectSuccess = false }
+        HttpClient(CIO) {
+            expectSuccess = false
+        }
     }
 
     val generalScope by lazy {
@@ -86,6 +88,7 @@ object ObsiBot {
                 add(::ReadyListener)
                 add(::PollListener)
                 add(::GiveawayListener)
+                addCommand(::MinecraftCommand)
                 addCommand(::GiveawayCommand)
                 addCommand(::PollCommand)
                 addCommand(::RadioCommand)
