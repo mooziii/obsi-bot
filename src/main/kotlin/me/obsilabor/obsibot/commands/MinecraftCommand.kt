@@ -10,6 +10,7 @@ import com.kotlindiscord.kord.extensions.commands.converters.impl.string
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
 import com.kotlindiscord.kord.extensions.types.respondPublic
+import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
@@ -43,60 +44,28 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
                     val loaderDependency = "${toolchain.loaderGroupId}:${VersionManager.getLoaderVersion(toolchain)}"
                     val apiDependency = "${toolchain.apiGroupId}:${VersionManager.getAPIVersion(toolchain, GameVersion(arguments.gameVersion, true))}"
                     val mappingsDependency = VersionManager.getMappingsVersion(mappings, GameVersion(arguments.gameVersion, true))
-                    val gradlePlugins = buildString {
-                        append("plugins {")
-                        appendLine("    kotlin(\"jvm\") version \"1.7.0\"")
-                        toolchain.gradlePlugins.forEach {
-                            val id = it.split(":")[0]
-                            val version = it.split(":")[1]
-                            appendLine("    id(\"$id\") version \"$version\"")
-                        }
-                        mappings.gradlePlugins.forEach {
-                            val id = it.split(":")[0]
-                            val version = it.split(":")[1]
-                            appendLine("    id(\"$id\") version \"$version\"")
-                        }
-                        appendLine("}")
-                    }
-                    val gradleDependencies = buildString {
-                        append("dependencies {")
-                        appendLine("    minecraft(com.mojang:minecraft:${arguments.gameVersion})")
-                        if(mappings.isLayered) {
-                            appendLine("    mappings(loom.layered {")
-                            appendLine("        addLayer(quiltMappings.mappings($mappingsDependency))")
-                            appendLine("        officialMojangMappings()")
-                            appendLine("    })")
-                        } else {
-                            appendLine("    mappings($mappingsDependency)")
-                        }
-                        appendLine("    modImplementation(\"$loaderDependency\")")
-                        appendLine("    modImplementation(\"$apiDependency\")")
-                        if(arguments.kotlinLibraries) {
-                            appendLine("    modImplementation(\"net.fabricmc:fabric-language-kotlin:${VersionManager.getKotlinLibraryVersion()}\")")
-                        }
-                        appendLine("}")
-                    }
-                    val gradleRepositories = buildString {
-                        append("pluginManagement {")
-                        appendLine("    repositories {")
-                        appendLine("        gradlePluginPortal()")
-                        for (repository in toolchain.repositories) {
-                            appendLine("        maven(\"$repository\")")
-                        }
-                        for (repository in mappings.gradleRepositories) {
-                            appendLine("        maven(\"$repository\")")
-                        }
-                        appendLine("    }")
-                        appendLine("}")
-                    }
                     respondPublic {
                         embed {
+                            color = Color(15724194)
                             title = "Minecraft Modding"
                             field {
                                 name = "build.gradle.kts - Plugins"
                                 value = buildString {
                                     append("```kotlin")
-                                    appendLine(gradlePlugins)
+                                    appendLine()
+                                    appendLine("plugins {")
+                                    appendLine("        kotlin(\"jvm\") version \"1.7.0\"")
+                                    toolchain.gradlePlugins.forEach {
+                                        val id = it.split(":")[0]
+                                        val version = it.split(":")[1]
+                                        appendLine("        id(\"$id\") version \"$version\"")
+                                    }
+                                    mappings.gradlePlugins.forEach {
+                                        val id = it.split(":")[0]
+                                        val version = it.split(":")[1]
+                                        appendLine("        id(\"$id\") version \"$version\"")
+                                    }
+                                    appendLine("}")
                                     appendLine("```")
                                 }
                             }
@@ -104,7 +73,23 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
                                 name = "build.gradle.kts - Dependencies"
                                 value = buildString {
                                     append("```kotlin")
-                                    appendLine(gradleDependencies)
+                                    appendLine()
+                                    appendLine("dependencies {")
+                                    appendLine("        minecraft(com.mojang:minecraft:${arguments.gameVersion})")
+                                    if(mappings.isLayered) {
+                                        appendLine("        mappings(loom.layered {")
+                                        appendLine("            addLayer(quiltMappings.mappings($mappingsDependency))")
+                                        appendLine("            officialMojangMappings()")
+                                        appendLine("        })")
+                                    } else {
+                                        appendLine("        mappings($mappingsDependency)")
+                                    }
+                                    appendLine("        modImplementation(\"$loaderDependency\")")
+                                    appendLine("        modImplementation(\"$apiDependency\")")
+                                    if(arguments.kotlinLibraries) {
+                                        appendLine("        modImplementation(\"net.fabricmc:fabric-language-kotlin:${VersionManager.getKotlinLibraryVersion()}\")")
+                                    }
+                                    appendLine("}")
                                     appendLine("```")
                                 }
                             }
@@ -112,7 +97,18 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
                                 name = "settings.gradle.kts"
                                 value = buildString {
                                     append("```kotlin")
-                                    appendLine(gradleRepositories)
+                                    appendLine()
+                                    appendLine("pluginManagement {")
+                                    appendLine("        repositories {")
+                                    appendLine("            gradlePluginPortal()")
+                                    for (repository in toolchain.repositories) {
+                                        appendLine("            maven(\"$repository\")")
+                                    }
+                                    for (repository in mappings.gradleRepositories) {
+                                        appendLine("            maven(\"$repository\")")
+                                    }
+                                    appendLine("        }")
+                                    appendLine("}")
                                     appendLine("```")
                                 }
                             }
@@ -131,6 +127,7 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
                     val obsiGuild = guild.obsify() ?: guild.createObsiGuild()
                     respond {
                         embed {
+                            color = Color(15724194)
                             title = localText("command.minecraft.versions.embed.title", obsiGuild)
                             description = buildString {
                                 VersionManager.getGameVersions().forEach {

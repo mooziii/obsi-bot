@@ -34,8 +34,7 @@ enum class Mappings(
             "org.quiltmc.quilt-mappings-on-loom:4.2.0"
         ),
         listOf(
-            "https://maven.quiltmc.org/repository/release",
-            "https://server.bbkr.space/artifactory/libs-release/"
+            "https://maven.quiltmc.org/repository/release"
         ),
         true
     );
