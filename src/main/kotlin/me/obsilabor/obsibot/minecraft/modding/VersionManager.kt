@@ -33,12 +33,12 @@ object VersionManager {
 
     suspend fun getMappingsVersion(mappings: Mappings, version: GameVersion): String {
         val response = when(mappings) {
-            Mappings.LAYERED_MOJANG_AND_QUILT -> ObsiBot.json.decodeFromString<List<QuiltLoaderVersion>>(ktorClient.get<HttpResponse>(mappings.url ?: return "loom.officialMojangMappings()").receive())
-            Mappings.QUILT -> ObsiBot.json.decodeFromString<List<QuiltLoaderVersion>>(ktorClient.get<HttpResponse>(mappings.url ?: return "loom.officialMojangMappings()").receive())
+            Mappings.LAYERED_MOJANG_AND_QUILT -> ObsiBot.json.decodeFromString<List<QuiltMappingsVersion>>(ktorClient.get<HttpResponse>(mappings.url ?: return "loom.officialMojangMappings()").receive())
+            Mappings.QUILT -> ObsiBot.json.decodeFromString<List<QuiltMappingsVersion>>(ktorClient.get<HttpResponse>(mappings.url ?: return "loom.officialMojangMappings()").receive())
             Mappings.YARN -> ObsiBot.json.decodeFromString<List<YarnMappingsVersion>>(ktorClient.get<HttpResponse>(mappings.url ?: return "loom.officialMojangMappings()").receive())
             else -> return "loom.officialMojangMappings()"
         }
-        val maven = (response.firstOrNull { (it as CommonMappingsVersion).gameVersion == version.version } as CommonMappingsVersion).maven
+        val maven = (response.firstOrNull { it.gameVersion == version.version } as CommonMappingsVersion).maven
         return "\"$maven\""
     }
 
