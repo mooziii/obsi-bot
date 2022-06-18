@@ -34,10 +34,9 @@ dependencies {
     // kotlinx.coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
     // ktor libraries
-    implementation("io.ktor:ktor-client-core:2.0.2")
-    implementation("io.ktor:ktor-client-cio:2.0.2")
-    implementation("io.ktor:ktor-client-content-negotiation:2.0.2")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.2")
+    implementation("io.ktor:ktor-client-core:1.6.7")
+    implementation("io.ktor:ktor-client-cio:1.6.7")
+    implementation("io.ktor:ktor-client-serialization:1.6.7")
     // kmongo
     implementation("org.litote.kmongo", "kmongo-core", "4.5.1")
     implementation("org.litote.kmongo", "kmongo-serialization-mapping", "4.5.1")
