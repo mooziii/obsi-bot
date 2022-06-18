@@ -29,6 +29,8 @@ kotlin.sourceSets.all {
 dependencies {
     // kotlin libraries
     implementation(kotlin("stdlib"))
+    // kotlinx.datetime
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.3")
     // kotlinx.coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
     // ktor libraries
@@ -61,9 +63,14 @@ tasks {
             )
         }
     }
-    register<OpenApiGenerateTask>("generateTruckersMP") {
+    register<OpenApiGenerateTask>("generateTruckersMPApi") {
         specUrl.set("https://raw.githubusercontent.com/TruckersMP/API-Documentation/main/OpenAPI-v2.yml")
         outputDirectory.set(file("src/main/kotlin/"))
         packageName.set("com.truckersmp.api")
+    }
+    register<net.axay.openapigenerator.OpenApiGenerateTask>("generateModrinthApi") {
+        specUrl.set("https://docs.modrinth.com/openapi.yaml")
+        outputDirectory.set(file("src/main/kotlin/"))
+        packageName.set("com.modrinth.api")
     }
 }
