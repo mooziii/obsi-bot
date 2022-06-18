@@ -71,7 +71,7 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
                             appendLine("```kotlin")
                             appendLine()
                             appendLine("dependencies {")
-                            appendLine("    minecraft(com.mojang:minecraft:${arguments.gameVersion})")
+                            appendLine("    minecraft(\"com.mojang:minecraft:${arguments.gameVersion}\")")
                             if (mappings.isLayered) {
                                 appendLine("    mappings(loom.layered {")
                                 appendLine("        addLayer(quiltMappings.mappings($mappingsDependency))")
