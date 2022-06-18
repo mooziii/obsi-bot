@@ -39,7 +39,7 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
 
                 action {
                     val toolchain = Toolchain.valueOf(arguments.toolchain.uppercase())
-                    val mappings = Mappings.valueOf(arguments.mappings.uppercase())
+                    val mappings = Mappings.values().first { arguments.mappings == it.capitalizedName }
                     val loaderDependency = "${toolchain.loaderGroupId}:${VersionManager.getLoaderVersion(toolchain)}"
                     val apiDependency = "${toolchain.apiGroupId}:${VersionManager.getAPIVersion(toolchain, GameVersion(arguments.gameVersion, true))}"
                     val mappingsDependency = VersionManager.getMappingsVersion(mappings, GameVersion(arguments.gameVersion, true))
@@ -120,7 +120,6 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
                         }
                     }
                 }
-
             }
 
             ephemeralSubCommand(::MinecraftVersionsArgs) {
@@ -135,10 +134,10 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
                             title = localText("command.minecraft.versions.embed.title", obsiGuild)
                             description = buildString {
                                 VersionManager.getGameVersions().forEach {
-                                    if(!it.stable || arguments.showSnapshots) {
+                                    if (!it.stable && arguments.showSnapshots) {
                                         appendLine("*${it.version}*")
-                                    } else {
-                                        appendLine(it.version)
+                                    } else if(it.stable) {
+                                        appendLine("**${it.version}**")
                                     }
                                 }
                             }
@@ -171,11 +170,11 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
             name = "game-version"
             description = globalText("command.minecraft.modding.argument.gameVersion")
             validate {
-                //if(VersionManager.getGameVersions().map { it.version.lowercase() }.contains(this.value.lowercase())) {
+                if(VersionManager.getGameVersions().map { it.version.lowercase() }.contains(this.value.lowercase())) {
                     pass()
-                //} else {
-                //    fail()
-                //}
+                } else {
+                    fail()
+                }
             }
         }
 

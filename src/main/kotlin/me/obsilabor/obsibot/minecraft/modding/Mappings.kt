@@ -38,6 +38,6 @@ enum class Mappings(
             "https://server.bbkr.space/artifactory/libs-release/"
         ),
         true
-    )
+    );
 
 }

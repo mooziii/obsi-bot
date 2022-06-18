@@ -43,6 +43,6 @@ object VersionManager {
     }
 
     suspend fun getGameVersions(): List<GameVersion> {
-        return ObsiBot.json.decodeFromString<List<GameVersion>>(ktorClient.get<HttpResponse>("https://meta.quiltmc.org/v3/versions/game").receive())
+        return ObsiBot.json.decodeFromString(ktorClient.get<HttpResponse>("https://meta.quiltmc.org/v3/versions/game").receive())
     }
 }
