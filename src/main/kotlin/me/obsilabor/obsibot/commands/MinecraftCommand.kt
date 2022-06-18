@@ -171,11 +171,11 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
             name = "game-version"
             description = globalText("command.minecraft.modding.argument.gameVersion")
             validate {
-                if(VersionManager.getGameVersions().map { it.version.lowercase() }.contains(this.value.lowercase())) {
+                //if(VersionManager.getGameVersions().map { it.version.lowercase() }.contains(this.value.lowercase())) {
                     pass()
-                } else {
-                    fail()
-                }
+                //} else {
+                //    fail()
+                //}
             }
         }
 
