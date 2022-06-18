@@ -40,5 +40,14 @@
   "command.radio.play.argument.radiostream.description": "Radiostream to play",
   "command.radio.disconnect.description": "Command to disconnect the bot",
   "command.radio.failure.alreadyconnected": "I'm already connected to a voice channel or currently play another radio stream.",
-  "command.radio.success": "Now playing **${radio}** ${emoji} in <#${voicechannel}>. Enjoy the radiostream!"
+  "command.radio.success": "Now playing **${radio}** ${emoji} in <#${voicechannel}>. Enjoy the radiostream!",
+  "command.minecraft.description": "Commands about minecraft",
+  "command.minecraft.modding.description": "Command to generate buildscripts for fabric and quilt.",
+  "command.minecraft.versions.description": "Command to list minecraft versions",
+  "command.minecraft.versions.embed.title": "Minecraft Versions",
+  "command.minecraft.version.argument.showSnapshots": "List snapshots",
+  "command.minecraft.modding.argument.toolchain": "Modding toolchain to use",
+  "command.minecraft.modding.argument.gameVersion": "Game version to use",
+  "command.minecraft.modding.argument.mappings": "Mappings to use",
+  "command.minecraft.modding.argument.kotlinLibraries": "Use Kotlin libraries?"
 }
