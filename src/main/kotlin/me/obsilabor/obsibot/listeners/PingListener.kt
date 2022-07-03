@@ -29,6 +29,7 @@ class PingListener : Extension() {
                 }
                 if (pingCount >= 3) {
                     println("Trying to ban ${event.member?.tag}")
+                    event.message.delete("Too many pings")
                     event.member?.ban {
                         reason = "Too many pings"
                         deleteMessagesDays = 7
