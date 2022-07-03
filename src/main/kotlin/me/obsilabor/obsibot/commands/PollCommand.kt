@@ -58,14 +58,14 @@ class PollCommand : CommandExtension("poll", "command.poll.description") {
                         totalVotes = 1
                     }
                     val message = channel.createMessage {
-                        content = "**${localText("poll", obsiGuild)}**"
+                        content = "**${localText("poll", obsiGuild)}: ${arguments.what}**"
                         embed {
                             color = Color(7462764)
                             author {
                                 name = member?.asMember()?.displayName
                                 icon = user.asUser().avatar?.url
                             }
-                            title = localText("poll", obsiGuild)
+                            title = localText("poll", obsiGuild) + ": ${arguments.what}"
                             val builder = StringBuilder()
                             options.forEachIndexed { index, it ->
                                 kotlin.runCatching {
@@ -132,6 +132,11 @@ class PollCommand : CommandExtension("poll", "command.poll.description") {
     }
 
     inner class PollCreateArgs : Arguments() {
+        val what by string {
+            name = "what"
+            description = globalText("command.poll.create.argument.what.description")
+        }
+
         val endTimestamp by long {
             name = "endtimestamp"
             description = globalText("command.poll.create.argument.endtimestamp.description")

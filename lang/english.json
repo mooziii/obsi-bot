@@ -49,5 +49,6 @@
   "command.minecraft.modding.argument.toolchain": "Modding toolchain to use",
   "command.minecraft.modding.argument.gameVersion": "Game version to use",
   "command.minecraft.modding.argument.mappings": "Mappings to use",
-  "command.minecraft.modding.argument.kotlinLibraries": "Use Kotlin libraries?"
+  "command.minecraft.modding.argument.kotlinLibraries": "Use Kotlin libraries?",
+  "ended": "Ended"
 }

@@ -39,5 +39,15 @@
   "command.radio.play.argument.radiostream.description": "Radio-Livestream welcher gespielt werden soll",
   "command.radio.disconnect.description": "Command um den aktuellen Radio-Livestream auszuschalten",
   "command.radio.failure.alreadyconnected": "Ich bin bereits in einem anderem Sprachkanal oder spiele bereits einen Radio-Livestream ab",
-  "command.radio.success": "Jetzt läuft **${radio}** ${emoji} in <#${voicechannel}>. Viel Spaß!"
+  "command.radio.success": "Jetzt läuft **${radio}** ${emoji} in <#${voicechannel}>. Viel Spaß!",
+  "command.minecraft.description": "Commands über Minecraft",
+  "command.minecraft.modding.description": "Command to generate buildscripts for fabric and quilt.",
+  "command.minecraft.versions.description": "Command um alle Minecraft Versionen aufzulisten",
+  "command.minecraft.versions.embed.title": "Minecraft Versionen",
+  "command.minecraft.version.argument.showSnapshots": "Snapshots auflisten",
+  "command.minecraft.modding.argument.toolchain": "Modding Toolchain welche verwendet wird",
+  "command.minecraft.modding.argument.gameVersion": "Spielversion welche verwendet wird",
+  "command.minecraft.modding.argument.mappings": "Mappings welche verwendet werden",
+  "command.minecraft.modding.argument.kotlinLibraries": "Kotlin Bibilotheken verwenden?",
+  "ended": "Beendet"
 }
