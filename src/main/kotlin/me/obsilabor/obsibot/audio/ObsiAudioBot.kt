@@ -15,6 +15,7 @@ import dev.kord.common.entity.Snowflake
 import dev.kord.core.entity.Guild
 import dev.kord.core.entity.Member
 import dev.kord.core.entity.channel.VoiceChannel
+import dev.kord.gateway.editPresence
 import dev.kord.voice.AudioFrame
 import dev.kord.voice.VoiceConnection
 import me.obsilabor.obsibot.ObsiBot
@@ -42,7 +43,7 @@ object ObsiAudioBot {
         if(guild == null) return
         connections[guild.id]?.shutdown()
         connections.remove(guild.id)
-        ObsiBot.client.editPresence {
+        guild.gateway?.editPresence {
             playing("Give us a star on Github!")
         }
     }
@@ -61,7 +62,7 @@ object ObsiAudioBot {
             audioProvider { AudioFrame.fromData(player.provide()?.data) }
         }
         connections[guild.id] = connection
-        ObsiBot.client.editPresence {
+        guild.gateway?.editPresence {
             listening("$radioName 🎶")
         }
         return localText("command.radio.success", hashMapOf("radio" to radioName, "voicechannel" to channel.id.value, "emoji" to radioStreamConfig.flagEmoji), guild.obsify() ?: guild.createObsiGuild())
