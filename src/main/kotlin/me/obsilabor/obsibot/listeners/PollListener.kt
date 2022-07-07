@@ -50,14 +50,14 @@ class PollListener : Extension() {
                     totalVotes = 1
                 }
                 interaction.message?.edit {
-                    content = "${interaction.message?.content} *(${localText("ended", obsiGuild)})*"
+                    content = "${interaction.message?.content}"
                     embed {
                         color = Color(7462764)
                         author {
                             name = guild.getMember(poll.owner).asMember().displayName
                             icon = guild.getMember(poll.owner).asUser().avatar?.url
                         }
-                        title = interaction.message?.embeds?.first()?.title + " (${localText("ended", obsiGuild)})"
+                        title = interaction.message?.embeds?.first()?.title
                         val builder = StringBuilder()
                         poll.options.keys.forEachIndexed { _, it ->
                             kotlin.runCatching {
