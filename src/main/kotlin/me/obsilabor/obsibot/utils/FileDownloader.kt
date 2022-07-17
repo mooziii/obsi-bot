@@ -1,6 +1,7 @@
 package me.obsilabor.obsibot.utils
 
-import io.ktor.client.features.*
+import io.ktor.client.call.body
+import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import kotlinx.coroutines.*
@@ -11,7 +12,7 @@ import me.obsilabor.obsibot.ObsiBot
 object FileDownloader {
 
     suspend fun downloadFile(url: String, targetFile: File, current: Int, total: Int) {
-        val downloadContent = ObsiBot.ktorClient.get<HttpResponse>(url) {
+        val downloadContent = ObsiBot.ktorClient.get(url) {
             onDownload { bytesSentTotal, contentLength ->
                 val progress = bytesSentTotal.toDouble() / contentLength.toDouble()
                 val hashtags = (progress * 30).roundToInt()
@@ -31,7 +32,8 @@ object FileDownloader {
                     print("\r  $string")
                 }.join()
             }
-        }.readBytes()
+        }
+            .body<HttpResponse>().readBytes()
         println()
         targetFile.writeBytes(downloadContent)
     }
@@ -39,5 +41,4 @@ object FileDownloader {
     suspend fun downloadFile(url: String, targetFile: File) {
         downloadFile(url, targetFile, 1, 1)
     }
-
 }

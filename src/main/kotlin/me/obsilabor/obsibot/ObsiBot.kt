@@ -70,13 +70,13 @@ object ObsiBot {
         ConfigManager.mongoConfig
         Localization.extractLanguageFiles()
         Localization.loadAllLanguageFiles()
-        if(optionSet.has("setup")) {
+        if (optionSet.has("setup")) {
             globalText("bot.help", hashMapOf("languages" to Localization.languages.keys)).split("\\n").forEach {
                 println(it)
             }
             return
         }
-        if(optionSet.hasArgument("language")) {
+        if (optionSet.hasArgument("language")) {
             Localization.globalLanguage = optionSet.valueOf("language").toString()
         }
         val timer = Timer()

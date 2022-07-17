@@ -3,6 +3,7 @@ package me.obsilabor.obsibot.minecraft.modding
 import com.modrinth.api.Version
 import io.ktor.client.*
 import io.ktor.client.call.*
+import io.ktor.client.call.body
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import kotlinx.serialization.decodeFromString
@@ -12,30 +13,49 @@ import me.obsilabor.obsibot.ObsiBot.ktorClient
 object VersionManager {
 
     suspend fun getAPIVersion(toolchain: Toolchain, gameVersion: GameVersion): String {
-        val response = ktorClient.get<HttpResponse>(toolchain.apiUrl) {
+        val response = ktorClient.get(toolchain.apiUrl) {
             parameter("game_versions", "[\"${gameVersion.version}\"]")
         }
-        return ObsiBot.json.decodeFromString<List<Version>>(response.receive()).firstOrNull()?.versionNumber ?: "No version available"
+            .body<HttpResponse>()
+        return ObsiBot.json.decodeFromString<List<Version>>(response.body()).firstOrNull()?.versionNumber
+            ?: "No version available"
     }
 
     suspend fun getKotlinLibraryVersion(): String {
-        val response = ktorClient.get<HttpResponse>("https://api.modrinth.com/v2/project/Ha28R6CL/version")
-        return ObsiBot.json.decodeFromString<List<Version>>(response.receive()).firstOrNull()?.versionNumber ?: "No version available"
+        val response = ktorClient.get("https://api.modrinth.com/v2/project/Ha28R6CL/version").body<HttpResponse>()
+        return ObsiBot.json.decodeFromString<List<Version>>(response.body()).firstOrNull()?.versionNumber
+            ?: "No version available"
     }
 
     suspend fun getLoaderVersion(toolchain: Toolchain): String {
-        val response = when(toolchain) {
-            Toolchain.FABRIC -> ObsiBot.json.decodeFromString<List<FabricLoaderVersion>>(ktorClient.get<HttpResponse>(toolchain.loaderUrl).receive())
-            Toolchain.QUILT -> ObsiBot.json.decodeFromString<List<QuiltLoaderVersion>>(ktorClient.get<HttpResponse>(toolchain.loaderUrl).receive())
+        val response = when (toolchain) {
+            Toolchain.FABRIC -> ObsiBot.json.decodeFromString<List<FabricLoaderVersion>>(
+                ktorClient.get(toolchain.loaderUrl).body<HttpResponse>().body()
+            )
+            Toolchain.QUILT -> ObsiBot.json.decodeFromString<List<QuiltLoaderVersion>>(
+                ktorClient.get(toolchain.loaderUrl).body<HttpResponse>().body()
+            )
         }
         return response.first().maven
     }
 
     suspend fun getMappingsVersion(mappings: Mappings, version: GameVersion): String {
-        val response = when(mappings) {
-            Mappings.LAYERED_MOJANG_AND_QUILT -> ObsiBot.json.decodeFromString<List<QuiltMappingsVersion>>(ktorClient.get<HttpResponse>(mappings.url ?: return "loom.officialMojangMappings()").receive())
-            Mappings.QUILT -> ObsiBot.json.decodeFromString<List<QuiltMappingsVersion>>(ktorClient.get<HttpResponse>(mappings.url ?: return "loom.officialMojangMappings()").receive())
-            Mappings.YARN -> ObsiBot.json.decodeFromString<List<YarnMappingsVersion>>(ktorClient.get<HttpResponse>(mappings.url ?: return "loom.officialMojangMappings()").receive())
+        val response = when (mappings) {
+            Mappings.LAYERED_MOJANG_AND_QUILT -> ObsiBot.json.decodeFromString<List<QuiltMappingsVersion>>(
+                ktorClient.get(
+                    mappings.url ?: return "loom.officialMojangMappings()"
+                ).body<HttpResponse>().body()
+            )
+            Mappings.QUILT -> ObsiBot.json.decodeFromString<List<QuiltMappingsVersion>>(
+                ktorClient.get(
+                    mappings.url ?: return "loom.officialMojangMappings()"
+                ).body<HttpResponse>().body()
+            )
+            Mappings.YARN -> ObsiBot.json.decodeFromString<List<YarnMappingsVersion>>(
+                ktorClient.get(
+                    mappings.url ?: return "loom.officialMojangMappings()"
+                ).body<HttpResponse>().body()
+            )
             else -> return "loom.officialMojangMappings()"
         }
         val maven = (response.firstOrNull { it.gameVersion == version.version } as CommonMappingsVersion).maven
@@ -43,6 +63,8 @@ object VersionManager {
     }
 
     suspend fun getGameVersions(): List<GameVersion> {
-        return ObsiBot.json.decodeFromString(ktorClient.get<HttpResponse>("https://meta.quiltmc.org/v3/versions/game").receive())
+        return ObsiBot.json.decodeFromString(
+            ktorClient.get("https://meta.quiltmc.org/v3/versions/game").body<HttpResponse>().body()
+        )
     }
 }
