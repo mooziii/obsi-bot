@@ -48,7 +48,7 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
                     }"
                     val mappingsDependency =
                         VersionManager.getMappingsVersion(mappings, GameVersion(arguments.gameVersion, true))
-                    respondPublic {
+                    respond {
                         content = buildString {
                             appendLine("**build.gradle.kts**")
                             appendLine("```kotlin")

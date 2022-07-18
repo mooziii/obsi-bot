@@ -1,9 +1,9 @@
 package me.obsilabor.obsibot.commands
 
+import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.ephemeralSubCommand
 import com.kotlindiscord.kord.extensions.commands.converters.impl.*
-import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
 import com.kotlindiscord.kord.extensions.utils.hasPermission
@@ -34,6 +34,8 @@ class GiveawayCommand : CommandExtension("giveaway", "command.giveaway.descripti
         ephemeralSlashCommand {
             name = "giveaway"
             description = globalText("command.giveaway.description")
+
+            check { anyGuild() }
 
             ephemeralSubCommand(::GiveawayCreateArgs) {
                 name = "create"

@@ -1,5 +1,6 @@
 package me.obsilabor.obsibot.commands
 
+import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.ephemeralSubCommand
 import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
@@ -27,6 +28,8 @@ class PollCommand : CommandExtension("poll", "command.poll.description") {
         ephemeralSlashCommand {
             name = "poll"
             description = globalText("command.poll.description")
+
+            check { anyGuild() }
 
             ephemeralSubCommand(::PollCreateArgs) {
                 name = "create"
@@ -123,7 +126,7 @@ class PollCommand : CommandExtension("poll", "command.poll.description") {
                         )
                     )
                     obsiGuild.update()
-                    respondPublic {
+                    respond {
                         content = "ok :ok_hand:"
                     }
                 }

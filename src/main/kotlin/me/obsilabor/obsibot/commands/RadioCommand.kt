@@ -1,9 +1,11 @@
 package me.obsilabor.obsibot.commands
 
+import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.converters.impl.stringChoice
 import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
+import com.kotlindiscord.kord.extensions.types.respond
 import com.kotlindiscord.kord.extensions.types.respondEphemeral
 import com.kotlindiscord.kord.extensions.types.respondPublic
 import com.kotlindiscord.kord.extensions.utils.hasPermission
@@ -31,6 +33,8 @@ class RadioCommand : CommandExtension("radio", "command.radio.description") {
             name = "radio"
             description = globalText("command.radio.description")
 
+            check { anyGuild() }
+
             publicSubCommand(::RadioArgs) {
                 name = "play"
                 description = globalText("command.radio.play.description")
@@ -38,7 +42,7 @@ class RadioCommand : CommandExtension("radio", "command.radio.description") {
                     val guild = getGuild()?.asGuildOrNull() ?: return@action
                     val member = member?.asMember() ?: return@action
                     val radioStream = findRadioStream(arguments.radioName) ?: return@action
-                    respondPublic {
+                    respond {
                         content = ObsiAudioBot.playRadioStream(
                             radioStream.url,
                             guild,
@@ -60,7 +64,7 @@ class RadioCommand : CommandExtension("radio", "command.radio.description") {
                     val member = member?.asMember() ?: return@action
                     if(member.hasPermission(Permission.ManageMessages) || member.hasPermission(Permission.Administrator)) {
                         ObsiAudioBot.disconnect(guild.asGuild())
-                        respondPublic {
+                        respond {
                             content = ":ok_hand:"
                         }
                     } else {

@@ -32,15 +32,18 @@ dependencies {
     // kotlinx.datetime
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
     // kotlinx.coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     // ktor libraries
     // kmongo
     implementation("org.litote.kmongo", "kmongo-core", "4.6.1")
     implementation("org.litote.kmongo", "kmongo-serialization-mapping", "4.6.1")
     // kord voice, lavaplayer and kordex libraries
-    implementation("com.sedmelluq:lavaplayer:1.3.77")
-    implementation("dev.kord:kord-voice:v0.8.0-M14")
-    implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion")
+    implementation("com.sedmelluq:lavaplayer:1.3.78")
+    implementation("dev.kord:kord-core:0.8.0-M15")
+    implementation("dev.kord:kord-voice:0.8.0-M14")
+    implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion") {
+        exclude("dev.kord")
+    }
     implementation("com.kotlindiscord.kord.extensions:extra-mappings:$kordexVersion")
     // utility libraries
     implementation("net.sf.jopt-simple:jopt-simple:5.0.4")
