@@ -1,5 +1,6 @@
-package me.obsilabor.obsibot.commands
+package me.obsilabor.obsibot.commands.tools
 
+import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.converters.impl.stringChoice
 import com.kotlindiscord.kord.extensions.commands.application.slash.ephemeralSubCommand
@@ -14,6 +15,7 @@ import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
+import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.minecraft.modding.GameVersion
@@ -31,6 +33,8 @@ class MinecraftCommand : CommandExtension("minecraft", "command.minecraft.descri
         publicSlashCommand {
             name = "minecraft"
             description = globalText(descriptionKey)
+
+            check { anyGuild() }
 
             publicSubCommand(::MinecraftModdingArgs) {
                 name = "modding"

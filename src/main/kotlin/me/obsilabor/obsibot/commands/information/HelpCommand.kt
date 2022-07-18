@@ -1,5 +1,6 @@
-package me.obsilabor.obsibot.commands
+package me.obsilabor.obsibot.commands.information
 
+import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
 import com.kotlindiscord.kord.extensions.types.respondPublic
@@ -7,6 +8,7 @@ import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
+import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.applyDefaultFooter
@@ -17,6 +19,8 @@ import me.obsilabor.obsibot.utils.obsify
 class HelpCommand : CommandExtension("help", "command.help.description") {
     override suspend fun setup() {
         publicSlashCommand {
+
+            check { anyGuild() }
 
             name = "help"
             description = globalText("command.help.description")

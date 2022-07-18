@@ -8,7 +8,7 @@ plugins {
 }
 
 val javaVersion = 17
-val kordexVersion = "1.5.5-SNAPSHOT"
+val kordexVersion = "1.5.2-RC1"
 
 group = "me.obsilabor"
 version = "1.0.0"
@@ -39,11 +39,8 @@ dependencies {
     implementation("org.litote.kmongo", "kmongo-serialization-mapping", "4.6.1")
     // kord voice, lavaplayer and kordex libraries
     implementation("com.sedmelluq:lavaplayer:1.3.78")
-    implementation("dev.kord:kord-core:0.8.0-M15")
     implementation("dev.kord:kord-voice:0.8.0-M14")
-    implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion") {
-        exclude("dev.kord")
-    }
+    implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion")
     implementation("com.kotlindiscord.kord.extensions:extra-mappings:$kordexVersion")
     // utility libraries
     implementation("net.sf.jopt-simple:jopt-simple:5.0.4")

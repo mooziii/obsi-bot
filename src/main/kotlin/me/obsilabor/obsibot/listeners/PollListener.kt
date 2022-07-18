@@ -2,10 +2,11 @@ package me.obsilabor.obsibot.listeners
 
 import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.event
+import com.kotlindiscord.kord.extensions.utils.ackEphemeral
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.behavior.edit
-import dev.kord.core.behavior.interaction.followUpEphemeral
+import dev.kord.core.behavior.interaction.response.createEphemeralFollowup
 import dev.kord.core.event.interaction.SelectMenuInteractionCreateEvent
 import dev.kord.rest.builder.message.modify.actionRow
 import dev.kord.rest.builder.message.modify.embed
@@ -27,7 +28,7 @@ class PollListener : Extension() {
                 val obsiGuild = guild.obsify() ?: guild.createObsiGuild()
                 val poll = obsiGuild.polls?.firstOrNull { it.interactionId == interaction.componentId } ?: return@action
                 if(poll.ended || poll.end == 0L) {
-                    interaction.acknowledgeEphemeral().followUpEphemeral {
+                    interaction.ackEphemeral().createEphemeralFollowup {
                         content = localText("poll.ended", obsiGuild)
                     }
                     return@action
@@ -49,15 +50,15 @@ class PollListener : Extension() {
                 if(totalVotes == 0) {
                     totalVotes = 1
                 }
-                interaction.message?.edit {
-                    content = "${interaction.message?.content}"
+                interaction.message.edit {
+                    content = "${interaction.message.content}"
                     embed {
                         color = Color(7462764)
                         author {
                             name = guild.getMember(poll.owner).asMember().displayName
                             icon = guild.getMember(poll.owner).asUser().avatar?.url
                         }
-                        title = interaction.message?.embeds?.first()?.title
+                        title = interaction.message.embeds?.first()?.title
                         val builder = StringBuilder()
                         poll.options.keys.forEachIndexed { _, it ->
                             kotlin.runCatching {
@@ -84,7 +85,7 @@ class PollListener : Extension() {
                         }
                     }
                 }
-                interaction.acknowledgeEphemeral().followUpEphemeral {
+                interaction.ackEphemeral().createEphemeralFollowup {
                     content = localText("poll.voted", hashMapOf("option" to selectedOption), obsiGuild)
                 }
             }

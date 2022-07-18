@@ -1,4 +1,4 @@
-package me.obsilabor.obsibot.commands
+package me.obsilabor.obsibot.commands.events
 
 import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.commands.Arguments
@@ -16,6 +16,7 @@ import dev.kord.core.behavior.reply
 import dev.kord.core.entity.ReactionEmoji
 import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
+import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.data.Giveaway
 import me.obsilabor.obsibot.data.ObsiGuild
 import me.obsilabor.obsibot.database.MongoManager

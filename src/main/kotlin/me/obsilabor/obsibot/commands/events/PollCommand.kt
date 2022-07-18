@@ -1,4 +1,4 @@
-package me.obsilabor.obsibot.commands
+package me.obsilabor.obsibot.commands.events
 
 import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.commands.Arguments
@@ -6,16 +6,15 @@ import com.kotlindiscord.kord.extensions.commands.application.slash.ephemeralSub
 import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
 import com.kotlindiscord.kord.extensions.commands.converters.impl.long
 import com.kotlindiscord.kord.extensions.commands.converters.impl.string
-import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
-import com.kotlindiscord.kord.extensions.types.respondPublic
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.rest.builder.message.create.actionRow
 import dev.kord.rest.builder.message.create.embed
+import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.data.Poll
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText

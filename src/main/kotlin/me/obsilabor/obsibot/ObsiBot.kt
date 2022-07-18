@@ -16,7 +16,12 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import me.obsilabor.obsibot.audio.ObsiAudioBot
-import me.obsilabor.obsibot.commands.*
+import me.obsilabor.obsibot.commands.CommandExtension
+import me.obsilabor.obsibot.commands.tools.*
+import me.obsilabor.obsibot.commands.information.*
+import me.obsilabor.obsibot.commands.moderation.*
+import me.obsilabor.obsibot.commands.events.*
+import me.obsilabor.obsibot.commands.`fun`.*
 import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.listeners.GiveawayListener
 import me.obsilabor.obsibot.listeners.PingListener
@@ -93,6 +98,7 @@ object ObsiBot {
                 addCommand(::PollCommand)
                 addCommand(::RadioCommand)
                 addCommand(::HelpCommand)
+                addCommand(::SlowModeCommand)
 
                 extMappings {}
             }
