@@ -6,7 +6,6 @@ import com.kotlindiscord.kord.extensions.checks.isNotInThread
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.converters.impl.duration
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
-import com.kotlindiscord.kord.extensions.utils.toDuration
 import dev.kord.common.entity.Permission
 import dev.kord.core.behavior.channel.edit
 import dev.kord.core.entity.channel.TextChannel
@@ -34,7 +33,7 @@ class SlowModeCommand() : CommandExtension("slowmode") {
             action {
                 val channel = (channel.asChannel() as TextChannel)
                 channel.edit {
-                    rateLimitPerUser = arguments.duration.toDuration(TimeZone.UTC)
+                    rateLimitPerUser = arguments.duration.toTotalSeconds()
                 }
             }
         }
