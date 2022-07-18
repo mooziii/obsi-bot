@@ -2,10 +2,16 @@
   "help":  "Help",
   "help.runwithargument":  "For help with bot setup, run the bot with the `--help` argument.",
   "help.wiki": "For more help, visit the [Wiki](https://github.com/mooziii/obsi-bot/wiki).",
+
   "bot.ping": "hi, please give me a star on github: <https://github.com/mooziii/obsi-bot>",
   "bot.help": "-------------------------------\nFollow this tutorial for bot setup: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nSupported languages are these: ${languages}",
+
   "generic.nopermissions.short": "Insufficient permissions",
   "generic.nopermissions.long": "You don't have the ${required} permission to perform this action",
+  "generic.nopermissions.rolerequired": "You need the ${roleName} role to perform this action",
+
+  "ended": "Ended",
+
   "poll": "Poll",
   "poll.instructions": "This poll ends <t:${endtimestamp}:R>\nUse the menu below to vote.",
   "poll.votes": "votes",
@@ -13,9 +19,11 @@
   "poll.ended": "You can't vote for polls that already ended.",
   "poll.winner": "The poll ended. The winner is: **${option}**",
   "poll.option.description": "Click to vote for ${option}",
+
   "giveaway.winners": "The winners are: ${winners}",
   "giveaway.embed.author": "Giveaway by ${owner}",
   "giveaway.embed.description": "You can win **${prizecount}x ${prize}** by reacting with ${emoji}!\nThe givaway ends <t:${end}:R>\nHosted by: <@${owner}>",
+
   "command.help.description": "A command for, you guessed it, help!",
   "command.giveaway.rolerequired": "You need the \"Giveaway Permissions\" role to manage giveaways (or you must be the host of a giveaway to roll it manually).",
   "command.giveaway.description": "Command for managing giveaways",
@@ -27,6 +35,7 @@
   "command.giveaway.roll.success": "Giveaway rolled.",
   "command.giveaway.roll.description": "Command to roll giveaways",
   "command.giveaway.roll.argument.id.description": "Id of the giveaway to roll (id of the message from the giveaway)",
+
   "command.poll.rolerequired": "You need the \"Poll Permissions\" role to manage polls (or you must be the host of a poll to end it manually).",
   "command.poll.create.argument.endtimestamp.description": "The exact timestamp of when the poll should end",
   "command.poll.create.argument.options.description": "List of options for the poll (split by a comma)",
@@ -41,6 +50,7 @@
   "command.radio.disconnect.description": "Command to disconnect the bot",
   "command.radio.failure.alreadyconnected": "I'm already connected to a voice channel or currently play another radio stream.",
   "command.radio.success": "Now playing **${radio}** ${emoji} in <#${voicechannel}>. Enjoy the radiostream!",
+
   "command.minecraft.description": "Commands about minecraft",
   "command.minecraft.modding.description": "Command to generate buildscripts for fabric and quilt.",
   "command.minecraft.versions.description": "Command to list minecraft versions",
@@ -49,6 +59,5 @@
   "command.minecraft.modding.argument.toolchain": "Modding toolchain to use",
   "command.minecraft.modding.argument.gameVersion": "Game version to use",
   "command.minecraft.modding.argument.mappings": "Mappings to use",
-  "command.minecraft.modding.argument.kotlinLibraries": "Use Kotlin libraries?",
-  "ended": "Ended"
+  "command.minecraft.modding.argument.kotlinLibraries": "Use Kotlin libraries?"
 }
