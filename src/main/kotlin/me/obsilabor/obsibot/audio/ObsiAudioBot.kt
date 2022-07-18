@@ -58,10 +58,15 @@ object ObsiAudioBot {
         }
         val player = lavaplayerManager.createPlayer()
         lavaplayerManager.playTrack(url, player)
+        /*
         val connection = channel.connect {
             audioProvider { AudioFrame.fromData(player.provide()?.data) }
         }
-        connections[guild.id] = connection
+         */
+        if (true) { // intellij yells at me
+            return "because kord somehow manages it to add breaking changes every version, voice is currently unavailable"
+        }
+        //connections[guild.id] = connection
         guild.gateway?.editPresence {
             listening("$radioName 🎶")
         }
