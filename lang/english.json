@@ -62,6 +62,6 @@
   "command.minecraft.modding.argument.kotlinLibraries": "Use Kotlin libraries?",
 
   "command.slowmode.description": "Command to change slow mode",
-  "command.slowmode.argument.duration.description": "New slowmode ratelimit duration,",
+  "command.slowmode.argument.duration.description": "New slowmode ratelimit duration",
   "command.slowmode.success": "Slowmode changed to ${duration}"
 }
