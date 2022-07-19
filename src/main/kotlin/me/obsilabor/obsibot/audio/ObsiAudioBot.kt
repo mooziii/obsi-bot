@@ -12,6 +12,7 @@ import dev.kord.common.annotation.KordPreview
 import dev.kord.common.annotation.KordVoice
 import dev.kord.common.entity.Permission
 import dev.kord.common.entity.Snowflake
+import dev.kord.core.behavior.channel.connect
 import dev.kord.core.entity.Guild
 import dev.kord.core.entity.Member
 import dev.kord.core.entity.channel.VoiceChannel
@@ -36,7 +37,6 @@ object ObsiAudioBot {
     fun setupAudio() {
         lavaplayerManager = DefaultAudioPlayerManager()
         AudioSourceManagers.registerRemoteSources(lavaplayerManager)
-
     }
 
     suspend fun disconnect(guild: Guild?) {
@@ -58,15 +58,10 @@ object ObsiAudioBot {
         }
         val player = lavaplayerManager.createPlayer()
         lavaplayerManager.playTrack(url, player)
-        /*
         val connection = channel.connect {
             audioProvider { AudioFrame.fromData(player.provide()?.data) }
         }
-         */
-        if (true) { // intellij yells at me
-            return "because kord somehow manages it to add breaking changes every version, voice is currently unavailable"
-        }
-        //connections[guild.id] = connection
+        connections[guild.id] = connection
         guild.gateway?.editPresence {
             listening("$radioName 🎶")
         }

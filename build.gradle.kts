@@ -39,8 +39,12 @@ dependencies {
     implementation("org.litote.kmongo", "kmongo-serialization-mapping", "4.6.1")
     // kord voice, lavaplayer and kordex libraries
     implementation("com.sedmelluq:lavaplayer:1.3.78")
-    implementation("dev.kord:kord-core:0.8.0-M15")
-    implementation("dev.kord:kord-voice:0.8.0-M14")
+    implementation("dev.kord:kord-core:0.8.0-M15") {
+        capabilities {
+            requireCapability("dev.kord:core-voice:0.8.0-M14")
+        }
+    }
+    //implementation("dev.kord:kord-voice:0.8.0-M14")
     implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion") {
         exclude("dev.kord")
     }
