@@ -3,7 +3,6 @@ package me.obsilabor.obsibot.commands.moderation
 import check.hasPermission
 import com.kotlindiscord.kord.extensions.DISCORD_BLURPLE
 import com.kotlindiscord.kord.extensions.checks.anyGuild
-import com.kotlindiscord.kord.extensions.checks.hasPermission
 import com.kotlindiscord.kord.extensions.checks.isNotInThread
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.converters.impl.duration
@@ -17,7 +16,6 @@ import dev.kord.core.entity.channel.TextChannel
 import dev.kord.rest.builder.message.create.embed
 import kotlinx.datetime.DateTimePeriod
 import kotlinx.datetime.TimeZone
-import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.localization.localText
@@ -29,7 +27,6 @@ class SlowModeCommand() : CommandExtension("slowmode") {
 
     override suspend fun setup() {
         publicSlashCommand(::SlowModeArguments) {
-            guild(ObsiBot.TEST_SERVER_ID)
             name = "slowmode"
             description = globalText(descriptionKey)
 
