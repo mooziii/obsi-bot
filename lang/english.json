@@ -7,7 +7,7 @@
   "bot.help": "-------------------------------\nFollow this tutorial for bot setup: https://github.com/Obsilabor/obsi-bot/wiki/Deploy-the-Bot\nSupported languages are these: ${languages}",
 
   "generic.nopermissions.short": "Insufficient permissions",
-  "generic.nopermissions.long": "You don't have the ${required} permission to perform this action",
+  "generic.nopermissions.long": "You don't have the required permission (${required}) to perform this action",
   "generic.nopermissions.rolerequired": "You need the ${roleName} role to perform this action",
 
   "ended": "Ended",
@@ -59,5 +59,9 @@
   "command.minecraft.modding.argument.toolchain": "Modding toolchain to use",
   "command.minecraft.modding.argument.gameVersion": "Game version to use",
   "command.minecraft.modding.argument.mappings": "Mappings to use",
-  "command.minecraft.modding.argument.kotlinLibraries": "Use Kotlin libraries?"
+  "command.minecraft.modding.argument.kotlinLibraries": "Use Kotlin libraries?",
+
+  "command.slowmode.description": "Command to change slow mode",
+  "command.slowmode.argument.duration.description": "New slowmode ratelimit duration,",
+  "command.slowmode.success": "Slowmode changed to ${duration}"
 }

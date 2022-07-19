@@ -1,7 +1,7 @@
 package me.obsilabor.obsibot.utils
 
 import com.kotlindiscord.kord.extensions.builders.ExtensibleBotBuilder
-import com.kotlindiscord.kord.extensions.extensions.Extension
+import com.kotlindiscord.kord.extensions.commands.application.slash.SlashCommandContext
 import com.kotlindiscord.kord.extensions.utils.hasRole
 import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Snowflake
@@ -14,6 +14,11 @@ import me.obsilabor.obsibot.data.ObsiGuild
 import me.obsilabor.obsibot.database.MongoManager
 import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
+
+@KordPreview
+suspend fun SlashCommandContext<*, *>.obsiGuild(): ObsiGuild {
+    return guild?.asGuild()?.obsify() ?: guild?.asGuild()?.createObsiGuild() ?: throw RuntimeException("obsiGuild in private channel?")
+}
 
 @KordPreview
 fun Guild.obsify(): ObsiGuild? {
