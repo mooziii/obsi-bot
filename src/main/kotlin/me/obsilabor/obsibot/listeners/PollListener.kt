@@ -24,9 +24,9 @@ class PollListener : Extension() {
         event<SelectMenuInteractionCreateEvent> {
             action {
                 val interaction = event.interaction
-                val guild = interaction.message?.getGuild() ?: return@action
+                val guild = interaction.message.getGuild()
                 val obsiGuild = guild.obsify() ?: guild.createObsiGuild()
-                val poll = obsiGuild.polls?.firstOrNull { it.interactionId == interaction.componentId } ?: return@action
+                val poll = obsiGuild.polls.firstOrNull { it.interactionId == interaction.componentId } ?: return@action
                 if(poll.ended || poll.end == 0L) {
                     interaction.ackEphemeral().createEphemeralFollowup {
                         content = localText("poll.ended", obsiGuild)
@@ -51,14 +51,14 @@ class PollListener : Extension() {
                     totalVotes = 1
                 }
                 interaction.message.edit {
-                    content = "${interaction.message.content}"
+                    content = interaction.message.content
                     embed {
                         color = Color(7462764)
                         author {
                             name = guild.getMember(poll.owner).asMember().displayName
                             icon = guild.getMember(poll.owner).asUser().avatar?.url
                         }
-                        title = interaction.message.embeds?.first()?.title
+                        title = interaction.message.embeds.first().title
                         val builder = StringBuilder()
                         poll.options.keys.forEachIndexed { _, it ->
                             kotlin.runCatching {

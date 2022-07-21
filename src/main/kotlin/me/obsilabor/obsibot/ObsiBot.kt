@@ -23,10 +23,7 @@ import me.obsilabor.obsibot.commands.moderation.*
 import me.obsilabor.obsibot.commands.events.*
 import me.obsilabor.obsibot.commands.`fun`.*
 import me.obsilabor.obsibot.config.ConfigManager
-import me.obsilabor.obsibot.listeners.GiveawayListener
-import me.obsilabor.obsibot.listeners.PingListener
-import me.obsilabor.obsibot.listeners.PollListener
-import me.obsilabor.obsibot.listeners.ReadyListener
+import me.obsilabor.obsibot.listeners.*
 import me.obsilabor.obsibot.localization.Localization
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.tasks.GiveawayTask
@@ -93,12 +90,14 @@ object ObsiBot {
                 add(::ReadyListener)
                 add(::PollListener)
                 add(::GiveawayListener)
+                add(::BlacklistListener)
                 addCommand(::MinecraftCommand)
                 addCommand(::GiveawayCommand)
                 addCommand(::PollCommand)
                 addCommand(::RadioCommand)
                 addCommand(::HelpCommand)
                 addCommand(::SlowModeCommand)
+                addCommand(::BlacklistCommand)
 
                 extMappings {}
             }

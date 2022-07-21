@@ -38,6 +38,20 @@ class ReadyListener : Extension() {
                         }.id)
                         obsiGuild.update()
                     }
+                    if(obsiGuild.blacklistManagementRole == null || it.getRoleOrNull(obsiGuild.blacklistManagementRole ?: Snowflake(0)) == null) {
+                        obsiGuild.adoptBlacklistManagementRole(it.createRole {
+                            name = "Blacklist Management Permissions"
+                            reason = "Created by obsi-bot (please don't delete)"
+                        }.id)
+                        obsiGuild.update()
+                    }
+                    if(obsiGuild.blacklistBypassRole == null || it.getRoleOrNull(obsiGuild.blacklistBypassRole ?: Snowflake(0)) == null) {
+                        obsiGuild.adoptBlacklistBypassRole(it.createRole {
+                            name = "Blacklist Bypass Permissions"
+                            reason = "Created by obsi-bot (please don't delete)"
+                        }.id)
+                        obsiGuild.update()
+                    }
                 }
             }
         }

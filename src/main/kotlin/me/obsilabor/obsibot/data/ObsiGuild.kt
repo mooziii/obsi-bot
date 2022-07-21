@@ -4,6 +4,7 @@ import dev.kord.common.entity.Snowflake
 import kotlinx.coroutines.launch
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.database.MongoManager
+import me.obsilabor.obsibot.features.Blacklist
 import me.obsilabor.obsibot.localization.Localization
 import org.litote.kmongo.eq
 
@@ -13,13 +14,16 @@ data class ObsiGuild(
     val id: Snowflake,
     var language: String,
     var giveaways: ArrayList<Giveaway>,
-    var giveawayRole: Snowflake?,
-    var polls: ArrayList<Poll>?,
-    var pollRole: Snowflake?
+    var giveawayRole: Snowflake? = null,
+    var polls: ArrayList<Poll> = arrayListOf(),
+    var pollRole: Snowflake? = null,
+    var pingLimit: Int = 3, //-1 to disable
+    var blacklist: MutableSet<BlacklistedWord> = mutableSetOf(),
+    var blacklistManagementRole: Snowflake? = null,
+    var blacklistBypassRole: Snowflake? = null,
 ) {
-
     companion object {
-        const val NEWEST_DOCUMENT_VERSION = 1
+        const val NEWEST_DOCUMENT_VERSION = 2
 
         fun newDocument(snowflake: Snowflake): ObsiGuild {
             return ObsiGuild(
@@ -29,6 +33,10 @@ data class ObsiGuild(
                 arrayListOf(),
                 null,
                 arrayListOf(),
+                null,
+                3,
+                mutableSetOf(),
+                null,
                 null
             )
         }
@@ -43,9 +51,6 @@ data class ObsiGuild(
     fun migrateIfNeeded(): ObsiGuild {
         if(documentVersion < NEWEST_DOCUMENT_VERSION) {
             documentVersion = NEWEST_DOCUMENT_VERSION
-            if(polls == null) {
-                polls = arrayListOf()
-            }
             update()
         }
         return this
@@ -77,13 +82,13 @@ data class ObsiGuild(
     }
 
     fun adoptNewPoll(newPoll: Poll): ObsiGuild {
-        polls?.add(newPoll)
+        polls.add(newPoll)
         return this
     }
 
     fun refreshPollVotes(newPoll: Poll): ObsiGuild {
         val newList = arrayListOf(newPoll)
-        polls?.forEach {
+        polls.forEach {
             if(it.messageId != newPoll.messageId) {
                 newList.add(it)
             }
@@ -92,4 +97,13 @@ data class ObsiGuild(
         return this
     }
 
+    fun adoptBlacklistManagementRole(newRole: Snowflake): ObsiGuild {
+        blacklistManagementRole = newRole
+        return this
+    }
+
+    fun adoptBlacklistBypassRole(newRole: Snowflake): ObsiGuild {
+        blacklistBypassRole = newRole
+        return this
+    }
 }
