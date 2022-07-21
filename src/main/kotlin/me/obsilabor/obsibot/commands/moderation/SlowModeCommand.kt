@@ -1,6 +1,6 @@
 package me.obsilabor.obsibot.commands.moderation
 
-import check.hasPermission
+import me.obsilabor.obsibot.check.hasPermission
 import com.kotlindiscord.kord.extensions.DISCORD_BLURPLE
 import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.checks.isNotInThread

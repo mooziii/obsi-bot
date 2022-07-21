@@ -1,4 +1,4 @@
-package check
+package me.obsilabor.obsibot.check
 
 import com.kotlindiscord.kord.extensions.checks.types.CheckContext
 import com.kotlindiscord.kord.extensions.utils.hasPermission

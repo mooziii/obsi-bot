@@ -1,6 +1,6 @@
 package me.obsilabor.obsibot.commands.moderation
 
-import check.obsiGuild
+import me.obsilabor.obsibot.check.obsiGuild
 import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.checks.hasRole
 import com.kotlindiscord.kord.extensions.commands.Arguments
