@@ -53,6 +53,21 @@ suspend fun CheckContext<InteractionCreateEvent>.hasRole(role: Role) {
 }
 
 @KordPreview
+suspend fun CheckContext<InteractionCreateEvent>.hasRoleOrPermission(role: Role?, permission: Permission) {
+    hasRoleOrPermission(role?.id, permission)
+}
+
+@KordPreview
+suspend fun CheckContext<InteractionCreateEvent>.hasRoleOrPermission(role: Snowflake?, permission: Permission) {
+    if (role != null) {
+        hasRole(role)
+    }
+    if(!passed) {
+        hasPermission(permission)
+    }
+}
+
+@KordPreview
 suspend fun CheckContext<InteractionCreateEvent>.obsiGuild() : ObsiGuild {
     val guildId = event.interaction.data.guildId.value ?: error("`obsiGuild` must always be combinded with `anyGuild`")
     val guild = ObsiBot.client.getGuild(guildId)?.asGuild()

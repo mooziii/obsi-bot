@@ -12,7 +12,12 @@ import com.kotlindiscord.kord.extensions.extensions.ephemeralSlashCommand
 import com.kotlindiscord.kord.extensions.types.respond
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
+import dev.kord.common.entity.Permission
+import dev.kord.common.entity.Permissions
 import dev.kord.rest.builder.message.create.embed
+import me.obsilabor.obsibot.check.hasPermission
+import me.obsilabor.obsibot.check.hasRole
+import me.obsilabor.obsibot.check.hasRoleOrPermission
 import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.data.BlacklistedWord
 import me.obsilabor.obsibot.localization.globalText
@@ -27,10 +32,11 @@ class BlacklistCommand : CommandExtension("blacklist") {
             name = "blacklist"
             description = globalText(descriptionKey)
 
-            check { anyGuild() }
-            check { hasRole(obsiGuild().blacklistManagementRole ?: return@check) }
-
             ephemeralSubCommand {
+
+                check { anyGuild() }
+                check { hasRoleOrPermission(obsiGuild().blacklistManagementRole, Permission.Administrator) }
+
                 name = "view"
                 description = globalText("command.blacklist.view.description")
 
@@ -66,6 +72,10 @@ class BlacklistCommand : CommandExtension("blacklist") {
             }
 
             ephemeralSubCommand(::BlacklistAddArgs) {
+
+                check { anyGuild() }
+                check { hasRoleOrPermission(obsiGuild().blacklistManagementRole, Permission.Administrator) }
+
                 name = "add"
                 description = globalText("command.blacklist.add.description")
 
@@ -85,6 +95,10 @@ class BlacklistCommand : CommandExtension("blacklist") {
             }
 
             ephemeralSubCommand(::BlacklistRemoveArgs) {
+
+                check { anyGuild() }
+                check { hasRoleOrPermission(obsiGuild().blacklistManagementRole, Permission.Administrator) }
+
                 name = "remove"
                 description = globalText("command.blacklist.remove.description")
 
