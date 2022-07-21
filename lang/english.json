@@ -74,7 +74,7 @@
   "command.blacklist.view.description": "Prints every blacklisted word and why",
   "command.blacklist.add.description": "Adds a entry to the blacklist",
   "command.blacklist.add.success": "`${word}` has been added to the blacklist.",
-  "command.blacklist.remove.description": "`Removes an entry from the blacklist",
+  "command.blacklist.remove.description": "Removes an entry from the blacklist",
   "command.blacklist.remove.success": "`${word}` has been removed from the blacklist.",
   "command.blacklist.argument.word.description": "The word to add/remove",
   "command.blacklist.argument.why.description": "The reason why is this word on the blacklist",
