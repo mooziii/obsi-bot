@@ -22,7 +22,7 @@ import me.obsilabor.obsibot.localization.localText
 import me.obsilabor.obsibot.utils.*
 
 @KordPreview
-class SlowModeCommand() : CommandExtension("slowmode") {
+class SlowModeCommand : CommandExtension("slowmode") {
     private val maxSlowModeDuration = DateTimePeriod(hours = 6)
 
     override suspend fun setup() {
@@ -55,7 +55,7 @@ class SlowModeCommand() : CommandExtension("slowmode") {
             name = "duration"
             description = globalText("command.slowmode.argument.duration.description")
 
-            validate() {
+            validate {
                 failIf(
                     "Slowmode cannot be longer than ${maxSlowModeDuration.hours} hours"
                 ) { value > maxSlowModeDuration }

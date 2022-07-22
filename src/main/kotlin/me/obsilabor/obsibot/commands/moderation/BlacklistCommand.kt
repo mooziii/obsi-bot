@@ -2,7 +2,6 @@ package me.obsilabor.obsibot.commands.moderation
 
 import me.obsilabor.obsibot.check.obsiGuild
 import com.kotlindiscord.kord.extensions.checks.anyGuild
-import com.kotlindiscord.kord.extensions.checks.hasRole
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.ephemeralSubCommand
 import com.kotlindiscord.kord.extensions.commands.converters.impl.defaultingBoolean
@@ -13,10 +12,7 @@ import com.kotlindiscord.kord.extensions.types.respond
 import dev.kord.common.Color
 import dev.kord.common.annotation.KordPreview
 import dev.kord.common.entity.Permission
-import dev.kord.common.entity.Permissions
 import dev.kord.rest.builder.message.create.embed
-import me.obsilabor.obsibot.check.hasPermission
-import me.obsilabor.obsibot.check.hasRole
 import me.obsilabor.obsibot.check.hasRoleOrPermission
 import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.data.BlacklistedWord

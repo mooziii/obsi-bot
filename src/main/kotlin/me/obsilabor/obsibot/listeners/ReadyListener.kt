@@ -22,6 +22,7 @@ class ReadyListener : Extension() {
                 println("Bot started in ${System.currentTimeMillis()- ObsiBot.initTime}ms")
                 ObsiBot.isFullyFunctional = true
                 ObsiBot.client = kord
+                // TODO: add api for this
                 kord.guilds.toList().forEach {
                     val obsiGuild = it.obsify() ?: it.createObsiGuild()
                     if(obsiGuild.giveawayRole == null || it.getRoleOrNull(obsiGuild.giveawayRole ?: Snowflake(0)) == null) {
@@ -48,6 +49,13 @@ class ReadyListener : Extension() {
                     if(obsiGuild.blacklistBypassRole == null || it.getRoleOrNull(obsiGuild.blacklistBypassRole ?: Snowflake(0)) == null) {
                         obsiGuild.adoptBlacklistBypassRole(it.createRole {
                             name = "Blacklist Bypass Permissions"
+                            reason = "Created by obsi-bot (please don't delete)"
+                        }.id)
+                        obsiGuild.update()
+                    }
+                    if(obsiGuild.tagManagementRole == null || it.getRoleOrNull(obsiGuild.tagManagementRole ?: Snowflake(0)) == null) {
+                        obsiGuild.adoptBlacklistBypassRole(it.createRole {
+                            name = "Tag Management Permissions"
                             reason = "Created by obsi-bot (please don't delete)"
                         }.id)
                         obsiGuild.update()

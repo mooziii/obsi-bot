@@ -9,6 +9,7 @@
   "generic.nopermissions.short": "Insufficient permissions",
   "generic.nopermissions.long": "You don't have the required permission (${required}) to perform this action",
   "generic.nopermissions.rolerequired": "You need the ${roleName} role to perform this action",
+  "generic.placeholder": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
 
   "ended": "Ended",
   "yes": "Yes",
@@ -27,6 +28,12 @@
   "giveaway.winners": "The winners are: ${winners}",
   "giveaway.embed.author": "Giveaway by ${owner}",
   "giveaway.embed.description": "You can win **${prizecount}x ${prize}** by reacting with ${emoji}!\nThe givaway ends <t:${end}:R>\nHosted by: <@${owner}>",
+
+  "modal.createTag.title": "Tag creation",
+  "modal.createTag.short":  "The shortened tag",
+  "modal.createTag.short.placeholder": "Insert a short word to use as the tag-keyword",
+  "modal.createTag.long": "The content where the tag points to",
+  "modal.createTag.success": "The tag `${short}` has been created",
 
   "command.help.description": "A command for, you guessed it, help!",
   "command.giveaway.rolerequired": "You need the \"Giveaway Permissions\" role to manage giveaways (or you must be the host of a giveaway to roll it manually).",

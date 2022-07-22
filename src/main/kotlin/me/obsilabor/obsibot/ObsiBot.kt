@@ -17,6 +17,7 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import me.obsilabor.obsibot.audio.ObsiAudioBot
 import me.obsilabor.obsibot.commands.CommandExtension
+import me.obsilabor.obsibot.commands.contextmenu.TagMessageCommand
 import me.obsilabor.obsibot.commands.tools.*
 import me.obsilabor.obsibot.commands.information.*
 import me.obsilabor.obsibot.commands.moderation.*
@@ -26,6 +27,7 @@ import me.obsilabor.obsibot.config.ConfigManager
 import me.obsilabor.obsibot.listeners.*
 import me.obsilabor.obsibot.localization.Localization
 import me.obsilabor.obsibot.localization.globalText
+import me.obsilabor.obsibot.modals.TagCreationModal
 import me.obsilabor.obsibot.tasks.GiveawayTask
 import me.obsilabor.obsibot.tasks.PollTask
 import me.obsilabor.obsibot.utils.addCommand
@@ -91,6 +93,8 @@ object ObsiBot {
                 add(::PollListener)
                 add(::GiveawayListener)
                 add(::BlacklistListener)
+                add(::TagMessageCommand)
+                add(::TagCreationModal)
                 addCommand(::MinecraftCommand)
                 addCommand(::GiveawayCommand)
                 addCommand(::PollCommand)
@@ -98,6 +102,7 @@ object ObsiBot {
                 addCommand(::HelpCommand)
                 addCommand(::SlowModeCommand)
                 addCommand(::BlacklistCommand)
+                addCommand(::TagCommand)
 
                 extMappings {}
             }

@@ -4,7 +4,6 @@ import dev.kord.common.entity.Snowflake
 import kotlinx.coroutines.launch
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.database.MongoManager
-import me.obsilabor.obsibot.features.Blacklist
 import me.obsilabor.obsibot.localization.Localization
 import org.litote.kmongo.eq
 
@@ -21,9 +20,11 @@ data class ObsiGuild(
     var blacklist: MutableSet<BlacklistedWord> = mutableSetOf(),
     var blacklistManagementRole: Snowflake? = null,
     var blacklistBypassRole: Snowflake? = null,
+    var tagManagementRole: Snowflake? = null,
+    var tags: MutableMap<String, String> = mutableMapOf()
 ) {
     companion object {
-        const val NEWEST_DOCUMENT_VERSION = 2
+        const val NEWEST_DOCUMENT_VERSION = 3
 
         fun newDocument(snowflake: Snowflake): ObsiGuild {
             return ObsiGuild(

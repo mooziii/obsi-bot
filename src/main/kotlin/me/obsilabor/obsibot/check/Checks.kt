@@ -16,8 +16,12 @@ import me.obsilabor.obsibot.utils.hasRole
 import me.obsilabor.obsibot.utils.obsify
 
 @KordPreview
-suspend fun CheckContext<InteractionCreateEvent>.hasRole(role: Snowflake) {
+suspend fun CheckContext<InteractionCreateEvent>.hasRole(role: Snowflake?) {
     if (!passed) {
+        return
+    }
+    if(role == null) {
+        fail("role equals null")
         return
     }
     val guildId = event.interaction.data.guildId.value ?: error("`hasRole` must always be combinded with `anyGuild`")
@@ -48,8 +52,8 @@ suspend fun CheckContext<InteractionCreateEvent>.hasPermission(permission: Permi
 }
 
 @KordPreview
-suspend fun CheckContext<InteractionCreateEvent>.hasRole(role: Role) {
-    hasRole(role.id)
+suspend fun CheckContext<InteractionCreateEvent>.hasRole(role: Role?) {
+    hasRole(role?.id)
 }
 
 @KordPreview
