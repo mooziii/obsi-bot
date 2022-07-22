@@ -2,7 +2,9 @@ package me.obsilabor.obsibot.commands.contextmenu
 
 import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.extensions.Extension
-import com.kotlindiscord.kord.extensions.extensions.ephemeralMessageCommand
+import com.kotlindiscord.kord.extensions.modules.unsafe.annotations.UnsafeAPI
+import com.kotlindiscord.kord.extensions.modules.unsafe.extensions.unsafeMessageCommand
+import com.kotlindiscord.kord.extensions.modules.unsafe.types.InitialMessageCommandResponse
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.entity.interaction.GuildMessageCommandInteraction
 import me.obsilabor.obsibot.ObsiBot
@@ -14,8 +16,10 @@ import me.obsilabor.obsibot.modals.TagCreationModal
 class TagMessageCommand : Extension() {
     override val name = "tag-create"
 
+    @UnsafeAPI
     override suspend fun setup() {
-        ephemeralMessageCommand {
+        unsafeMessageCommand {
+            initialResponse = InitialMessageCommandResponse.None
             guild(ObsiBot.TEST_SERVER_ID)
             name = "Create Tag"
             check { anyGuild() }

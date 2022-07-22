@@ -4,7 +4,9 @@ import com.kotlindiscord.kord.extensions.extensions.Extension
 import com.kotlindiscord.kord.extensions.extensions.event
 import com.kotlindiscord.kord.extensions.utils.ackPublic
 import dev.kord.common.annotation.KordPreview
+import dev.kord.common.entity.Snowflake
 import dev.kord.common.entity.TextInputStyle
+import dev.kord.core.behavior.channel.MessageChannelBehavior
 import dev.kord.core.behavior.interaction.modal
 import dev.kord.core.behavior.interaction.response.createPublicFollowup
 import dev.kord.core.entity.interaction.GuildApplicationCommandInteraction
@@ -30,7 +32,7 @@ class TagCreationModal : Extension() {
             ) {
                 actionRow {
                     textInput(
-                        TextInputStyle.Paragraph,
+                        TextInputStyle.Short,
                         TAG_ID_FIELD_ID,
                         localText("modal.createTag.short", obsiGuild)
                     ) {
@@ -38,6 +40,8 @@ class TagCreationModal : Extension() {
                         required = true
                         placeholder = localText("modal.createTag.short.placeholder", obsiGuild)
                     }
+                }
+                actionRow {
                     textInput(
                         TextInputStyle.Paragraph,
                         TAG_CONTENT_FIELD_ID,
@@ -57,7 +61,7 @@ class TagCreationModal : Extension() {
             ) {
                 actionRow {
                     textInput(
-                        TextInputStyle.Paragraph,
+                        TextInputStyle.Short,
                         TAG_ID_FIELD_ID,
                         localText("modal.createTag.short", obsiGuild)
                     ) {
@@ -65,13 +69,14 @@ class TagCreationModal : Extension() {
                         required = true
                         placeholder = localText("modal.createTag.short.placeholder", obsiGuild)
                     }
+                }
+                actionRow {
                     textInput(
                         TextInputStyle.Paragraph,
                         TAG_CONTENT_FIELD_ID,
                         localText("modal.createTag.long", obsiGuild)
                     ) {
-                        required = true
-                        placeholder = localText("generic.placeholder", obsiGuild)
+                        value = localText("generic.placeholder", obsiGuild)
                     }
                 }
             }

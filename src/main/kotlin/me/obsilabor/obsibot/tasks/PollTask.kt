@@ -22,7 +22,7 @@ class PollTask : TimerTask() {
             ObsiBot.generalScope.launch {
                 val polls = arrayListOf<Poll>()
                 for (obsiGuild in MongoManager.guilds.find().toList()) {
-                    polls.addAll(obsiGuild.polls?.toList() ?: return@launch)
+                    polls.addAll(obsiGuild.polls.toList())
                 }
                 for (poll in polls) {
                     if (!poll.ended && poll.end != 0L && poll.options.isNotEmpty()) {

@@ -48,6 +48,7 @@ dependencies {
     implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion") {
         exclude("dev.kord")
     }
+    implementation("com.kotlindiscord.kord.extensions:unsafe:$kordexVersion")
     implementation("com.kotlindiscord.kord.extensions:extra-mappings:$kordexVersion")
     // utility libraries
     implementation("net.sf.jopt-simple:jopt-simple:5.0.4")

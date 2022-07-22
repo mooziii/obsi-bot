@@ -110,7 +110,7 @@ class PollCommand : CommandExtension("poll", "command.poll.description") {
                 action {
                     val guild = this.getGuild()?.asGuild() ?: return@action
                     val obsiGuild = guild.obsify() ?: return@action
-                    val poll = obsiGuild.polls?.firstOrNull { it.messageId.value.toLong() == arguments.id } ?: return@action
+                    val poll = obsiGuild.polls.firstOrNull { it.messageId.value.toLong() == arguments.id } ?: return@action
                     obsiGuild.refreshPollVotes(
                         Poll(
                             poll.guildId,

@@ -4,8 +4,11 @@ import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
 import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.types.editingPaginator
+import com.kotlindiscord.kord.extensions.types.respond
 import dev.kord.common.annotation.KordPreview
 import me.obsilabor.obsibot.ObsiBot
+import me.obsilabor.obsibot.check.hasRole
+import me.obsilabor.obsibot.check.obsiGuild
 import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.utils.obsiGuild
@@ -28,12 +31,17 @@ class TagCommand : CommandExtension("tag") {
 
                 action {
                     val tagList = obsiGuild().tags.keys.toTypedArray()
+                    if (tagList.isEmpty()) {
+                        respond {
+                            content = "Empty list"
+                        }
+                    }
                     editingPaginator {
                         owner = member
                         val pagesNeeded = tagList.size/entriesPerPage
                         var i = 0
                         repeat(pagesNeeded) { _ ->
-                            page {
+                            page("group") {
                                 title = "Tags"
                                 description = buildString {
                                     repeat(entriesPerPage) { _ ->
@@ -44,6 +52,17 @@ class TagCommand : CommandExtension("tag") {
                             }
                         }
                     }
+                }
+            }
+
+            publicSubCommand {
+                name = "create"
+                description = globalText("command.tag.create.description")
+
+                check { hasRole(obsiGuild().tagManagementRole) }
+
+                action {
+
                 }
             }
         }
