@@ -54,7 +54,7 @@ class ReadyListener : Extension() {
                         obsiGuild.update()
                     }
                     if(obsiGuild.tagManagementRole == null || it.getRoleOrNull(obsiGuild.tagManagementRole ?: Snowflake(0)) == null) {
-                        obsiGuild.adoptBlacklistBypassRole(it.createRole {
+                        obsiGuild.adoptTagManagementRole(it.createRole {
                             name = "Tag Management Permissions"
                             reason = "Created by obsi-bot (please don't delete)"
                         }.id)

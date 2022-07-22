@@ -107,4 +107,9 @@ data class ObsiGuild(
         blacklistBypassRole = newRole
         return this
     }
+
+    fun adoptTagManagementRole(newRole: Snowflake): ObsiGuild {
+        tagManagementRole = newRole
+        return this
+    }
 }
