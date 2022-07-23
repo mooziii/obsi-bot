@@ -50,6 +50,7 @@ class TagCommand : CommandExtension("tag") {
                             val pagesNeeded = tagList.size/entriesPerPage
                             var i = 0
                             repeat(pagesNeeded) { _ ->
+                                pages.groups["group"] = mutableListOf()
                                 page("group") {
                                     title = "Tags"
                                     description = buildString {
