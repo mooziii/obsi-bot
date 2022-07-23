@@ -12,12 +12,14 @@ import com.kotlindiscord.kord.extensions.types.editingPaginator
 import com.kotlindiscord.kord.extensions.types.respond
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.entity.interaction.GuildApplicationCommandInteraction
+import dev.kord.rest.builder.message.create.embed
 import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.check.hasRole
 import me.obsilabor.obsibot.check.obsiGuild
 import me.obsilabor.obsibot.commands.CommandExtension
 import me.obsilabor.obsibot.localization.globalText
 import me.obsilabor.obsibot.modals.TagCreationModal
+import me.obsilabor.obsibot.utils.applyDefaultFooter
 import me.obsilabor.obsibot.utils.obsiGuild
 
 @UnsafeAPI
@@ -45,6 +47,16 @@ class TagCommand : CommandExtension("tag") {
                         }
                     }
                     respond {
+                        embed {
+                            title = "Tags"
+                            description = buildString {
+                                tagList.forEachIndexed { index, s ->
+                                    appendLine("`${index+1}.` $s")
+                                }
+                            }
+                            applyDefaultFooter()
+                        }
+                        /*
                         editingPaginator("tags") {
                             owner = member
                             val pagesNeeded = tagList.size/entriesPerPage
@@ -61,6 +73,7 @@ class TagCommand : CommandExtension("tag") {
                                 }
                             }
                         }
+                         */
                     }
                 }
             }
