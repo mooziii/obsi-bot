@@ -19,6 +19,7 @@ object Localization {
         println("Downloading official language json files..")
         downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/english.json", getOrCreateFile(File(langFolder, "english.json")))
         downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/german.json", getOrCreateFile(File(langFolder, "german.json")))
+        downloadFile("https://raw.githubusercontent.com/Obsilabor/obsi-bot/main/lang/french.json", getOrCreateFile(File(langFolder, "french.json")))
     }
 
     fun loadAllLanguageFiles() {
