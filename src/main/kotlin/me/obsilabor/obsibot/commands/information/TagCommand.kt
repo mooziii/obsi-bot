@@ -1,5 +1,6 @@
 package me.obsilabor.obsibot.commands.information
 
+import com.kotlindiscord.kord.extensions.DISCORD_FUCHSIA
 import com.kotlindiscord.kord.extensions.checks.anyGuild
 import com.kotlindiscord.kord.extensions.commands.Arguments
 import com.kotlindiscord.kord.extensions.commands.application.slash.publicSubCommand
@@ -48,6 +49,7 @@ class TagCommand : CommandExtension("tag") {
                     }
                     respond {
                         embed {
+                            color = DISCORD_FUCHSIA
                             title = "Tags"
                             description = buildString {
                                 tagList.forEachIndexed { index, s ->
