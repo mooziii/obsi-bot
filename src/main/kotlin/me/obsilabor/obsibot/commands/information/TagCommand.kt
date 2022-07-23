@@ -45,13 +45,12 @@ class TagCommand : CommandExtension("tag") {
                         }
                     }
                     respond {
-                        editingPaginator {
+                        editingPaginator("tags") {
                             owner = member
                             val pagesNeeded = tagList.size/entriesPerPage
                             var i = 0
                             repeat(pagesNeeded) { _ ->
-                                pages.groups[""] = mutableListOf()
-                                page("") {
+                                page("tags") {
                                     title = "Tags"
                                     description = buildString {
                                         repeat(entriesPerPage) { _ ->
