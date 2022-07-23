@@ -95,7 +95,7 @@ class TagCreationModal : Extension() {
                 val obsiGuild = guild.obsify() ?: guild.createObsiGuild()
                 val short = event.interaction.textInputs[TAG_ID_FIELD_ID]?.value ?: return@action
                 val long = event.interaction.textInputs[TAG_CONTENT_FIELD_ID]?.value ?: return@action
-                obsiGuild.tags[short] = long
+                obsiGuild.tags[short.lowercase()] = long
                 obsiGuild.update()
                 event.interaction.ackPublic().createPublicFollowup {
                     content = localText("modal.createTag.success", hashMapOf("short" to short), obsiGuild)
