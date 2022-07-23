@@ -44,7 +44,6 @@ dependencies {
             requireCapability("dev.kord:core-voice:0.8.0-M14")
         }
     }
-    //implementation("dev.kord:kord-voice:0.8.0-M14")
     implementation("com.kotlindiscord.kord.extensions:kord-extensions:$kordexVersion") {
         exclude("dev.kord")
     }

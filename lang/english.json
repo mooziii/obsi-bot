@@ -36,6 +36,7 @@
   "modal.createTag.success": "The tag `${short}` has been created",
 
   "command.help.description": "A command for, you guessed it, help!",
+
   "command.giveaway.rolerequired": "You need the \"Giveaway Permissions\" role to manage giveaways (or you must be the host of a giveaway to roll it manually).",
   "command.giveaway.description": "Command for managing giveaways",
   "command.giveaway.create.success": "Giveaway created",

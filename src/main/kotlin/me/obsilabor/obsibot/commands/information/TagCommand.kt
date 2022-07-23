@@ -23,14 +23,13 @@ import me.obsilabor.obsibot.modals.TagCreationModal
 import me.obsilabor.obsibot.utils.applyDefaultFooter
 import me.obsilabor.obsibot.utils.obsiGuild
 
-@UnsafeAPI
+@OptIn(UnsafeAPI::class)
 @KordPreview
 class TagCommand : CommandExtension("tag") {
     private val entriesPerPage = 15
 
     override suspend fun setup() {
         publicSlashCommand {
-            guild(ObsiBot.TEST_SERVER_ID)
             name = "tag"
             description = globalText(descriptionKey)
 
