@@ -85,5 +85,10 @@
   "command.blacklist.remove.success": "`${word}` has been removed from the blacklist.",
   "command.blacklist.argument.word.description": "The word to add/remove",
   "command.blacklist.argument.why.description": "The reason why is this word on the blacklist",
-  "command.blacklist.argument.filterVariants.description": "Whether special variants of this word should be blacklisted as well"
+  "command.blacklist.argument.filterVariants.description": "Whether special variants of this word should be blacklisted as well",
+
+  "command.tag.list.description": "Lists all available tags",
+  "command.tag.create.description": "Creates a new tag",
+  "command.tag.post.description": "Posts a specified tag",
+  "command.tag.post.argument.tag.description": "The tag to post"
 }
