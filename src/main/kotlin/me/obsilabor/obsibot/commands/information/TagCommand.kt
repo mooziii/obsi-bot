@@ -9,12 +9,12 @@ import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.modules.unsafe.annotations.UnsafeAPI
 import com.kotlindiscord.kord.extensions.modules.unsafe.extensions.unsafeSubCommand
 import com.kotlindiscord.kord.extensions.modules.unsafe.types.InitialSlashCommandResponse
-import com.kotlindiscord.kord.extensions.types.editingPaginator
+//import com.kotlindiscord.kord.extensions.types.editingPaginator
 import com.kotlindiscord.kord.extensions.types.respond
 import dev.kord.common.annotation.KordPreview
 import dev.kord.core.entity.interaction.GuildApplicationCommandInteraction
 import dev.kord.rest.builder.message.create.embed
-import me.obsilabor.obsibot.ObsiBot
+//import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.check.hasRole
 import me.obsilabor.obsibot.check.obsiGuild
 import me.obsilabor.obsibot.commands.CommandExtension
@@ -26,7 +26,7 @@ import me.obsilabor.obsibot.utils.obsiGuild
 @OptIn(UnsafeAPI::class)
 @KordPreview
 class TagCommand : CommandExtension("tag") {
-    private val entriesPerPage = 15
+    //private val entriesPerPage = 15
 
     override suspend fun setup() {
         publicSlashCommand {
