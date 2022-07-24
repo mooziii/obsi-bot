@@ -60,7 +60,7 @@ class TagCommand : CommandExtension("tag") {
                         /*
                         editingPaginator("tags") {
                             owner = member
-                            val pagesNeeded = tagList.size/entriesPerPage
+                            val pagesNeeded = tagList.size/entriesPerPage //wrong
                             var i = 0
                             repeat(pagesNeeded) { _ ->
                                 page("tags") {
