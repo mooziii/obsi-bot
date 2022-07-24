@@ -59,7 +59,7 @@ object VersionManager {
             else -> return "loom.officialMojangMappings()"
         }
         val maven = (response.firstOrNull { it.gameVersion == version.version } as CommonMappingsVersion).maven
-        return "\"$maven\""
+        return "\"$maven:v2\""
     }
 
     suspend fun getGameVersions(): List<GameVersion> {
