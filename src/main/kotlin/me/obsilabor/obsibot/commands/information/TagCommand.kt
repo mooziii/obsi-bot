@@ -9,16 +9,10 @@ import com.kotlindiscord.kord.extensions.extensions.publicSlashCommand
 import com.kotlindiscord.kord.extensions.modules.unsafe.annotations.UnsafeAPI
 import com.kotlindiscord.kord.extensions.modules.unsafe.extensions.unsafeSubCommand
 import com.kotlindiscord.kord.extensions.modules.unsafe.types.InitialSlashCommandResponse
-import com.kotlindiscord.kord.extensions.modules.unsafe.types.editingPaginator
-import com.kotlindiscord.kord.extensions.modules.unsafe.types.respondPublic
 import com.kotlindiscord.kord.extensions.types.editingPaginator
 import com.kotlindiscord.kord.extensions.types.respond
-import com.kotlindiscord.kord.extensions.types.respondingPaginator
 import dev.kord.common.annotation.KordPreview
-import dev.kord.core.behavior.channel.createMessage
 import dev.kord.core.entity.interaction.GuildApplicationCommandInteraction
-import dev.kord.rest.builder.message.create.embed
-import me.obsilabor.obsibot.ObsiBot
 import me.obsilabor.obsibot.check.hasRole
 import me.obsilabor.obsibot.check.obsiGuild
 import me.obsilabor.obsibot.commands.CommandExtension
