@@ -43,6 +43,7 @@ class TagCommand : CommandExtension("tag") {
                         respond {
                             content = "Empty list"
                         }
+                        return@action
                     }
                     editingPaginator("tags") {
                         owner = member
