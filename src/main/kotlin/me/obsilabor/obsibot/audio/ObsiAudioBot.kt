@@ -13,6 +13,7 @@ import dev.kord.common.annotation.KordVoice
 import dev.kord.common.entity.Permission
 import dev.kord.common.entity.Snowflake
 import dev.kord.core.behavior.channel.connect
+import dev.kord.core.behavior.edit
 import dev.kord.core.entity.Guild
 import dev.kord.core.entity.Member
 import dev.kord.core.entity.channel.VoiceChannel
@@ -62,6 +63,9 @@ object ObsiAudioBot {
             audioProvider { AudioFrame.fromData(player.provide()?.data) }
         }
         connections[guild.id] = connection
+        guild.getMember(ObsiBot.client.selfId).edit {
+            deafened = true
+        }
         guild.gateway?.editPresence {
             listening("$radioName 🎶")
         }
